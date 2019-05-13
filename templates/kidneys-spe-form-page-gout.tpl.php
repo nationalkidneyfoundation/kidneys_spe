@@ -11,7 +11,7 @@
   /*fff9f2 fe971e*/
   .hero--gout {
     background-color: #3f3f3f;
-    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1197118/hero_crystals.png);
+    background-image: url(/<?php print $theme_path; ?>/images/hero_crystals.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -25,7 +25,7 @@
   }
   .hero--gout::after {
     content: '';
-    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1197118/hero_edge.png);
+    background-image: url(/<?php print $theme_path; ?>/images/hero_edge.png);
     position: absolute;
      background-size: contain;
     background-repeat: no-repeat;
@@ -46,6 +46,7 @@
     }
   }
 </style>
+
 <section class="hero--gout margin-bottom--xxl">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 print--width--100 md--width--50 padding-top--none padding-bottom--xl md--padding-right--lg">
@@ -55,7 +56,7 @@
       </h1>
     </div>
     <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1197118/goutheader_throb1.gif">
+      <img class="display--block center" src="/<?php print $theme_path; ?>/images/goutheader_throb1.gif">
     </div>
   </div>
 </section>
@@ -78,23 +79,23 @@
 <section class="bg--gray-1">
   <div class="container display--flex flex-wrap--wrap padding-y--xxxl padding-x--md">
     <h2 class="width--100 text-align--center">Gout and Kidney disease</h2>
-    <div class="width--100 md--width--33 padding--xl">
+    <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl text-align--center">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1197118/_1in3american200x200.png"/>
+        <img src="/<?php print $theme_path; ?>/images/1in3american200x200.png"/>
         <p class="padding--none"><strong>1 in 3 American adults</strong>
         <br>is at risk for kidney disease.</p>
       </div>
     </div>
-    <div class="width--100 md--width--33 padding--xl">
+    <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl text-align--center">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1197118/_Kidney200x200.png"/>
+        <img src="/<?php print $theme_path; ?>/images/kidney200x200.png"/>
         <p class="padding--none"><strong>30 million American adults have kidney disease,</strong>
         <br>and most don’t know it.</p>
       </div>
     </div>
-    <div class="width--100 md--width--33 padding--xl">
+    <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl text-align--center">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1197118/_foot200x200.png"/>
+        <img src="/<?php print $theme_path; ?>/images/foot200x200.png"/>
         <p class="padding--none"><strong>8.3 million American adults have gout.</strong></p>
       </div>
     </div>

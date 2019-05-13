@@ -5,6 +5,7 @@
  */
 
 include_once 'kidneys_spe.features.inc';
+
 /**
 * Implements hook_views_api().
 *
@@ -27,7 +28,6 @@ function kidneys_spe_preprocess_page(&$vars) {
   // Unset a few layout things.
   $alias = strtolower(drupal_get_path_alias());
   if (strpos($alias, 'phi') !== FALSE) {
-
     $widescreen = true;
     $vars['has_title'] = false;
     // Add home link back to spe profile home.
@@ -140,17 +140,6 @@ function kidneys_spe_theme($existing, $type, $theme, $path){
       'override preprocess functions' => TRUE,
       'variables' => array(),
     ),
-    /*'kidney_spe_risk_page_print' => array(
-      'template' => 'kidney-spe-risk-page-print',
-      'path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
-      'type' => 'theme',
-      'preprocess functions' => array('kidney_spe_risk_page_preprocess'),
-      'override preprocess functions' => TRUE,
-      'variables' => array(
-        'title' => NULL,
-        'content' => NULL
-      ),
-    ),*/
   );
 }
 
@@ -164,37 +153,37 @@ function kidneys_spe_assessment_fields($version = 'health') {
   switch ($version) {
     case 'gout':
       $fields = array(
-        'field_spe_ckd_diagnosis' => 1,
-        'field_spe_gout_diagnosis' => 1,
-        'field_spe_gout_symptoms' => 1,
-        'field_spe_gout_uric_acid_level' => 1
+        'field_spe_ckd_diagnosis',
+        'field_spe_gout_diagnosis',
+        'field_spe_gout_symptoms',
+        'field_spe_gout_uric_acid_level'
       );
       break;
     case 'hyperk':
       $fields = array(
-        'field_spe_ckd_diagnosis' => 1,
-        'field_spe_pot_diagnosis' => 1,
-        'field_spe_pot_symptoms' => 1,
-        'field_spe_pot_level' => 1
+        'field_spe_ckd_diagnosis',
+        'field_spe_pot_diagnosis',
+        'field_spe_pot_symptoms',
+        'field_spe_pot_level'
       );
       break;
     case 'health':
     default:
       $fields = array(
-        'field_spe_diabetes_diagnosis' => 1,
-        'field_spe_prediabetes_diagnosis' => 1,
-        'field_spe_htx_diagnosis' => 1,
-        'field_spe_heart_disease' => 1,
-        'field_spe_family_history' => 1,
-        'field_spe_ckd_diagnosis' => 1,
-        'field_spe_on_dialysis' => 1,
-        'field_spe_had_transplant' => 1,
-        'field_spe_height_feet' => 1,
-        'field_spe_height_inches' => 1,
-        'field_height' => 1,
-        'field_spe_weight' => 1,
-        'field_spe_egfr' => 1,
-        'field_spe_acr' => 1,
+        'field_spe_diabetes_diagnosis',
+        'field_spe_prediabetes_diagnosis',
+        'field_spe_htx_diagnosis',
+        'field_spe_heart_disease',
+        'field_spe_family_history',
+        'field_spe_ckd_diagnosis',
+        'field_spe_on_dialysis',
+        'field_spe_had_transplant',
+        'field_spe_height_feet',
+        'field_spe_height_inches',
+        'field_height',
+        'field_spe_weight',
+        'field_spe_egfr',
+        'field_spe_acr',
       );
       break;
   }
@@ -254,7 +243,7 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
    );
    $form['field_height'] = array(
      '#type' => 'item'
-     , '#title' => $form['field_spe_height_feet']['#title']
+     , '#title' => $form['field_spe_height_feet'][LANGUAGE_NONE]['#title']
      , '#required' => TRUE
      , '#attributes' => array('class' => array('grid'))
      , '#weight' => $form['field_spe_height_feet']['#weight']
@@ -272,16 +261,15 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
    // Right now the version is stored in a get parameter.
    $get = drupal_get_query_parameters();
    $version = isset($get['version']) ? $get['version'] : 'health';
-   $field_to_include = kidneys_spe_assessment_fields($version);
-
+   $fields_to_include = kidneys_spe_assessment_fields($version);
    foreach(element_children($form) as $child) {
      if (substr($child, 0, 5) == 'field') {
-       if (!isset($field_to_include[$child])) {
-         unset($form[$child]);
-       } else {
+       if (array_search($child, $fields_to_include) !== FALSE) {
          // Don't really need this, but maybe later.
          $form[$child]['#prefix'] = '<div class="">';
          $form[$child]['#suffix'] = '</div>';
+       } else {
+         unset($form[$child]);
        }
      }
    }
@@ -290,7 +278,6 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
    $form['actions']['#prefix'] = '<div class="sm--hide padding-x--xxxl padding-y--md">';
    $form['actions']['#suffix'] = '</div>';
    $form['actions']['submit']['#attributes']['class'][] = 'width--100 button--yellow caps bold';
-   dpm($form);
  }
 }
 
@@ -301,12 +288,9 @@ function kidneys_spe_form_submit($form, &$form_state) {
   $entityform = $form_state['entityform'];
   // If there is a specific version redirect to that page.
   $get = drupal_get_query_parameters();
-  watchdog('spe', 'test');
   if (!empty($get['version'])) {
-    print 'test';
     $form_state['redirect'] ='phi/' . $entityform->entityform_id. '/'. $get['version'] . '/';
   } else {
-    print 'test1';
     $form_state['redirect'] ='phi/' . $entityform->entityform_id . '/health';
   }
 
@@ -377,7 +361,8 @@ function kidneys_spe_form($entity_id = FALSE) {
     'form' => $form,
     'version' => strtolower($version),
     'form_header' => render($form_header),
-    'form_subheader' => render($form_subheader)
+    'form_subheader' => render($form_subheader),
+    'theme_path' => drupal_get_path('module', 'kidneys_spe')
   );
   if (!isset($theme)) {
     switch ($version) {
@@ -465,7 +450,8 @@ function kidneys_spe_page($entityformid, $version) {
    'submission_id' => $entityformid,
    'email' => url('mailto:', array('query' => $query)),
    'course_title' => $course_title,
-   'course_description' => $course_description
+   'course_description' => $course_description,
+   'theme_path' => drupal_get_path('module', 'kidneys_spe')
   );
 
   // These are the two important labs, they are special for determining which version
