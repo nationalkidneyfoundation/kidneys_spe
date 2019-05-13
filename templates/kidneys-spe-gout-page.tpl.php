@@ -51,7 +51,7 @@
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
-        <div class="md--font-size--xxl font-size--xl caps">Thanks for taking time to answer our questions.</div>
+        <div class="md--font-size--xxl font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
         <div class="padding-top--lg font-size--lg">We've compiled personalized information that will help you take control of your gout health</div>
       </div>
     </div>

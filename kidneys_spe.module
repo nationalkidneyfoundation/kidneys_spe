@@ -140,6 +140,25 @@ function kidneys_spe_theme($existing, $type, $theme, $path){
       'override preprocess functions' => TRUE,
       'variables' => array(),
     ),
+    'kidneys_spe_list_accordion' => array(
+      'template' => 'kidneys-spe-list-accordion',
+      'path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
+      'type' => 'theme',
+      'variables' => array(
+        'title' => NULL,
+        'items' => NULL,
+      ),
+    ),
+    'kidneys_spe_list_accordion_item' => array(
+      'template' => 'kidneys-spe-list-accordion-item',
+      'path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
+      'type' => 'theme',
+      'variables' => array(
+        'title' => NULL,
+        'description' => NULL,
+        'iid' => NULL,
+      ),
+    ),
   );
 }
 
@@ -535,7 +554,7 @@ function kidneys_spe_page($entityformid, $version) {
     $section = $course_sections[0];
     $kus = views_get_view_result('spe_kus_by_section_and_profile', 'default', $entityformid, $section->nid);
     $items = kidneys_spe_ku_accordion($kus);
-    $return['knowledge_units'] = theme('list_accordion', array('items' => $items, 'classes' => 'bg--white'));
+    $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
     //$theme = 'kidneys_spe_course_one_section_page';
     $return['header'] = theme('promo_banner', array(
       'title' => $course_title,
@@ -556,7 +575,7 @@ function kidneys_spe_page($entityformid, $version) {
 
     $actions = views_get_view_result('spe_knowledge_units', 'all', $entityformid, 1);
     $actions = kidneys_spe_ku_accordion($actions);
-    $return['actions'] = theme('list_accordion', array('items' => $actions, 'classes' => 'bg--white'));
+    $return['actions'] = theme('kidneys_spe_list_accordion', array('items' => $actions, 'classes' => 'bg--white'));
     $return['sections'] = $items;
 
     $return['type'] = $health = kidneys_spe_get_health_score($gfr, $acr);
@@ -652,8 +671,8 @@ function kidneys_spe_section_page($entityformid, $version, $section) {
   $actions = views_get_view_result('spe_kus_by_section_and_profile', 'action_track', $entityformid, $section->nid);
   $actions_items = kidneys_spe_ku_accordion($actions, TRUE);
   $return['has_actions'] = !empty($actions_items);
-  $return['knowledge_units'] = theme('list_accordion', array('items' => $items, 'classes' => 'bg--white'));
-  $return['actions_track'] = theme('list_accordion', array('items' => $actions_items, 'classes' => 'bg--white'));
+  $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
+  $return['actions_track'] = theme('kidneys_spe_list_accordion', array('items' => $actions_items, 'classes' => 'bg--white'));
   dpm($return);
   return theme('kidneys_spe_course_section_page', $return);
 
@@ -689,7 +708,7 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
     $desc .= '<span class="bold">Is this content useful? </span>';
     $desc .= '<a  href="#">Yes</a> <a href="#">No</a></div>';
     $desc .= '</div>';
-    $items[] = theme('list_accordion_item', array(
+    $items[] = theme('kidneys_spe_list_accordion_item', array(
       'title'=> render($value->node_title),
       'description'=> $desc,
     ));
