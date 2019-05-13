@@ -702,12 +702,13 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
   foreach($kus as $value) {
     $desc = render($value->field_body);
     // TODO: actually make this work.
-    $desc .= '<div class="print--hide display--flex padding-top--md justify-content--space-between align-items--center">';
+    /*$desc .= '<div class="print--hide display--flex padding-top--md justify-content--space-between align-items--center">';
     $desc .= ($tracking) ? '<a href="#" class="button--orange">mark done</a>' : '';
     $desc .= '<div class="">';
     $desc .= '<span class="bold">Is this content useful? </span>';
     $desc .= '<a  href="#">Yes</a> <a href="#">No</a></div>';
     $desc .= '</div>';
+    */
     $items[] = theme('kidneys_spe_list_accordion_item', array(
       'title'=> render($value->node_title),
       'description'=> $desc,
