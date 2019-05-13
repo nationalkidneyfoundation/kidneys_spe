@@ -28,8 +28,8 @@ function kidneys_spe_preprocess_page(&$vars) {
   // Unset a few layout things.
   $alias = strtolower(drupal_get_path_alias());
   if (strpos($alias, 'phi') !== FALSE) {
-    $widescreen = true;
     $vars['has_title'] = false;
+    $vars['widescreen'] = true;
     // Add home link back to spe profile home.
     if (!empty(arg(2))) {
       $profile_link = l('Profile Home', arg(0) . '/' . arg(1),
