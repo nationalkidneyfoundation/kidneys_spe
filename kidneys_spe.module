@@ -702,7 +702,8 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
   $iid = user_password();
   foreach($kus as $i => $value) {
     dpm($value->field_body, 'field');
-    $desc = drupal_render($value->field_body);
+    //$desc = drupal_render($value->field_body);
+    $desc = $value->field_body[0]['rendered']['#markup'];
     dpm($desc, 'rendered');
     // TODO: actually make this work.
     /*$desc .= '<div class="print--hide display--flex padding-top--md justify-content--space-between align-items--center">';
