@@ -34,7 +34,32 @@
     width: 100%;
     height: 16px;
   }
-
+  .edge--ragged--top,
+  .edge--ragged--bottom {
+    position: relative;
+  }
+  .edge--ragged--top::before {
+    content: '';
+    background-image: url(/<?php print $theme_path; ?>/images/ragged_top.png);
+    position: absolute;
+    top: 0;
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 16px;
+  }
+  .edge--ragged--bottom::after {
+    content: '';
+    background-image: url(/<?php print $theme_path; ?>/images/ragged_bottom.png);
+    position: absolute;
+    bottom: 0;
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 16px;
+  }
   @media print{
     * {
       color: #333 !important;
@@ -100,16 +125,16 @@
     </div>
   </div>
 </section>
-<section class="" style="background-color: #3f3f3f">
+<section class="edge--ragged--top bg--orange">
   <div class="prose center padding-y--xxl padding-x--md text-align--center">
     <div class="print--hide width--100 text-align--center">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="caps button--white margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
-      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
+      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="font-size--sm caps button--white margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>
-<section class="bg--gray-1">
+<section class="bg--gray-1 edge--ragged--bottom">
   <div class="prose center padding-y--xl padding-x--md text-align--center">
     <h2 class="width--100 padding-bottom--xl ">If you have gout, you should get checked for kidney disease</h2>
     <div class="display--flex md--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
