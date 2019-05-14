@@ -699,7 +699,8 @@ function kidneys_spe_get_course_sections_by_assessment($course, $entityformid) {
  */
 function kidneys_spe_ku_accordion($kus, $tracking = false) {
   $items = array();
-  foreach($kus as $value) {
+  $iid = user_password();
+  foreach($kus as $i => $value) {
     $desc = render($value->field_body);
     // TODO: actually make this work.
     /*$desc .= '<div class="print--hide display--flex padding-top--md justify-content--space-between align-items--center">';
@@ -712,6 +713,7 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
     $items[] = theme('kidneys_spe_list_accordion_item', array(
       'title'=> render($value->node_title),
       'description'=> $desc,
+      'iid' => $iid + '-' + $i
     ));
   }
   return $items;

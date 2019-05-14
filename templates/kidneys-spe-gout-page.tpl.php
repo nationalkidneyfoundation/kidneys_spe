@@ -173,10 +173,6 @@
       <div class="margin-bottom--md">
 
         <a class="button--orange caps padding-y--md padding-x--xl color--white" href="https://www.surveymonkey.com/r/M7FHZ6V" target="_blank">Take survey</a>
-        <!--<a class="modal-trigger button--orange caps padding-y--md padding-x--xl color--white" href="#gout-survey">Take survey</a>
-        <div class="mfp-hide md--margin--lg margin--sm padding--xxl position--relative bg--white display--flex align-items--center justify-content--center" id="gout-survey">
-          <script>(function(t,e,s,n){var o,a,c;t.SMCX=t.SMCX||[],e.getElementById(n)||(o=e.getElementsByTagName(s),a=o[o.length-1],c=e.createElement(s),c.type="text/javascript",c.async=!0,c.id=n,c.src=["https:"===location.protocol?"https://":"http://","widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd25IC9o_2BFTx8Xcdmq8OAAMGL1zxdpeFQaUqrVtAhRmgl.js"].join(""),a.parentNode.insertBefore(c,a))})(window,document,"script","smcx-sdk");</script>
-        </div>-->
       </div>
     </div>
   </div>
