@@ -10,6 +10,6 @@
     </div>
   </a>
   <div class="linkHighlight desc <?php print ($first) ? '' : 'hide'; ?> print--show sm--margin-left--md padding-top--xxs sm--padding-left--sm">
-    <?php print 'testing';//$description; ?>
+    <?php print $description; ?>
   </div>
 </div>
