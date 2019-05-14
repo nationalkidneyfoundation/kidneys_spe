@@ -713,7 +713,8 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
     $items[] = theme('kidneys_spe_list_accordion_item', array(
       'title'=> render($value->node_title),
       'description'=> $desc,
-      'iid' => $iid + '-' + $i
+      'iid' => $iid . '-' . $i,
+      'first' => ($i == 0) ? TRUE : FALSE
     ));
   }
   return $items;
