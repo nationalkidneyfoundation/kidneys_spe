@@ -25,12 +25,14 @@
   }
   .hero--gout::after {
     content: '';
-    background-image: url(/<?php print $theme_path; ?>/images/hero_edge.png);
+    background-image: url(/<?php print $theme_path; ?>/images/edge_bottom_brush.png);
     position: absolute;
-     background-size: contain;
+    bottom: 0;
+    background-position: bottom;
+    background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
-    height: 30px;
+    height: 16px;
   }
 
   @media print{
