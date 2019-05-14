@@ -11,7 +11,7 @@
   /*fff9f2 fe971e*/
   .hero--gout {
     background-color: #3f3f3f;
-    background-image: url(/<?php print $theme_path; ?>/images/hero_crystals.png);
+    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals_v1.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -35,7 +35,7 @@
     height: 16px;
   }
   .bg--crystals {
-    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals.png);
+    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals_v2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
