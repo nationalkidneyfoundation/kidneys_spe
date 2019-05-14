@@ -333,7 +333,7 @@ function kidneys_spe_menu() {
     'type' => MENU_CALLBACK,
   );*/
   $items['phi/form'] = array(
-    'title' => 'Form',
+    'title callback' => 'kidney_spe_form_title',
     'page callback' => 'kidneys_spe_form',
     //'page arguments' => array(1, 2),
     'access arguments' => array('access content'),
@@ -357,6 +357,22 @@ function kidneys_spe_menu() {
 }
 
 /**
+ * Callback to get title for form page.
+ */
+ function kidney_spe_form_title() {
+   $get = drupal_get_query_parameters();
+   $version = isset($get['version']) ? $get['version'] : 'health';
+   switch ($version) {
+     case 'gout':
+        return t('Gout Health Assessment');
+     case 'health':
+        return t('Kidney Health Assessment');
+     default:
+        return t('Health Assessment');
+   }
+ }
+
+/**
  * Callback for main SPE form
  */
 function kidneys_spe_form($entity_id = FALSE) {
@@ -375,13 +391,14 @@ function kidneys_spe_form($entity_id = FALSE) {
     $form_subheader = field_view_value('node', $course, 'field_spe_course_form_sub_header', $form_subheader[0]);
   }
 
-
+  Global $base_url;
   $return = array(
     'form' => $form,
     'version' => strtolower($version),
     'form_header' => render($form_header),
     'form_subheader' => render($form_subheader),
-    'theme_path' => drupal_get_path('module', 'kidneys_spe')
+    'theme_path' => drupal_get_path('module', 'kidneys_spe'),
+    'path' => $base_url. '/' . request_uri()
   );
   if (!isset($theme)) {
     switch ($version) {
@@ -462,6 +479,7 @@ function kidneys_spe_page($entityformid, $version) {
    'body' => $body,
   );
 
+  Global $base_url;
   // This will be our return variable that gets piped into the template file.
   $return = array(
    'submission' => $submission,
@@ -470,7 +488,8 @@ function kidneys_spe_page($entityformid, $version) {
    'email' => url('mailto:', array('query' => $query)),
    'course_title' => $course_title,
    'course_description' => $course_description,
-   'theme_path' => drupal_get_path('module', 'kidneys_spe')
+   'theme_path' => drupal_get_path('module', 'kidneys_spe'),
+   'path' => $base_url. '/' . request_uri()
   );
 
   // These are the two important labs, they are special for determining which version

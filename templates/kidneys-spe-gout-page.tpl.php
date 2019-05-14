@@ -25,12 +25,14 @@
   }
   .hero--gout::after {
     content: '';
-    background-image: url(/<?php print $theme_path; ?>/images/hero_edge.png);
+    background-image: url(/<?php print $theme_path; ?>/images/edge_bottom_brush.png);
     position: absolute;
-     background-size: contain;
+    bottom: 0;
+    background-position: bottom;
+    background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
-    height: 30px;
+    height: 16px;
   }
 
   @media print{
@@ -62,6 +64,7 @@
 </section>
 <section>
   <div class="container display--flex flex-wrap--wrap padding-bottom--xl padding-x--md">
+
     <h2 class="width--100 padding-bottom--xl text-align--center">Personalized Health Information</h2>
     <div class="width--100 md--width--50 md--padding-right--xxxl text-align--center">
       <img src="/<?php print $theme_path; ?>/images/book300x300.png" alt="book with open pages">
@@ -94,6 +97,15 @@
             <li>A higher uric acid level may be okay for you. Most people with high uric acid don't get gout or kidney stones.</li>
           </ul>
         </div>
+    </div>
+  </div>
+</section>
+<section class="" style="background-color: #3f3f3f">
+  <div class="prose center padding-y--xxl padding-x--md text-align--center">
+    <div class="print--hide width--100 text-align--center">
+      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="caps button--white margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>
