@@ -34,7 +34,38 @@
     width: 100%;
     height: 16px;
   }
-
+  .bg--crystals {
+    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .edge--ragged--top,
+  .edge--ragged--bottom {
+    position: relative;
+  }
+  .edge--ragged--top::before {
+    content: '';
+    background-image: url(/<?php print $theme_path; ?>/images/ragged_top.png);
+    position: absolute;
+    top: 0;
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 16px;
+  }
+  .edge--ragged--bottom::after {
+    content: '';
+    background-image: url(/<?php print $theme_path; ?>/images/ragged_bottom.png);
+    position: absolute;
+    bottom: 0;
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 16px;
+  }
   @media print{
     * {
       color: #333 !important;
@@ -78,7 +109,7 @@
     </div>
   </div>
 </section>
-<section class="bg--gray-1">
+<section class="bg--gray-1 bg--crystals">
   <div class="container display--flex flex-wrap--wrap padding-y--xxxl padding-x--md">
     <h2 class="width--100 text-align--center">Gout and Kidney disease</h2>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">

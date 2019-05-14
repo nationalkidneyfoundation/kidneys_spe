@@ -34,6 +34,12 @@
     width: 100%;
     height: 16px;
   }
+  .bg--crystals {
+    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   .edge--ragged--top,
   .edge--ragged--bottom {
     position: relative;

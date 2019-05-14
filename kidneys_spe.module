@@ -30,6 +30,9 @@ function kidneys_spe_preprocess_page(&$vars) {
   if (strpos($alias, 'phi') !== FALSE) {
     $vars['has_title'] = false;
     $vars['widescreen'] = true;
+    if (function_exists('nkf_base_color_theme_helper')) {
+      $vars['th'] = nkf_base_color_theme_helper('white');
+    }
     // Add home link back to spe profile home.
     if (!empty(arg(2))) {
       $profile_link = l('Profile Home', arg(0) . '/' . arg(1),
