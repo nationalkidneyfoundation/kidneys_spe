@@ -1,4 +1,3 @@
-<?php dpm($description, 'templaet');?>
 <div id="<?php print $iid;?>" class="padding--md page-break--avoid">
   <a href="#" class="display--flex align-items--baseline color--gray-4" data-toggle="class" data-target="#<?php print $iid;?> i|#<?php print $iid;?> .desc" data-class="hide|hide">
     <div class="cursor--pointer font-size--sm">
