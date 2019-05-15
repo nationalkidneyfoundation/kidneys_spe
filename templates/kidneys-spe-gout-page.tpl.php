@@ -133,7 +133,7 @@
 </section>
 <section class="">
   <div class="container center padding-y--xxl padding-x--md">
-    <div class="print--hide width--50 text-align--center margin-bottom--md">
+    <div class="print--hide md--width--50 text-align--center margin-bottom--md">
       <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
       <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
       <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
@@ -143,14 +143,14 @@
 <section class="bg--gray-1 edge--ragged--bottom bg--crystals--v2">
   <div class="prose center padding-y--xxl padding-x--md text-align--center">
     <h2 class="width--100 padding-bottom--xl ">If you have gout, you should get checked for kidney disease</h2>
-    <div class="display--flex md--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
+    <div class="display--flex sm--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
           <img src="/<?php print $theme_path; ?>/images/foot300x300.png" />
         </div>
       </div>
-      <div class="md--show font-size--xxxxl padding--md">&rarr;</div>
-      <div class="md--hide width--100 font-size--xxxl  padding--md">&darr;</div>
+      <div class="sm--show font-size--xxxxl padding--md">&rarr;</div>
+      <div class="sm--hide width--100 font-size--xxxl  padding--md">&darr;</div>
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
           <img src="/<?php print $theme_path; ?>/images/list300x300.png" />
