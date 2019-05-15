@@ -11,7 +11,7 @@
   /*fff9f2 fe971e*/
   .hero--gout {
     background-color: #3f3f3f;
-    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals_v1.png);
+    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals_v3.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -84,12 +84,12 @@
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
-        <div class="md--font-size--xxl font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
+        <div class="font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
         <div class="padding-top--lg font-size--lg">We've compiled personalized information that will help you take control of your gout health</div>
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" src="/<?php print $theme_path; ?>/images/goutheader_throb1.gif">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $theme_path; ?>/images/legs_header.gif">
     </div>
   </div>
 </section>
@@ -107,7 +107,7 @@
   </div>
 </section>
 <section>
-  <div class="container padding-y--xxxl padding-x--md">
+  <div class="container padding-top--xxxl padding-x--md">
     <h3 class="text-align--center md--text-align--left padding-bottom--md">Topics to discuss with your healthcare professional</h3>
     <div class="display--flex flex-wrap--wrap flex-direction--row-rev ">
         <div class="width--100 md--width--50">
@@ -131,12 +131,12 @@
     </div>
   </div>
 </section>
-<section class="edge--ragged--top bg--orange">
-  <div class="prose center padding-y--xxl padding-x--md text-align--center">
-    <div class="print--hide width--100 text-align--center">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="font-size--sm caps button--white js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="font-size--sm caps button--white margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
-      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--white js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
+<section class="">
+  <div class="container center padding-y--xxl padding-x--md">
+    <div class="print--hide width--50 text-align--center margin-bottom--md">
+      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>

@@ -89,7 +89,7 @@
       </h1>
     </div>
     <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" src="/<?php print $theme_path; ?>/images/goutheader_throb1.gif">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $theme_path; ?>/images/legs_header.gif">
     </div>
   </div>
 </section>
