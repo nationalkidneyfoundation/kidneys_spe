@@ -161,7 +161,7 @@
   </div>
 </section>
 <section>
-  <div class="container padding-y--xxl padding-x--md">
+  <div class="container padding-y--xxxl padding-x--md">
     <h2 class="width--100 padding-bottom--xl text-align--center">More Resources</h2>
     <div class="center prose">
       <div class="display--flex align-items--flex-start margin-bottom--sm">
@@ -169,8 +169,8 @@
           <img src="/<?php print $theme_path; ?>/images/inphographic75x75.png" alt="infographic icon">
         </div>
         <div class="margin-left--md" style="flex: 1;">
-          <p><span class="bold">Gout Infographic:</span>
-            <br> A visual and accessible infographic available for <a class="bold" href="#">download</a>
+          <p><span class="bold">Gout and Kidney Disease</span>
+            <br><a class="bold" href="https://www.kidney.org/sites/default/files/01-10-7307_IBG_Gout_Infographic_Pad5.pdf">Download</a> an infographic that outlines the connection between gout and kidney disease.
           </p>
         </div>
       </div>
@@ -179,8 +179,8 @@
               <img src="/<?php print $theme_path; ?>/images/factsheet75x75.png" alt="factsheet icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
-            <p><span class="bold">Gout Fact sheet:</span>
-              <br> A fact sheet about gout and CKD, and why and how you should manage both conditions. <a class="bold" href="#">Download now.</a>
+            <p><span class="bold">Gout Fact sheet</span>
+              <br> A fact sheet about gout and CKD, and why and how you should manage both conditions. <a class="bold" href="https://www.kidney.org/sites/default/files/02-10-7789_BBI_TakedaGout_Pad_2.pdf">Download now.</a>
             </p>
           </div>
         </div>
@@ -190,7 +190,7 @@
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Gout and Uric Acid tracker</span>
-              <br> Track your serum uric acid (sUA) level (amount of uric acid in your blood), estimated glomerular filtration rate (eGFR) and albumin-to-creatine ratio using the online Gout and Uric Acid Tracker by <a class="bold" href="#">clicking here</a>, or by printing out the <a href="" target="PDF" class="bold">PDF version.</a>
+              <br> Track your serum uric acid (sUA) level (amount of uric acid in your blood), estimated glomerular filtration rate (eGFR) and albumin-to-creatine ratio using the online Gout and Uric Acid Tracker by <a class="bold" href="https://www.kidney.org/sites/default/files/trackyourlabsgout.xlsx">clicking here</a>, or by printing out the <a href="https://www.kidney.org/sites/default/files/11-10-4832_ebc_gout_checklist.pdf" target="PDF" class="bold">PDF version.</a>
             </p>
           </div>
         </div>
@@ -201,7 +201,7 @@
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Video</span>
               <br>
-              <a href="" class="bold">Hear from a patient</a> as he looks back on life with gout and how he has dealt with it medically, physically, and emotionally.
+              <a href="https://www.youtube.com/watch?v=jdlWQC-o76M" class="bold">Hear from a patient</a> as he looks back on life with gout and how he has dealt with it medically, physically, and emotionally.
             </p>
           </div>
         </div>
