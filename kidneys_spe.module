@@ -594,6 +594,9 @@ function kidneys_spe_page($entityformid, $version) {
     $items = kidneys_spe_ku_accordion($kus);
     $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
     //$theme = 'kidneys_spe_course_one_section_page';
+    $actions = views_get_view_result('spe_knowledge_units', 'all', $entityformid, 1);
+    $actions = kidneys_spe_ku_simple_render($actions);
+    $return['actions'] = render($actions);
     $return['header'] = theme('promo_banner', array(
       'title' => $course_title,
       'body' => '',
@@ -759,7 +762,19 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
   }
   return $items;
 }
+/**
+ * Helper function to render KUs
+ */
+function kidneys_spe_ku_simple_render($kus, $tracking = false) {
+  $items = array();
+  foreach($kus as $i => $value) {
 
+    $desc = $value->field_body[0]['rendered']['#markup'];
+    $title = '<div class="bold">'.render($value->node_title).'</div>';
+    $items[] = $title.$desc;
+  }
+  return implode($items,'');
+}
 /**
  * Helper function to display card for Section.
  */
