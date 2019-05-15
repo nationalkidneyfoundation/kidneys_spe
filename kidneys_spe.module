@@ -417,7 +417,7 @@ function kidneys_spe_form($entity_id = FALSE) {
     'form_header' => render($form_header),
     'form_subheader' => render($form_subheader),
     'theme_path' => drupal_get_path('module', 'kidneys_spe'),
-    'path' => $base_url. '/' . request_uri()
+    'path' => $base_url . request_uri()
   );
   if (!isset($theme)) {
     switch ($version) {
@@ -508,7 +508,7 @@ function kidneys_spe_page($entityformid, $version) {
    'course_title' => $course_title,
    'course_description' => $course_description,
    'theme_path' => drupal_get_path('module', 'kidneys_spe'),
-   'path' => $base_url. '/' . request_uri()
+   'path' => $base_url . request_uri()
   );
 
   // These are the two important labs, they are special for determining which version

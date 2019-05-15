@@ -1,5 +1,6 @@
 <!--css hack-->
 <style>
+
   .form-required {
     display: none;
   }
@@ -68,24 +69,44 @@
   }
   @media print{
     * {
-      color: #333 !important;
+      color: #3b444f !important;
       background-color: white !important;
     }
-    .hero--gout {
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+
+    .embedded-video {
+      display: none;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      line-height: 0pt !important;
+      white-space: nowrap;
+    }
+
+    .hero--gout,
+    .bg--crystals--v1,
+    .bg--crystals--v2,
+    .bg--crystals--v3 {
       background: inherit;
     }
-    .container {
+    .container,
+    .prose {
       max-width: 650px;
+    }
+    .print--padding--none {
+      padding: 0;
     }
   }
 </style>
 
-<section class="hero--gout margin-bottom--xxl">
+<section class="hero--gout margin-bottom--xxl print--hide">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
         <div class="font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
-        <div class="padding-top--lg font-size--lg">We've compiled personalized information that will help you take control of your gout health</div>
+        <div class="padding-top--lg font-size--lg">We've compiled personalized information that will help you take control of your gout health.</div>
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
@@ -93,15 +114,21 @@
     </div>
   </div>
 </section>
+<section class="print--show hide">
+  <div class="container padding-x--md">
+    <div class="text-align--center">
+      <h2 class="padding-bottom--xl">Here is personalized information that will help you take control of your gout health.</h2>
+    </div>
+  </div>
+</section>
 <section>
   <div class="container display--flex flex-wrap--wrap padding-bottom--xl padding-x--md">
-
-    <h2 class="width--100 padding-bottom--xl text-align--center">Personalized Health Information</h2>
-    <div class="width--100 md--width--50 md--padding-right--xxxl text-align--center">
+    <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Personalized Health Information</h2>
+    <div class="print--hide width--100 md--width--50 md--padding-right--xxxl text-align--center">
       <img src="/<?php print $theme_path; ?>/images/book300x300.png" alt="book with open pages">
     </div>
-    <div class="width--100 md--width--50 md--padding-left--lg">
-      <p class="text-align--center md--text-align--left ">Explore these topics to better understand your gout health</p>
+    <div class="print--width--100 width--100 md--width--50 md--padding-left--lg print--padding--none">
+      <p class="print--hide text-align--center md--text-align--left ">Explore these topics to better understand your gout health</p>
       <?php print $knowledge_units; ?>
     </div>
   </div>
@@ -110,12 +137,12 @@
   <div class="container padding-top--xxxl padding-x--md">
     <h3 class="text-align--center md--text-align--left padding-bottom--md">Topics to discuss with your healthcare professional</h3>
     <div class="display--flex flex-wrap--wrap flex-direction--row-rev ">
-        <div class="width--100 md--width--50">
+        <div class="width--100 md--width--50 print--hide">
           <div class="text-align--center padding-bottom--md">
             <img src="/<?php print $theme_path; ?>/images/doctor300x300.png" alt="an outline drawing of a doctor with a stethoscope">
           </div>
         </div>
-        <div class="width--100 md--width--50">
+        <div class="print--width--100 width--100 md--width--50">
           <ul>
             <li>Your Kidney Score &ndash;2 simple tests: a blood test for kidney function called GFR; and a urine test for kidney damage called ACR.</li>
             <li>Drugs you may need to prevent gout flares and to help kidney disease from getting worse.</li>
@@ -131,19 +158,19 @@
     </div>
   </div>
 </section>
-<section class="">
-  <div class="container center padding-y--xxl padding-x--md">
-    <div class="print--hide md--width--50 text-align--center margin-bottom--md">
+<section class="print--hide">
+  <div class="container padding-y--xxl padding-x--md">
+    <div class="print--hide md--width--50 text-align--center md--text-align--left margin-bottom--md">
       <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=%3Cp%3EHere+is+content+from+National+Kidney+Foundation+you+might+be+interested+in%3A%3C%2Fp%3E%3Cp%3E<?php print urlencode($path); ?>%3C%2Fp%3E" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
       <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>
-<section class="bg--gray-1 edge--ragged--bottom bg--crystals--v2">
+<section class="bg--gray-1 edge--ragged--bottom edge--ragged--top bg--crystals--v2">
   <div class="prose center padding-y--xxl padding-x--md text-align--center">
     <h2 class="width--100 padding-bottom--xl ">If you have gout, you should get checked for kidney disease</h2>
-    <div class="display--flex sm--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
+    <div class=" print--hide display--flex sm--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
           <img src="/<?php print $theme_path; ?>/images/foot300x300.png" />
@@ -165,7 +192,7 @@
     <h2 class="width--100 padding-bottom--xl text-align--center">More Resources</h2>
     <div class="center prose">
       <div class="display--flex align-items--flex-start margin-bottom--sm">
-        <div class="margin-right--md" style="flex: 0 0 75px;">
+        <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
           <img src="/<?php print $theme_path; ?>/images/inphographic75x75.png" alt="infographic icon">
         </div>
         <div class="margin-left--md" style="flex: 1;">
@@ -175,7 +202,7 @@
         </div>
       </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
-          <div class="margin-right--md" style="flex: 0 0 75px;">
+          <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
               <img src="/<?php print $theme_path; ?>/images/factsheet75x75.png" alt="factsheet icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
@@ -185,7 +212,7 @@
           </div>
         </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
-          <div class="margin-right--md" style="flex: 0 0 75px;">
+          <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
             <img src="/<?php print $theme_path; ?>/images/checklist75x75.png" alt="checklist icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
@@ -195,7 +222,7 @@
           </div>
         </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
-          <div class="margin-right--md" style="flex: 0 0 75px;">
+          <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
             <img src="/<?php print $theme_path; ?>/images/video75x75.png" alt="video icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
@@ -208,7 +235,7 @@
     </div>
   </div>
 </section>
-<section>
+<section class="print--hide">
   <div class="bg--gray-2 padding-y--xl padding-x--md">
     <div class="container text-align--center">
       <h2 class="width--100 text-align--center">We want to know what you think.</h2>

@@ -1,5 +1,11 @@
 <!--css hack-->
 <style>
+  @media print {
+    /* print styles go here */
+    a[href]:after {
+    content: " (" attr(href) ")";
+    }
+  }
   .form-required {
     display: none;
   }
