@@ -343,7 +343,9 @@ function kidneys_spe_menu() {
     'type' => MENU_CALLBACK,
   );
   $items['phi/%/%'] = array(
-    'title' => 'Results',
+    //'title' => 'Results',
+    'title callback' => 'kidney_spe_results_title',
+    'title arguments' => array(1, 2),
     'page callback' => 'kidneys_spe_page',
     'page arguments' => array(1, 2),
     'access arguments' => array('access content'),
@@ -372,6 +374,20 @@ function kidneys_spe_menu() {
         return t('Kidney Health Assessment');
      default:
         return t('Health Assessment');
+   }
+}
+/**
+ * Callback to get title for results page.
+ */
+ function kidney_spe_results_title($id, $version) {
+
+   switch ($version) {
+     case 'gout':
+        return t('Gout Health Results');
+     case 'health':
+        return t('Kidney Health Results');
+     default:
+        return t('Health Results');
    }
  }
 
