@@ -106,7 +106,7 @@
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
         <div class="font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
-        <div class="padding-top--lg font-size--lg">We've compiled personalized information that will help you take control of your gout health.</div>
+        <div class="padding-top--lg font-size--lg">Below you'll find personalized content based on your answers that will help you take control of your gout health.</div>
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
@@ -236,11 +236,15 @@
     </div>
   </div>
 </section>
-<section class="print--hide">
-  <div class="bg--gray-2 padding-y--xl padding-x--md">
-    <div class="container text-align--center">
-      <h2 class="width--100 text-align--center">We want to know what you think.</h2>
-      <p>Help us continue to improve this content by answering a short survey</p>
+<section>
+  <div class="bg--gray-1 padding-y--xl padding-x--md">
+    <div class="container prose text-align--center">
+      <h2 class="width--100 text-align--center">Thank You</h2>
+      <p>We appreciate you taking the time to answer our questions and for reviewing these topics. Gout can be a chronic, or long term disease, so it’s important to stay with any treatment plan recommended by a clinician and report any sudden changes in symptoms.</p>
+    <p>If you have questions, you can speak with your healthcare team or <a href="https://www.kidney.org/about/contact">contact</a> the National Kidney Foundation.</p>
+    <div  class="print--hide">
+      <h3 class="width--100 text-align--center">We want to know what you think.</h3>
+      <p>Help us continue to improve this content by answering a short survey.</p>
       <div class="margin-bottom--md">
 
         <a class="button--orange caps padding-y--md padding-x--xl color--white" href="https://www.surveymonkey.com/r/M7FHZ6V" target="_blank">Take survey</a>
