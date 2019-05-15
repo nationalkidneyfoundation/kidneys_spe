@@ -162,9 +162,9 @@
 <section class="print--hide">
   <div class="container padding-y--xxl padding-x--md">
     <div class="print--hide md--width--50 text-align--center md--text-align--left margin-bottom--md">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--print-link margin--xxs"><i class="icon-print"></i> <span class="display--none1 sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class="display--none1 sm--display--inline">Email</span></a>
-      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="display--none1 sm--display--inline">Bookmark</span></a>
+      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="hide sm--display--inline font-size--sm caps button--gray-3 js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>
