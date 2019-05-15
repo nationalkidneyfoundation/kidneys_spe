@@ -135,7 +135,7 @@
 </section>
 <section>
   <div class="container padding-top--xxxl padding-x--md">
-    <h3 class="text-align--center md--text-align--left padding-bottom--md">Important next steps</h3>
+    <h2 class="text-align--center md--text-align--left padding-bottom--md">Important next steps</h2>
     <div class="display--flex flex-wrap--wrap flex-direction--row-rev ">
         <div class="width--100 md--width--50 print--hide">
           <div class="text-align--center padding-bottom--md">
@@ -237,7 +237,7 @@
   </div>
 </section>
 <section>
-  <div class="bg--gray-1 padding-y--xl padding-x--md">
+  <div class="bg--gray-2 padding-y--xl padding-x--md">
     <div class="container prose text-align--center">
       <h2 class="width--100 text-align--center">Thank You</h2>
       <p>We appreciate you taking the time to answer our questions and for reviewing these topics. Gout can be a chronic, or long term disease, so it’s important to stay with any treatment plan recommended by a clinician and report any sudden changes in symptoms.</p>
