@@ -135,7 +135,7 @@
 </section>
 <section>
   <div class="container padding-top--xxxl padding-x--md">
-    <h2 class="text-align--center md--text-align--left padding-bottom--md">Important next steps</h2>
+
     <div class="display--flex flex-wrap--wrap flex-direction--row-rev ">
         <div class="width--100 md--width--50 print--hide">
           <div class="text-align--center padding-bottom--md">
@@ -143,18 +143,8 @@
           </div>
         </div>
         <div class="print--width--100 width--100 md--width--50">
+          <h2 class="text-align--center md--text-align--left padding-bottom--md">Important next steps</h2>
           <?php print $actions;?>
-          <ul class="hide">
-            <li>Your Kidney Score &ndash;2 simple tests: a blood test for kidney function called GFR; and a urine test for kidney damage called ACR.</li>
-            <li>Drugs you may need to prevent gout flares and to help kidney disease from getting worse.</li>
-            <li>The uric acid level in your blood and what level is good for you.</li>
-            <li>The safety of any drugs or supplements your take.</li>
-            <li>The right diet to help prevent gout flares and to help kidney disease from getting worse.</li>
-            <p class="padding-top--sm padding-bottom--none"><strong>If your uric acid level is high:</strong>
-            <br> Ask why you have a high level. You need to know because:</p>
-            <li>High uric acid may mean you need to get checked for other health problems.</li>
-            <li>A higher uric acid level may be okay for you. Most people with high uric acid don't get gout or kidney stones.</li>
-          </ul>
         </div>
     </div>
   </div>
@@ -186,6 +176,7 @@
       </div>
     </div>
     <p>Speak with your healthcare professional about getting your <strong>Kidney Score</strong> - 2 simple tests: a blood test for kidney function called GFR; and a urine test for kidney damage called ACR.</p>
+    
   </div>
 </section>
 <section>

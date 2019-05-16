@@ -67,7 +67,7 @@
       <div class="prose center padding-x--md ">
         <h3 class="center prose font-size--xl ">Take control of your kidney health</h3>
         <p class="font-size--lg">
-          We've created a custom course that walks you through important topic in a clear and concise manner. Start with section one below.
+          We've created a custom course that walks you through important topics in a clear and concise manner. Start with section one below.
         </p>
         <div class="padding-top--lg display--none">
 

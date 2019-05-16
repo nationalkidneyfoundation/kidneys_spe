@@ -714,7 +714,6 @@ function kidneys_spe_section_page($entityformid, $version, $section) {
   $return['has_actions'] = !empty($actions_items);
   $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
   $return['actions_track'] = theme('kidneys_spe_list_accordion', array('items' => $actions_items, 'classes' => 'bg--white'));
-  dpm($return);
   return theme('kidneys_spe_course_section_page', $return);
 
 }
