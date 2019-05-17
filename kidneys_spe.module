@@ -1,15 +1,39 @@
 <?php
 /**
  * @file
- * Code for the kidneys_spe feature.
+ * Code for the kidneys_spe module.
  */
+
+/**
+ * HOW TO ADD A NEW LEARNING MODULE
+ *
+ * Through Drupal Admin:
+ * 1) Determine any new assessment fields and add to spe entityform.
+ * 2) Add these same fields to the Patient Profile content type.
+ * 3) Create any new Patient Profiles associated with this module.
+ * 4) Update existing Patient Profiles to configure any of the fields
+ *    added in step 2. Usually these new fields values are not important
+ *    for existing profiles so all values should be selected. (this stinks).
+ * 5) Add any Knowledge Unit content needed and associate with new Profiles.
+ * 6) Add a new Course content for this Learning Module as well as any
+ *    Sections for this course.
+ * 7) Add the Knowledge Units to the section(s).
+ *
+ * In Code:
+ * 1) Update hook_theme for any new template files, should be for the
+ *    new Learning Module's form page and results page, and maybe results section,
+ *    can omit this to use default templates.
+ * 2) Update kidneys_spe_assessment_fields to specify the fields used for
+ *    this new version's assessment form.
+ * 3) Update kidneys_spe_form to set the appropriate template for the form page.
+*/
 
 include_once 'kidneys_spe.features.inc';
 
 /**
 * Implements hook_views_api().
 *
-* Enabling using templates inside module
+* Enabling using templates inside module.
 */
 function kidneys_spe_views_api() {
   return array(
@@ -28,23 +52,18 @@ function kidneys_spe_preprocess_page(&$vars) {
   // Unset a few layout things.
   $alias = strtolower(drupal_get_path_alias());
   if (strpos($alias, 'phi') !== FALSE) {
+    // Get rid of title and make contents full width.
     $vars['has_title'] = false;
     $vars['widescreen'] = true;
+    // Set the top nav to white.
     if (function_exists('nkf_base_color_theme_helper')) {
       $vars['th'] = nkf_base_color_theme_helper('white');
     }
-    // Add home link back to spe profile home.
-    if (!empty(arg(2))) {
-      $profile_link = l('Profile Home', arg(0) . '/' . arg(1),
-        array('attributes' => array('class' => array('display--inline-block','caps', 'bold', 'padding-y--xs')))
-      );
-      $vars['title_prefix'] = $profile_link;
-    }
   }
-
 }
 /*
  * Implementation of hook_theme.
+ * TODO: review that we need all these.
  */
 function kidneys_spe_theme($existing, $type, $theme, $path){
   return array(
@@ -81,17 +100,6 @@ function kidneys_spe_theme($existing, $type, $theme, $path){
         'content' => NULL
       ),
     ),
-    /*'kidney_spe_risk' => array(
-      'template' => 'kidney-spe-risk',
-      'path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
-      'type' => 'theme',
-      'preprocess functions' => array('kidney_spe_risk_preprocess'),
-      'override preprocess functions' => TRUE,
-      'variables' => array(
-        'title' => NULL,
-        'content' => NULL
-      ),
-    ),*/
     'kidneys_spe_risk_page' => array(
       'template' => 'kidneys-spe-risk-page',
       'path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
@@ -166,11 +174,18 @@ function kidneys_spe_theme($existing, $type, $theme, $path){
 }
 
 /**
- * Get and array of fields to include for the assessment based on the version.
+ * Returns the fields to include for the assessment based on the version.
+ *
+ * @param string $version
+ *  The version of the assessment. This value ususally comes from
+ *  a URL parameter or is a field on a "course" content type.
+ *
+ * @return array
+ *  An array of field names to include in the entityform.
  */
 function kidneys_spe_assessment_fields($version = 'health') {
   // Load all field names for personalize health form.
-  //$instances = field_info_instances('entityform', 'personalized_health_form');
+  $field_info = field_info_instances('entityform', 'personalized_health_form');
   $fields = array();
   switch ($version) {
     case 'gout':
@@ -209,20 +224,39 @@ function kidneys_spe_assessment_fields($version = 'health') {
       );
       break;
   }
+  // Loop through fields to make sure they actually exist.
+  foreach($fields as $i => $field) {
+    if (!isset($field_info[$field])) {
+      unset($fields[$i]);
+    }
+  }
   return $fields;
 }
+
 /**
  * Implements hook_form_alter
  */
 function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
 
  if ($form_id == 'personalized_health_form_entityform_edit_form') {
+   // Get the form version from the url.
+   // There is probably a better way to do this.
+   $get = drupal_get_query_parameters();
+   $version = isset($get['version']) ? $get['version'] : 'health';
+
+   // Add the version to the form for later use.
+   $form['spe_version'] = array(
+      '#type' => 'hidden',
+      '#value' => $version,
+    );
+
    // Add a submit handler which will deal with appropriate
-   // redirection base on version.
+   // redirection based on version. This is for both new and updated
+   // forms. Might want to exclude this when working from admin UI.
    $form['actions']['submit']['#submit'][] = 'kidneys_spe_form_submit';
    $form['actions']['save']['#submit'][] = 'kidneys_spe_form_submit';
 
-   // These fields are shared with the patien profile but here
+   // These fields are shared with the patient profile but here
    // we want them to be single select so we make them radios.
    $make_radios = array(
      'field_spe_family_history'
@@ -236,6 +270,7 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
      , 'field_spe_had_transplant'
      , 'field_spe_heart_disease'
      , 'field_spe_gout_diagnosis'
+     , 'field_spe_gout_symptoms'
      , 'field_spe_gout_uric_acid_level'
      , 'field_spe_pot_diagnosis'
      , 'field_spe_pot_level'
@@ -261,7 +296,6 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
    $height_weight = array(
      'field_spe_height_feet'
      , 'field_spe_height_inches'
-     //, 'field_spe_weight'
    );
    $form['field_height'] = array(
      '#type' => 'item'
@@ -281,22 +315,17 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
    // Remove any unwanted fields based on the assessment version.
    // Get fields to show based on form "version".
    // Right now the version is stored in a get parameter.
-   $get = drupal_get_query_parameters();
-   $version = isset($get['version']) ? $get['version'] : 'health';
    $fields_to_include = kidneys_spe_assessment_fields($version);
-   foreach(element_children($form) as $child) {
-     if (substr($child, 0, 5) == 'field') {
-       if (array_search($child, $fields_to_include) !== FALSE) {
-         // Don't really need this, but maybe later.
-         $form[$child]['#prefix'] = '<div class="">';
-         $form[$child]['#suffix'] = '</div>';
-       } else {
-         unset($form[$child]);
+   foreach(element_children($form) as $field) {
+     // Make sure we are just looking at "field" form elements.
+     if (substr($field, 0, 5) == 'field') {
+       if (array_search($field, $fields_to_include) === FALSE) {
+         unset($form[$field]);
        }
      }
    }
    // Hide form actions greater than sm breakpoint to let js-based
-   // form advancement take over.
+   // form advancement take over. This is hacky and we should do somewhere else.
    $form['actions']['#prefix'] = '<div class="sm--hide padding-x--xxxl padding-y--md">';
    $form['actions']['#suffix'] = '</div>';
    $form['actions']['submit']['#attributes']['class'][] = 'width--100 button--yellow caps bold';
@@ -307,43 +336,25 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_form_submit
  */
 function kidneys_spe_form_submit($form, &$form_state) {
-  $entityform = $form_state['entityform'];
-  // If there is a specific version redirect to that page.
-  $get = drupal_get_query_parameters();
-  if (!empty($get['version'])) {
-    $form_state['redirect'] ='phi/' . $entityform->entityform_id. '/'. $get['version'] . '/';
-  } else {
-    $form_state['redirect'] ='phi/' . $entityform->entityform_id . '/health';
+  if (!empty($entityform = $form_state['entityform']) && !empty($entityform->entityform_id)) {
+    // If there is a specific version redirect to that page.
+    $values = $form_state['values'];
+    $version = !empty($values['spe_version']) ? $values['spe_version'] : 'health';
+    $form_state['redirect'] = url('phi/' . $entityform->entityform_id . '/' . $version);
   }
-
 }
+
 /**
  * Implements hook_menu().
  */
 function kidneys_spe_menu() {
-  $items['personalized-health/%'] = array(
-    'title' => 'Profile TEST',
-    'page callback' => 'kidneys_spe_profiles_page',
-    'page arguments' => array(1),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-  /*$items['personalized-health-information/risk/%'] = array(
-    'title' => '',
-    'page callback' => 'kidneys_spe_risk_page',
-    'page arguments' => array(2),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );*/
   $items['phi/form'] = array(
     'title callback' => 'kidney_spe_form_title',
     'page callback' => 'kidneys_spe_form',
-    //'page arguments' => array(1, 2),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items['phi/%/%'] = array(
-    //'title' => 'Results',
     'title callback' => 'kidney_spe_results_title',
     'title arguments' => array(1, 2),
     'page callback' => 'kidneys_spe_page',
@@ -366,43 +377,54 @@ function kidneys_spe_menu() {
  */
  function kidney_spe_form_title() {
    $get = drupal_get_query_parameters();
-   $version = isset($get['version']) ? $get['version'] : 'health';
+   $version = isset($get['version']) ? $get['version'] : NULL;
    switch ($version) {
      case 'gout':
         return t('Gout Health Assessment');
      case 'health':
         return t('Kidney Health Assessment');
      default:
-        return t('Health Assessment');
-   }
+        return t(ucfirst($version) . ' Health Assessment');
+    }
 }
 /**
  * Callback to get title for results page.
  */
  function kidney_spe_results_title($id, $version) {
-
    switch ($version) {
      case 'gout':
         return t('Gout Health Results');
      case 'health':
         return t('Kidney Health Results');
      default:
-        return t('Health Results');
+        return t(ucfirst($version) . ' Health Results');
    }
  }
 
 /**
- * Callback for main SPE form
+ * Callback for main SPE form page.
  */
 function kidneys_spe_form($entity_id = FALSE) {
+  // Just a variable to hold theme values.
   $return = array();
+
+  // Do we have an existing entity form submission or is this
+  // a new submission?
   $get = drupal_get_query_parameters();
   $entity_id = isset($get['id']) ? $get['id'] : FALSE;
+
+  // Get the entityform for new or update.
   $form = kidneys_spe_get_form($entity_id);
 
-  $version = isset($get['version']) ? $get['version'] : 'health';
+  // The entityform already knows what verson based on hook_form_alter
+  // but we will use this below.
+  $version = isset($get['version']) ? strtolower($get['version']) : 'health';
 
+  // The course node is connected with a version, so lets get it.
   $course = kidneys_spe_get_course_by_code($version);
+
+  // TODO: review...We might no longer need these as we are crafting each
+  // learning module's experience in template files.
   if ($course) {
     $form_header = field_get_items('node', $course, 'field_spe_course_form_header');
     $form_header = field_view_value('node', $course, 'field_spe_course_form_header', $form_header[0]);
@@ -410,37 +432,44 @@ function kidneys_spe_form($entity_id = FALSE) {
     $form_subheader = field_view_value('node', $course, 'field_spe_course_form_sub_header', $form_subheader[0]);
   }
 
+  // Get all our template variables ready.
   Global $base_url;
   $return = array(
     'form' => $form,
-    'version' => strtolower($version),
+    'version' => $version,
     'form_header' => render($form_header),
     'form_subheader' => render($form_subheader),
     'theme_path' => drupal_get_path('module', 'kidneys_spe'),
     'path' => $base_url . request_uri()
   );
-  if (!isset($theme)) {
-    switch ($version) {
-      case 'gout':
-        $theme = 'kidneys_spe_form_page_gout';
-        break;
-      case 'risk!':
-        $theme = 'kidneys_spe_risk_page';
-        break;
-      case 'hyperk!':
-        $theme = 'kidneys_spe_hyperk_page';
-        break;
-      default:
-        $theme = 'kidneys_spe_form_page';
-        break;
-    }
-  } else {
-    $theme = 'kidneys_spe_form_page';
+
+  // Figure out which theme template file to use based on version.
+  switch ($version) {
+    case 'gout':
+      $theme = 'kidneys_spe_form_page_gout';
+      break;
+    case 'risk!':
+      $theme = 'kidneys_spe_risk_page';
+      break;
+    case 'hyperk!':
+      $theme = 'kidneys_spe_hyperk_page';
+      break;
+    default:
+      $theme = 'kidneys_spe_form_page';
+      break;
   }
+
   return theme($theme, $return);
 }
+
 /**
- * Heler function to get entity form.
+ * Returns an entity from for inserting or updating an entityform submission.
+ *
+ * @param int $entity_id
+ *  The optional ID for an entity form submission.
+ *
+ * @return string
+ *  The rendered entityform form.
  */
 function kidneys_spe_get_form($entity_id = FALSE) {
   $type = 'personalized_health_form';
@@ -463,15 +492,17 @@ function kidneys_spe_get_form($entity_id = FALSE) {
   }
 }
 
-/* DEPRECATED */
-function kidneys_spe_profiles_page($ids) {
-  return $ids;
-}
-
 /**
- * Callback for assessment results page.
+ * Returns page for results menu.
  *
- * TODO: break this into separate parts, maybe using preprocessors for each type.
+ * @param int $entityformid
+ *  The ID for an entity form submission.
+ *
+ * @param string $version
+ *  Learning Module version code name.
+ *
+ * @return string
+ *  The rendered page.
  */
 function kidneys_spe_page($entityformid, $version) {
   $version = strtolower($version);
@@ -490,7 +521,14 @@ function kidneys_spe_page($entityformid, $version) {
   $submission = entity_metadata_wrapper('entityform', $entityformid);
   $profiles = kidneys_spe_get_profiles_from_assessment($entityformid);
 
+  // Add profile names to variable for admin debugging.
+  foreach($profiles as $profile) {
+    $profile_names[] = '<li>' . $profile->title;
+  }
+  $profile_names = '<ul>' . implode($profile_names, '') .'</ul>';
+
   // Set some basic variables for emailing results.
+  // TODO: do we still need this?
   $link = url('phi/' .$entityformid . '/' . $version, array('absolute'=>true));
   $body = 'Thank you for taking the health assessment. You can find find your results here: ' . $link;
   $query = array(
@@ -503,6 +541,7 @@ function kidneys_spe_page($entityformid, $version) {
   $return = array(
    'submission' => $submission,
    'profiles' => $profiles,
+   'profile_names' => $profile_names,
    'submission_id' => $entityformid,
    'email' => url('mailto:', array('query' => $query)),
    'course_title' => $course_title,
@@ -523,11 +562,10 @@ function kidneys_spe_page($entityformid, $version) {
     $version = 'risk';
 
     // Get list of risk factors from view.
-    // TODO: figure out how to order the results.
     $risk_factors = views_get_view_result('spe_knowledge_units', 'risk_factors', $entityformid);
-    //$risk_factors = views_embed_view('spe_knowledge_units', 'risk_factors', $entityformid);
-    //$return['risk_factors'] = $risk_factor;
-    // List of risk factor slugs
+
+    // List of risk factor slugs, these are set on the node,
+    // we use them here for ordering and to specify the risk 'type'.
     $slugs = array(
       'diabetes'=>'common'
       , 'hypertension'=>'common'
@@ -536,12 +574,17 @@ function kidneys_spe_page($entityformid, $version) {
       , 'obese'=>'additional'
       , 'prediabetes'=>'additional'
     );
+
+    // Set some defaults for the theme variables.
     $return['common_factors_count'] = 0;
     $return['additional_factors_count'] = 0;
     $items = array();
     foreach($risk_factors as $value) {
       $slug = $value->field_field_base_slug[0]['raw']['value'];
       $i = array_search($slug, array_keys($slugs));
+
+      // This requires the nkf_base theme to work/
+      // TODO: we should decouple this.
       $items[$i] = theme('card_badge', array(
         'title'=> render($value->node_title),
         'teaser'=> render($value->field_body),
@@ -581,31 +624,44 @@ function kidneys_spe_page($entityformid, $version) {
     } else {
       $return['scenario'] = 2;
     }
-
-    $return['risk_factors'] = implode('',$items);//$risk_factors;
-    $return['risk_factors_items'] = $items;//$risk_factors;
+    // Set remaining theme variables and theme function.
+    $return['risk_factors'] = implode('', $items);
+    $return['risk_factors_items'] = $items;
     $return['factor_count'] = count($risk_factors);
     $return['total_factors'] = 5;
     $theme = 'kidneys_spe_risk_page';
+
+    // We are not using 'risk' version but only have one section associated
+    // with our course (e.g. gout module).
   } elseif(count($course_sections) == 1) {
     // If we have a single section course just land on a detail page
     $section = $course_sections[0];
+
+    // Load the KUs for the section, and theme them.
     $kus = views_get_view_result('spe_kus_by_section_and_profile', 'default', $entityformid, $section->nid);
     $items = kidneys_spe_ku_accordion($kus);
     $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
-    //$theme = 'kidneys_spe_course_one_section_page';
+
+    // Get any Action style KUs and theme.
+    // This might need to be rethought, do we want this to come from the
+    // section or just any action knowledge units for the version/profile(s)?
     $actions = views_get_view_result('spe_knowledge_units', 'all', $entityformid, 1);
     $actions = kidneys_spe_ku_simple_render($actions);
     $return['actions'] = render($actions);
+
+    // Set a promo_banner, dependent on nkf_base theme
+    // and only needed if we don's have a specific theme for this module.
     $return['header'] = theme('promo_banner', array(
       'title' => $course_title,
       'body' => '',
       'video' => kidneys_spe_get_rendered_field('node', $course, 'field_base_video'),
       'image' => kidneys_spe_get_rendered_field('node', $course, 'field_base_image'),
     ));
+
+  // Move on to a course with multiple sections (e.g. 'health')
   } elseif(count($course_sections) > 1) {
 
-    //$sections_by_profile = views_get_view_result('spe_course_sections_by_profile', 'default', $entityformid, $course->nid);
+    // TODO: document this block.
     $sections = kidneys_spe_get_course_sections_by_assessment($course, $entityformid);
     $items = array();
     $j = 1;
@@ -635,6 +691,7 @@ function kidneys_spe_page($entityformid, $version) {
     $theme = 'kidneys_spe_course_sections_page';
   }
 
+  // Set the theme. TODO: place this in config section.
   if (!isset($theme)) {
     switch ($version) {
       case 'gout':
@@ -656,9 +713,22 @@ function kidneys_spe_page($entityformid, $version) {
 }
 
 /**
- * Callback for section
+ * Returns page for section menu item.
+ *
+ * @param int $entityformid
+ *  The ID for an entity form submission.
+ *
+ * @param string $version
+ *  Learning Module version code name.
+ *
+ * @param node $section
+ *  Section node.
+ *
+ * @return string
+ *  The rendered page.
  */
 function kidneys_spe_section_page($entityformid, $version, $section) {
+  // TODO: document this function.
   $return = array();
   $version = strtolower($version);
   $course = kidneys_spe_get_course_by_code($version);
@@ -734,6 +804,7 @@ function kidneys_spe_get_course_sections_by_assessment($course, $entityformid) {
   }
   return $sections;
 }
+
 /**
  * Helper function to set accordion display for KUs
  */
@@ -761,6 +832,7 @@ function kidneys_spe_ku_accordion($kus, $tracking = false) {
   }
   return $items;
 }
+
 /**
  * Helper function to render KUs
  */
@@ -774,6 +846,7 @@ function kidneys_spe_ku_simple_render($kus, $tracking = false) {
   }
   return implode($items,'');
 }
+
 /**
  * Helper function to display card for Section.
  */
@@ -790,15 +863,10 @@ function kidneys_spe_section_card($section, $entityformid, $version, $i) {
   ));
   return $card;
 }
-/**
-  *
-  */
-function kidneys_spe_get_course_sections_by_assessment1($entityformid) {
-  $profiles = kidneys_spe_get_profiles_from_assessment($entityformid);
 
-}
+
 /*
- * Gets a course node by the code name.
+ * Helper function that gets a course node by the version code name.
  */
 function kidneys_spe_get_course_by_code($code) {
   $query = new EntityFieldQuery();
@@ -817,65 +885,23 @@ function kidneys_spe_get_course_by_code($code) {
   }
 }
 
-/*
- * Callback for risk page.
- */
-function kidneys_spe_risk_pageDEPRECATED($entityformid, $print = NULL) {
 
-  $submission = entity_metadata_wrapper('entityform', $entityformid);
-  $profiles = kidneys_spe_get_profiles_from_assessment($entityformid);
-  $risk_factors_data = views_get_view_result('spe_knowledge_units', 'risk_factors', $entityformid);
-  $risk_factors = views_embed_view('spe_knowledge_units', 'risk_factors', $entityformid);
-  //$risk_factors = views_embed_view('spe_knowledge_units', 'risk_factors', $entityformid);
-
-  $url = 'mailto:';
-  $link = url('personalized-health-information/risk/'.$entityformid, array('absolute'=>true));
-  $body = 'Thank you for taking the Kidney Assessment. You can find find your results here: ' . $link;
-  $query = array(
-   'subject' => 'Kidney Health Assessment',
-   'body' => $body,
-  );
-
-  $return = array(
-   'submission' => $submission,
-   'profiles' => $profiles,
-   'risk_factors' => $risk_factors,
-   'risk_factors_data' => $risk_factors_data,
-   'factor_count' => count($risk_factors_data),
-   'total_factors' => 5,
-   'submission_id' => $entityformid,
-   'email' => url($url, array('query' => $query))
-  );
-
-  return theme('kidneys_spe_risk_page', $return);
-}
-/*
- * Implements hook_entityform_insert
- */
- /*
-function kidneys_spe_entityform_insert($entityform) {
-  $submission = entity_metadata_wrapper('entityform', $entityform);
-  $gfr = $submission->field_spe_egfr[0]->value();
-  $acr = $submission->field_spe_acr[0]->value();
-  if ($gfr === 'unk' || $acr === 'unk') {
-    drupal_goto('personalized-health-information/risk/' . $entityform->entityform_id);
-  } else {
-    drupal_goto('personalized-health-information/' . $entityform->entityform_id);
-  }
-}
-*/
 
 /**
  * Return array of profile entities from entityform id.
  *
- * @param $entityform int Entityform .
+ * @param int $entityform
+ *  Entityform ID, but also takes Entityform object.
  *
- * @return array Array of profile nodes.
+ * @return array
+ *  Array of profile nodes.
  */
 function kidneys_spe_get_profiles_from_assessment($entityform) {
 
+  // Make sure we are dealing with the ID and not an object.
   $id = is_object($entityform) ? $entityform->entityform_id : $entityform;
 
+  // Static function cacheing for speedy return.
   $data = &drupal_static(__FUNCTION__ . $id, FALSE);
 
   if (empty($data)) {
@@ -893,20 +919,28 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
       $query->propertyCondition('status', NODE_PUBLISHED);
       $query->addMetaData('account', user_load(1));
 
-      // Loop thru submission fields and assemble query clauses.
+      // Loop thru submission fields and assemble query clauses
+      // based on the submission values
       $fields = array();
-      $exclude = array(
-        'field_spe_height_feet',
-        'field_spe_height_inches',
-        'field_spe_weight'
-      );
+
       foreach ($instances as $field_name => $instance) {
         $value = $submission->{$field_name}->value();
+        // Some field values are stored as arrays
+        // and some are not...deal with it by only
+        // taking the first value. This requires that all
+        // assessment answers get only one value.
         if (is_array($value)) {
-          $value = $value[0];
+          if (count($value) > 0) {
+            $value = $value[0];
+          } else {
+            $value = NULL;
+          }
+
         }
         $fields[$field_name] = (string) $value;
       }
+
+      // Remove height and weight field values but add in BMI.
       if (isset($fields['field_spe_weight'])
           && isset($fields['field_spe_height_feet'])
           && isset($fields['field_spe_height_inches'])) {
@@ -925,14 +959,35 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
           $query->fieldCondition($field_name, 'value', $value, '=');
         }
       }
+
       $result = $query->execute();
-      $data = $result['node'];
+      $nodes = array();
+      if (isset($result['node'])) {
+        $nids = array_keys($result['node']);
+        $data = node_load_multiple($nids);
+      } else {
+        $data = FALSE;
+      }
     } else {
       $data = FALSE;
     }
   }
   return $data;
 }
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function kidneys_spe_field_widget_form_alter(&$element, &$form_state, $context) {
+
+  // Move the help text into the label for gout symptoms.
+  if ($element['#field_name'] == 'field_spe_gout_symptoms') {
+    $element['#title'] = '<div>' . $element['#title'] . '</div>' . $element['#description'];
+    $element['#description'] = '';
+  }
+
+}
+
 /**
  * Implements hook_views_pre_view().
  */
