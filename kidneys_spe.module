@@ -893,6 +893,9 @@ function kidneys_spe_get_course_by_code($code) {
  * @param int $entityform
  *  Entityform ID, but also takes Entityform object.
  *
+ * @param string $version
+ *  Version code name to limit the query clauses.
+ *
  * @return array
  *  Array of profile nodes.
  */
@@ -911,6 +914,136 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
     if (!empty($submission->value())) {
       // Load field names for entityform.
       $instances = field_info_instances('entityform', 'personalized_health_form');
+
+      // Loop thru submission fields and assemble query clauses
+      // based on the submission values
+      $fields = array();
+      foreach ($instances as $field_name => $instance) {
+        $value = $submission->{$field_name}->value();
+        // Some field values are stored as arrays
+        // and some are not...deal with it by only
+        // taking the first value. This requires that all
+        // assessment answers get only one value.
+        if (is_array($value)) {
+          if (count($value) > 0) {
+            $value = $value[0];
+          } else {
+            $value = NULL;
+          }
+
+        }
+        $fields[$field_name] = (string) $value;
+      }
+
+      // Remove height and weight field values but add in BMI.
+      if (isset($fields['field_spe_weight'])
+          && isset($fields['field_spe_height_feet'])
+          && isset($fields['field_spe_height_inches'])) {
+        $fields['field_spe_bmi']
+          = kidneys_spe_get_bmi(
+            $fields['field_spe_weight'],
+            $fields['field_spe_height_feet'],
+            $fields['field_spe_height_inches']);
+      }
+      unset($fields['field_spe_weight']);
+      unset($fields['field_spe_height_feet']);
+      unset($fields['field_spe_height_inches']);
+
+      // Get all Patient Profile nodes.
+      // This could get troublesome with many nodes.
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node');
+      $query->entityCondition('bundle', 'patient_profile');
+      $query->propertyCondition('status', NODE_PUBLISHED);
+      $query->addMetaData('account', user_load(1));
+      $result = $query->execute();
+
+      $relevant_profiles = array();
+
+      if (isset($result['node'])) {
+        $nids = array_keys($result['node']);
+        $profiles = node_load_multiple($nids);
+
+        // Loop through all profiles to weed out the
+        // irrelevant ones.
+        foreach ($profiles as $nid => $profile) {
+          // This variable will be determine if the form submission
+          // connects with this profile.
+          $include = true;
+
+          // Loop through each field value from the form
+          // to see if the values match the profile.
+          foreach ($instances as $field_name => $instance) {
+            $profile_values = array();
+            // If the profile has values for submission field
+            // we need to evaluate if they match.
+            if (count($profile->{$field_name}) > 0) {
+              // Gather up all the values to check.
+              foreach ($profile->{$field_name}[LANGUAGE_NONE] as $value) {
+                $profile_values[$value['value']] = $value['value'];
+              }
+            } else {
+              // If the profile doesn't have a value that corrolates
+              // with a submission field than we won't exclude the profile.
+              // Inclusion and exclusion are affirmative.
+              continue;
+            }
+            // If our profile has a value set for a field
+            // but the submission doesn't match one of those values
+            // we exclude the profile.
+            if (!isset($profile_values[$fields[$field_name]])) {
+              $include = FALSE;
+              // One fail and we are outa' here.
+              break;
+            }
+          }
+          // Add included profiles to our list
+          if ($include) $relevant_profiles[$profile->nid] = $profile;
+        }
+        $data = $relevant_profiles;
+      } else {
+        $data = FALSE;
+      }
+    } else {
+      $data = FALSE;
+    }
+  }
+  return $data;
+}
+
+/**
+ * Return array of profile entities from entityform id.
+ *
+ * @param int $entityform
+ *  Entityform ID, but also takes Entityform object.
+ *
+ * @param string $version
+ *  Version code name to limit the query clauses.
+ *
+ * @return array
+ *  Array of profile nodes.
+ */
+function kidneys_spe_get_profiles_from_assessmentOLD($entityform, $version = NULL) {
+
+  // Make sure we are dealing with the ID and not an object.
+  $id = is_object($entityform) ? $entityform->entityform_id : $entityform;
+
+  // Static function cacheing for speedy return.
+  $data = &drupal_static(__FUNCTION__ . $id, FALSE);
+
+  if (empty($data)) {
+    // Get wrapper for entityform submission.
+    $submission = entity_metadata_wrapper('entityform', $entityform);
+
+    if (!empty($submission->value())) {
+      // Load field names for entityform.
+      $instances = field_info_instances('entityform', 'personalized_health_form');
+
+      // Limit criteria to select version.
+      if (isset($version)) {
+        $version_fields = kidneys_spe_assessment_fields($version);
+        $instances = array_intersect_key($instances, array_flip($version_fields));
+      }
 
       // Set up profile query.
       $query = new EntityFieldQuery();
@@ -959,11 +1092,8 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
           $query->fieldCondition($field_name, 'value', $value, '=');
         }
       }
-
       $result = $query->execute();
-      $nodes = array();
       if (isset($result['node'])) {
-        $nids = array_keys($result['node']);
         $data = node_load_multiple($nids);
       } else {
         $data = FALSE;
