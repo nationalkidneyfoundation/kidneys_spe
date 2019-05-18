@@ -893,9 +893,6 @@ function kidneys_spe_get_course_by_code($code) {
  * @param int $entityform
  *  Entityform ID, but also takes Entityform object.
  *
- * @param string $version
- *  Version code name to limit the query clauses.
- *
  * @return array
  *  Array of profile nodes.
  */
@@ -923,16 +920,16 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
         // Some field values are stored as arrays
         // and some are not...deal with it by only
         // taking the first value. This requires that all
-        // assessment answers get only one value.
+        // assessment answers allow for only one value,
+        // this should be changed.
         if (is_array($value)) {
           if (count($value) > 0) {
             $value = $value[0];
           } else {
             $value = NULL;
           }
-
         }
-        $fields[$field_name] = (string) $value;
+        $fields[$field_name] = $value;
       }
 
       // Remove height and weight field values but add in BMI.
@@ -951,6 +948,9 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
 
       // Get all Patient Profile nodes.
       // This could get troublesome with many nodes.
+      // TODO: set so we are only pulling profiles
+      // that have at least one non-null value for
+      // submissions that have those values.
       $query = new EntityFieldQuery();
       $query->entityCondition('entity_type', 'node');
       $query->entityCondition('bundle', 'patient_profile');
@@ -959,7 +959,6 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
       $result = $query->execute();
 
       $relevant_profiles = array();
-
       if (isset($result['node'])) {
         $nids = array_keys($result['node']);
         $profiles = node_load_multiple($nids);
@@ -973,7 +972,7 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
 
           // Loop through each field value from the form
           // to see if the values match the profile.
-          foreach ($instances as $field_name => $instance) {
+          foreach (array_keys($fields) as $field_name) {
             $profile_values = array();
             // If the profile has values for submission field
             // we need to evaluate if they match.
