@@ -956,6 +956,11 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
       $query->entityCondition('bundle', 'patient_profile');
       $query->propertyCondition('status', NODE_PUBLISHED);
       $query->addMetaData('account', user_load(1));
+      foreach ($fields as $field_name => $value) {
+        if (!empty($value)) {
+          //$query->fieldCondition($field_name, 'value', NULL, '!=');
+        }
+      }
       $result = $query->execute();
 
       $relevant_profiles = array();
