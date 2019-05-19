@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_spe.views_default.inc
@@ -465,12 +466,10 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
-  /* Sort criterion: Draggableviews: Weight */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['weight_1']['id'] = 'weight_1';
   $handler->display->display_options['sorts']['weight_1']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight_1']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight_1']['draggableviews_setting_view'] = 'spe_categories_by_profile_2:page_1';
-  $handler->display->display_options['sorts']['weight_1']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Contextual filter: Content: Related Profile (field_spe_related_profile) */
   $handler->display->display_options['arguments']['field_spe_related_profile_target_id']['id'] = 'field_spe_related_profile_target_id';
   $handler->display->display_options['arguments']['field_spe_related_profile_target_id']['table'] = 'field_data_field_spe_related_profile';
@@ -661,7 +660,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['tid']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['tid']['separator'] = '';
-  /* Field: Draggableviews: Taxonomy term */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
@@ -669,7 +668,6 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -717,6 +715,141 @@ function kidneys_spe_views_default_views() {
     t('Page'),
   );
   $export['spe_categories_by_profile_2'] = $view;
+
+  $view = new view();
+  $view->name = 'spe_course_export';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'spe course export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'spe course export';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'body';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Content: Form Header */
+  $handler->display->display_options['fields']['field_spe_course_form_header']['id'] = 'field_spe_course_form_header';
+  $handler->display->display_options['fields']['field_spe_course_form_header']['table'] = 'field_data_field_spe_course_form_header';
+  $handler->display->display_options['fields']['field_spe_course_form_header']['field'] = 'field_spe_course_form_header';
+  $handler->display->display_options['fields']['field_spe_course_form_header']['label'] = 'form_header';
+  $handler->display->display_options['fields']['field_spe_course_form_header']['element_label_colon'] = FALSE;
+  /* Field: Content: Form Sub Header */
+  $handler->display->display_options['fields']['field_spe_course_form_sub_header']['id'] = 'field_spe_course_form_sub_header';
+  $handler->display->display_options['fields']['field_spe_course_form_sub_header']['table'] = 'field_data_field_spe_course_form_sub_header';
+  $handler->display->display_options['fields']['field_spe_course_form_sub_header']['field'] = 'field_spe_course_form_sub_header';
+  $handler->display->display_options['fields']['field_spe_course_form_sub_header']['label'] = 'form_subheader';
+  $handler->display->display_options['fields']['field_spe_course_form_sub_header']['element_label_colon'] = FALSE;
+  /* Field: Content: Lede */
+  $handler->display->display_options['fields']['field_lede']['id'] = 'field_lede';
+  $handler->display->display_options['fields']['field_lede']['table'] = 'field_data_field_lede';
+  $handler->display->display_options['fields']['field_lede']['field'] = 'field_lede';
+  $handler->display->display_options['fields']['field_lede']['label'] = 'lede';
+  $handler->display->display_options['fields']['field_lede']['element_label_colon'] = FALSE;
+  /* Field: Content: Sections */
+  $handler->display->display_options['fields']['field_spe_course_sections']['id'] = 'field_spe_course_sections';
+  $handler->display->display_options['fields']['field_spe_course_sections']['table'] = 'field_data_field_spe_course_sections';
+  $handler->display->display_options['fields']['field_spe_course_sections']['field'] = 'field_spe_course_sections';
+  $handler->display->display_options['fields']['field_spe_course_sections']['label'] = 'section';
+  $handler->display->display_options['fields']['field_spe_course_sections']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_course_sections']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_spe_course_sections']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_course_sections']['separator'] = ',';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'spe_course' => 'spe_course',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/spe-course-export';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 1;
+  $handler->display->display_options['path'] = 'admin/spe-course-export/export';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+  $translatables['spe_course_export'] = array(
+    t('Master'),
+    t('spe course export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('title'),
+    t('body'),
+    t('form_header'),
+    t('form_subheader'),
+    t('lede'),
+    t('section'),
+    t('Page'),
+    t('Data export'),
+  );
+  $export['spe_course_export'] = $view;
 
   $view = new view();
   $view->name = 'spe_course_sections_by_profile';
@@ -1023,12 +1156,10 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Draggableviews: Weight */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'spe_knowledge_units:page_1';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   $handler->display->display_options['argument_input'] = array(
     'field_spe_related_profile_target_id' => array(
       'type' => 'user',
@@ -1375,7 +1506,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Draggableviews: Content */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
@@ -1383,7 +1514,6 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -1422,12 +1552,10 @@ function kidneys_spe_views_default_views() {
   </h3>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Draggableviews: Weight */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'spe_knowledge_units:page_1';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   $handler->display->display_options['path'] = 'personalized-health-information/ku-sort/%/%';
 
   /* Display: KU Actions V2 */
@@ -2240,19 +2368,19 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = 'Patient Profile (Archetypes)';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Family History of CKD */
+  /* Field: Field: Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure? */
   $handler->display->display_options['fields']['field_spe_family_history']['id'] = 'field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['table'] = 'field_data_field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['field'] = 'field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_family_history']['multi_type'] = 'ul';
-  /* Field: Field: Hypertension Diagnosis */
+  /* Field: Field: Have you been told that you have high blood pressure, or do you take medicine for your blood pressure? */
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['id'] = 'field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['table'] = 'field_data_field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['field'] = 'field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['multi_type'] = 'ul';
-  /* Field: Field: Diabetes Diagnosis */
+  /* Field: Field: Have you been told you have diabetes? */
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['id'] = 'field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['table'] = 'field_data_field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['field'] = 'field_spe_diabetes_diagnosis';
@@ -2263,7 +2391,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_transplant']['table'] = 'field_data_field_spe_transplant';
   $handler->display->display_options['fields']['field_spe_transplant']['field'] = 'field_spe_transplant';
   $handler->display->display_options['fields']['field_spe_transplant']['label'] = 'Have you had a transplant?';
-  /* Field: Field: CKD Diagnosis */
+  /* Field: Field: Have you been told that you have chronic kidney disease (CKD)? */
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['id'] = 'field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['table'] = 'field_data_field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['field'] = 'field_spe_ckd_diagnosis';
@@ -2280,13 +2408,13 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_bmi']['field'] = 'field_spe_bmi';
   $handler->display->display_options['fields']['field_spe_bmi']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_bmi']['multi_type'] = 'ul';
-  /* Field: Field: eGFR */
+  /* Field: Field: Do you know your estimated glomerular filtration rate (eGFR)? */
   $handler->display->display_options['fields']['field_spe_egfr']['id'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['table'] = 'field_data_field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['field'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_egfr']['multi_type'] = 'ul';
-  /* Field: Field: ACR */
+  /* Field: Field: Do you know your albumin-creatinine ratio (ACR)? */
   $handler->display->display_options['fields']['field_spe_acr']['id'] = 'field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['table'] = 'field_data_field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['field'] = 'field_spe_acr';
@@ -2331,15 +2459,15 @@ function kidneys_spe_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Patient Profile (Archetypes)'),
-    t('Family History of CKD'),
-    t('Hypertension Diagnosis'),
-    t('Diabetes Diagnosis'),
+    t('Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure?'),
+    t('Have you been told that you have high blood pressure, or do you take medicine for your blood pressure?'),
+    t('Have you been told you have diabetes?'),
     t('Have you had a transplant?'),
-    t('CKD Diagnosis'),
+    t('Have you been told that you have chronic kidney disease (CKD)?'),
     t('Are you currently on dialysis?'),
     t('BMI'),
-    t('eGFR'),
-    t('ACR'),
+    t('Do you know your estimated glomerular filtration rate (eGFR)?'),
+    t('Do you know your albumin-creatinine ratio (ACR)?'),
     t('Page'),
   );
   $export['spe_profile_admin'] = $view;
@@ -2365,22 +2493,179 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Bulk operations: Content */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
+  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'show_all_tokens' => 1,
+        'display_values' => array(
+          'patient_profile::field_spe_family_history' => 'patient_profile::field_spe_family_history',
+          'patient_profile::field_spe_diabetes_diagnosis' => 'patient_profile::field_spe_diabetes_diagnosis',
+          'patient_profile::field_spe_htx_diagnosis' => 'patient_profile::field_spe_htx_diagnosis',
+          'patient_profile::field_spe_ckd_diagnosis' => 'patient_profile::field_spe_ckd_diagnosis',
+          'patient_profile::field_spe_egfr' => 'patient_profile::field_spe_egfr',
+          'patient_profile::field_spe_acr' => 'patient_profile::field_spe_acr',
+          'patient_profile::field_spe_bmi' => 'patient_profile::field_spe_bmi',
+          'patient_profile::field_spe_heart_disease' => 'patient_profile::field_spe_heart_disease',
+          'patient_profile::field_spe_had_transplant' => 'patient_profile::field_spe_had_transplant',
+          'patient_profile::field_spe_on_dialysis' => 'patient_profile::field_spe_on_dialysis',
+          'patient_profile::field_spe_gout_diagnosis' => 'patient_profile::field_spe_gout_diagnosis',
+          'patient_profile::field_spe_gout_symptoms' => 'patient_profile::field_spe_gout_symptoms',
+          'patient_profile::field_spe_gout_uric_acid_level' => 'patient_profile::field_spe_gout_uric_acid_level',
+          'patient_profile::field_spe_prediabetes_diagnosis' => 'patient_profile::field_spe_prediabetes_diagnosis',
+        ),
+      ),
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: eGFR */
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field: Do you know your estimated glomerular filtration rate (eGFR)? */
   $handler->display->display_options['fields']['field_spe_egfr']['id'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['table'] = 'field_data_field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['field'] = 'field_spe_egfr';
+  $handler->display->display_options['fields']['field_spe_egfr']['label'] = 'gfr';
+  $handler->display->display_options['fields']['field_spe_egfr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_egfr']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_egfr']['delta_offset'] = '0';
-  /* Field: Field: ACR */
+  $handler->display->display_options['fields']['field_spe_egfr']['separator'] = ',';
+  /* Field: Field: Do you know your albumin-creatinine ratio (ACR)? */
   $handler->display->display_options['fields']['field_spe_acr']['id'] = 'field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['table'] = 'field_data_field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['field'] = 'field_spe_acr';
+  $handler->display->display_options['fields']['field_spe_acr']['label'] = 'acr';
+  $handler->display->display_options['fields']['field_spe_acr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_acr']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_acr']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_acr']['separator'] = ',';
+  /* Field: Content: BMI */
+  $handler->display->display_options['fields']['field_spe_bmi']['id'] = 'field_spe_bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['table'] = 'field_data_field_spe_bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['field'] = 'field_spe_bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['label'] = 'bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_bmi']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_bmi']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_bmi']['separator'] = ',';
+  /* Field: Field: Have you been told that you have chronic kidney disease (CKD)? */
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['id'] = 'field_spe_ckd_diagnosis';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['table'] = 'field_data_field_spe_ckd_diagnosis';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['field'] = 'field_spe_ckd_diagnosis';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['label'] = 'ckd';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['separator'] = ',';
+  /* Field: Field: Are you currently on dialysis? */
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['id'] = 'field_spe_on_dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['table'] = 'field_data_field_spe_on_dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['field'] = 'field_spe_on_dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['label'] = 'dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['separator'] = ',';
+  /* Field: Field: Have you been told you have diabetes? */
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['id'] = 'field_spe_diabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['table'] = 'field_data_field_spe_diabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['field'] = 'field_spe_diabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['label'] = 'diabetes';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['separator'] = ',';
+  /* Field: Field: Have you been told that you have high blood pressure, or do you take medicine for your blood pressure? */
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['id'] = 'field_spe_htx_diagnosis';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['table'] = 'field_data_field_spe_htx_diagnosis';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['field'] = 'field_spe_htx_diagnosis';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['label'] = 'bloodpressure';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['separator'] = ',';
+  /* Field: Field: Have you been told that you have pre-diabetes or metabolic syndrome? */
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['id'] = 'field_spe_prediabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['table'] = 'field_data_field_spe_prediabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['field'] = 'field_spe_prediabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['label'] = 'prediabetes';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['separator'] = ',';
+  /* Field: Field: Have you been told you have high uric acid levels? */
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['id'] = 'field_spe_gout_uric_acid_level';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['table'] = 'field_data_field_spe_gout_uric_acid_level';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['field'] = 'field_spe_gout_uric_acid_level';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['label'] = 'uric';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['separator'] = ',';
+  /* Field: Field: Do you have gout? */
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['id'] = 'field_spe_gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['table'] = 'field_data_field_spe_gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['field'] = 'field_spe_gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['label'] = 'gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['separator'] = ',';
+  /* Field: Field: Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure? */
+  $handler->display->display_options['fields']['field_spe_family_history']['id'] = 'field_spe_family_history';
+  $handler->display->display_options['fields']['field_spe_family_history']['table'] = 'field_data_field_spe_family_history';
+  $handler->display->display_options['fields']['field_spe_family_history']['field'] = 'field_spe_family_history';
+  $handler->display->display_options['fields']['field_spe_family_history']['label'] = 'family';
+  $handler->display->display_options['fields']['field_spe_family_history']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_family_history']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_family_history']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_family_history']['separator'] = ',';
+  /* Field: Field: Have you experienced the following symptoms? */
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['id'] = 'field_spe_gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['table'] = 'field_data_field_spe_gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['field'] = 'field_spe_gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['label'] = 'gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['separator'] = ',';
+  /* Field: Field: Have you had a kidney transplant? */
+  $handler->display->display_options['fields']['field_spe_had_transplant']['id'] = 'field_spe_had_transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['table'] = 'field_data_field_spe_had_transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['field'] = 'field_spe_had_transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['label'] = 'transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_had_transplant']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['separator'] = ',';
+  /* Field: Field: Do you have heart disease or heart failure? */
+  $handler->display->display_options['fields']['field_spe_heart_disease']['id'] = 'field_spe_heart_disease';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['table'] = 'field_data_field_spe_heart_disease';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['field'] = 'field_spe_heart_disease';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['label'] = 'heart';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_heart_disease']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['separator'] = ',';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -2399,16 +2684,165 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'patient_profile' => 'patient_profile',
   );
-  /* Filter criterion: Content: Title */
-  $handler->display->display_options['filters']['title']['id'] = 'title';
-  $handler->display->display_options['filters']['title']['table'] = 'node';
-  $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['operator'] = 'contains';
-  $handler->display->display_options['filters']['title']['value'] = 'stage';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/spe-profiles';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field: Do you know your estimated glomerular filtration rate (eGFR)? */
+  $handler->display->display_options['fields']['field_spe_egfr']['id'] = 'field_spe_egfr';
+  $handler->display->display_options['fields']['field_spe_egfr']['table'] = 'field_data_field_spe_egfr';
+  $handler->display->display_options['fields']['field_spe_egfr']['field'] = 'field_spe_egfr';
+  $handler->display->display_options['fields']['field_spe_egfr']['label'] = 'gfr';
+  $handler->display->display_options['fields']['field_spe_egfr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_egfr']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_egfr']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_egfr']['separator'] = ',';
+  /* Field: Field: Do you know your albumin-creatinine ratio (ACR)? */
+  $handler->display->display_options['fields']['field_spe_acr']['id'] = 'field_spe_acr';
+  $handler->display->display_options['fields']['field_spe_acr']['table'] = 'field_data_field_spe_acr';
+  $handler->display->display_options['fields']['field_spe_acr']['field'] = 'field_spe_acr';
+  $handler->display->display_options['fields']['field_spe_acr']['label'] = 'acr';
+  $handler->display->display_options['fields']['field_spe_acr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_acr']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_acr']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_acr']['separator'] = ',';
+  /* Field: Content: BMI */
+  $handler->display->display_options['fields']['field_spe_bmi']['id'] = 'field_spe_bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['table'] = 'field_data_field_spe_bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['field'] = 'field_spe_bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['label'] = 'bmi';
+  $handler->display->display_options['fields']['field_spe_bmi']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_bmi']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_bmi']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_bmi']['separator'] = ',';
+  /* Field: Field: Have you been told that you have chronic kidney disease (CKD)? */
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['id'] = 'field_spe_ckd_diagnosis';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['table'] = 'field_data_field_spe_ckd_diagnosis';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['field'] = 'field_spe_ckd_diagnosis';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['label'] = 'ckd';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['separator'] = ',';
+  /* Field: Field: Are you currently on dialysis? */
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['id'] = 'field_spe_on_dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['table'] = 'field_data_field_spe_on_dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['field'] = 'field_spe_on_dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['label'] = 'dialysis';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_on_dialysis']['separator'] = ',';
+  /* Field: Field: Have you been told you have diabetes? */
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['id'] = 'field_spe_diabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['table'] = 'field_data_field_spe_diabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['field'] = 'field_spe_diabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['label'] = 'diabetes';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['separator'] = ',';
+  /* Field: Field: Have you been told that you have high blood pressure, or do you take medicine for your blood pressure? */
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['id'] = 'field_spe_htx_diagnosis';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['table'] = 'field_data_field_spe_htx_diagnosis';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['field'] = 'field_spe_htx_diagnosis';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['label'] = 'bloodpressure';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_htx_diagnosis']['separator'] = ',';
+  /* Field: Field: Have you been told that you have pre-diabetes or metabolic syndrome? */
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['id'] = 'field_spe_prediabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['table'] = 'field_data_field_spe_prediabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['field'] = 'field_spe_prediabetes_diagnosis';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['label'] = 'prediabetes';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['separator'] = ',';
+  /* Field: Field: Have you been told you have high uric acid levels? */
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['id'] = 'field_spe_gout_uric_acid_level';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['table'] = 'field_data_field_spe_gout_uric_acid_level';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['field'] = 'field_spe_gout_uric_acid_level';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['label'] = 'uric';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['separator'] = ',';
+  /* Field: Field: Do you have gout? */
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['id'] = 'field_spe_gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['table'] = 'field_data_field_spe_gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['field'] = 'field_spe_gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['label'] = 'gout_diagnosis';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_gout_diagnosis']['separator'] = ',';
+  /* Field: Field: Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure? */
+  $handler->display->display_options['fields']['field_spe_family_history']['id'] = 'field_spe_family_history';
+  $handler->display->display_options['fields']['field_spe_family_history']['table'] = 'field_data_field_spe_family_history';
+  $handler->display->display_options['fields']['field_spe_family_history']['field'] = 'field_spe_family_history';
+  $handler->display->display_options['fields']['field_spe_family_history']['label'] = 'family';
+  $handler->display->display_options['fields']['field_spe_family_history']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_family_history']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_family_history']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_family_history']['separator'] = ',';
+  /* Field: Field: Have you experienced the following symptoms? */
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['id'] = 'field_spe_gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['table'] = 'field_data_field_spe_gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['field'] = 'field_spe_gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['label'] = 'gout_symptoms';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_gout_symptoms']['separator'] = ',';
+  /* Field: Field: Have you had a kidney transplant? */
+  $handler->display->display_options['fields']['field_spe_had_transplant']['id'] = 'field_spe_had_transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['table'] = 'field_data_field_spe_had_transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['field'] = 'field_spe_had_transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['label'] = 'transplant';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_had_transplant']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_had_transplant']['separator'] = ',';
+  /* Field: Field: Do you have heart disease or heart failure? */
+  $handler->display->display_options['fields']['field_spe_heart_disease']['id'] = 'field_spe_heart_disease';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['table'] = 'field_data_field_spe_heart_disease';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['field'] = 'field_spe_heart_disease';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['label'] = 'heart';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spe_heart_disease']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_spe_heart_disease']['separator'] = ',';
+  $handler->display->display_options['path'] = 'admin/spe-profiles/export';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
   $translatables['spe_profiles'] = array(
     t('Master'),
     t('SPE Profiles'),
@@ -2425,12 +2859,147 @@ function kidneys_spe_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('- Choose an operation -'),
     t('Title'),
-    t('eGFR'),
-    t('ACR'),
+    t('gfr'),
+    t('acr'),
+    t('bmi'),
+    t('ckd'),
+    t('dialysis'),
+    t('diabetes'),
+    t('bloodpressure'),
+    t('prediabetes'),
+    t('uric'),
+    t('gout_diagnosis'),
+    t('family'),
+    t('gout_symptoms'),
+    t('transplant'),
+    t('heart'),
     t('Page'),
+    t('Data export'),
   );
   $export['spe_profiles'] = $view;
+
+  $view = new view();
+  $view->name = 'spe_section_admin';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'spe section admin';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'spe section admin';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'body';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Content: Knowledge Units */
+  $handler->display->display_options['fields']['field_section_knowledge_units']['id'] = 'field_section_knowledge_units';
+  $handler->display->display_options['fields']['field_section_knowledge_units']['table'] = 'field_data_field_section_knowledge_units';
+  $handler->display->display_options['fields']['field_section_knowledge_units']['field'] = 'field_section_knowledge_units';
+  $handler->display->display_options['fields']['field_section_knowledge_units']['label'] = 'kus';
+  $handler->display->display_options['fields']['field_section_knowledge_units']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_section_knowledge_units']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_section_knowledge_units']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_section_knowledge_units']['separator'] = ',';
+  /* Field: Content: Period */
+  $handler->display->display_options['fields']['field_spe_section_period']['id'] = 'field_spe_section_period';
+  $handler->display->display_options['fields']['field_spe_section_period']['table'] = 'field_data_field_spe_section_period';
+  $handler->display->display_options['fields']['field_spe_section_period']['field'] = 'field_spe_section_period';
+  $handler->display->display_options['fields']['field_spe_section_period']['label'] = 'period';
+  $handler->display->display_options['fields']['field_spe_section_period']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'spe_section' => 'spe_section',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/spe-section-admin';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 1;
+  $handler->display->display_options['path'] = 'admin/spe-section-admin/export';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+  $translatables['spe_section_admin'] = array(
+    t('Master'),
+    t('spe section admin'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('title'),
+    t('body'),
+    t('kus'),
+    t('period'),
+    t('Page'),
+    t('Data export'),
+  );
+  $export['spe_section_admin'] = $view;
 
   return $export;
 }

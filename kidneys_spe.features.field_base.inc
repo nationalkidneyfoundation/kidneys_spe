@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_spe.features.field_base.inc
@@ -186,11 +187,15 @@ function kidneys_spe_field_default_field_bases() {
       'revision_id' => array(
         0 => 'revision_id',
       ),
+      'value' => array(
+        0 => 'value',
+      ),
     ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'hide_blank_items' => 1,
+      'hide_initial_item' => FALSE,
       'path' => '',
     ),
     'translatable' => 0,
@@ -547,12 +552,8 @@ function kidneys_spe_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'swollen_toe' => 'Swollen joint by the big toe',
-        'swollen_other' => 'Swollen joint in the ankles, knees, or hands',
-        'joint_pain' => 'Pain or warmth around a joint',
-        'red_skin' => 'Skin around a joint is red or purple',
-        'lump' => 'Lump (or nodule) on the hands, fingers, elbows, or other parts of the body',
-        'none' => 'I\'ve experienced none of these symptoms',
+        'yes' => 'Yes',
+        'no' => 'No',
       ),
       'allowed_values_function' => '',
     ),

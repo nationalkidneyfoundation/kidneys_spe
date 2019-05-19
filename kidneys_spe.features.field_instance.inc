@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_spe.features.field_instance.inc
@@ -251,7 +252,13 @@ function kidneys_spe_field_default_field_instances() {
     'bundle' => 'personalized_health_form',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<ul class="font-weight--400 padding-bottom--none padding-left--lg">
+  <li>Swollen joint by the big toe
+  <li>Swollen joint in the ankles, knees, or hands
+  <li>Pain or warmth around a joint
+  <li>Skin around a joint is red or purple
+  <li>Lump (or nodule) on the hands, fingers, elbows, or other parts of the body
+</ul>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -265,7 +272,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_gout_symptoms',
     'instance_cardinality' => 0,
     'label' => 'Have you experienced the following symptoms?',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -787,6 +794,7 @@ function kidneys_spe_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1098,6 +1106,7 @@ function kidneys_spe_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1185,7 +1194,7 @@ function kidneys_spe_field_default_field_instances() {
   // Exported field_instance: 'node-patient_profile-field_spe_acr'.
   $field_instances['node-patient_profile-field_spe_acr'] = array(
     'bundle' => 'patient_profile',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Urine albumin to creatinine ratio (ACR)',
     'display' => array(
@@ -1207,7 +1216,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_acr',
     'instance_cardinality' => 0,
     'label' => 'ACR',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1283,7 +1292,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_ckd_diagnosis',
     'instance_cardinality' => 0,
     'label' => 'CKD Diagnosis',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1322,7 +1331,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_diabetes_diagnosis',
     'instance_cardinality' => 0,
     'label' => 'Diabetes Diagnosis',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1338,7 +1347,7 @@ function kidneys_spe_field_default_field_instances() {
   // Exported field_instance: 'node-patient_profile-field_spe_egfr'.
   $field_instances['node-patient_profile-field_spe_egfr'] = array(
     'bundle' => 'patient_profile',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Estimated glomerular filtration rate (eGFR)',
     'display' => array(
@@ -1360,7 +1369,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_egfr',
     'instance_cardinality' => 0,
     'label' => 'eGFR',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1398,7 +1407,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_family_history',
     'instance_cardinality' => 0,
     'label' => 'Family History of CKD',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1436,7 +1445,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_gout_diagnosis',
     'instance_cardinality' => 0,
     'label' => 'Do you have gout?',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1474,7 +1483,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_gout_symptoms',
     'instance_cardinality' => 0,
     'label' => 'Have you experienced the following symptoms?',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1513,7 +1522,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_gout_uric_acid_level',
     'instance_cardinality' => 0,
     'label' => 'What is your uric acid level?',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1550,7 +1559,7 @@ function kidneys_spe_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_spe_had_transplant',
     'label' => 'Had a kidney transplant',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1588,7 +1597,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_heart_disease',
     'instance_cardinality' => 0,
     'label' => 'Heart disease or heart failure',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1626,7 +1635,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_htx_diagnosis',
     'instance_cardinality' => 0,
     'label' => 'Hypertension Diagnosis',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1663,7 +1672,7 @@ function kidneys_spe_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_spe_on_dialysis',
     'label' => 'Currently on dialysis',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1702,7 +1711,7 @@ function kidneys_spe_field_default_field_instances() {
     'field_name' => 'field_spe_prediabetes_diagnosis',
     'instance_cardinality' => 0,
     'label' => 'Pre-diabetes or metabolic syndrome',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2113,6 +2122,7 @@ function kidneys_spe_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => 1,
         ),
         'type' => 'entityreference_label',
@@ -2233,7 +2243,8 @@ function kidneys_spe_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'bypass_access' => 0,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
         'weight' => 3,
@@ -2331,6 +2342,13 @@ function kidneys_spe_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<ul class="font-weight--400 padding-bottom--none padding-left--lg">
+  <li>Swollen joint by the big toe
+  <li>Swollen joint in the ankles, knees, or hands
+  <li>Pain or warmth around a joint
+  <li>Skin around a joint is red or purple
+  <li>Lump (or nodule) on the hands, fingers, elbows, or other parts of the body
+</ul>');
   t('ACR');
   t('Activity');
   t('Activity Type');

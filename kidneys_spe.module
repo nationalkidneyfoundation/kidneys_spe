@@ -1115,7 +1115,9 @@ function kidneys_spe_get_profiles_from_assessmentOLD($entityform, $version = NUL
 function kidneys_spe_field_widget_form_alter(&$element, &$form_state, $context) {
 
   // Move the help text into the label for gout symptoms.
-  if ($element['#field_name'] == 'field_spe_gout_symptoms') {
+  if ($element['#entity_type'] == 'entityform' &&
+      $element['#bundle'] == 'personalized_health_form' &&
+      $element['#field_name'] == 'field_spe_gout_symptoms') {
     $element['#title'] = '<div>' . $element['#title'] . '</div>' . $element['#description'];
     $element['#description'] = '';
   }
@@ -1170,99 +1172,6 @@ function kidneys_spe_get_bmi($weight, $height_feet, $height_inches) {
 
 
 /**
- * Helper function to get pdf of skew normal distribution.
- * Based on http://www.sciencedirect.com/science/article/pii/S209012321000069X.
- */
-function kidneys_spe_get_skew_normalDEPRECATED() {
-  $l = 1;
-  $x = .7;
-  //return (1/(8 * sqrt(2 * M_PI)))
-  //        * pow(M_E,((-1*pow($x,2)/2)))
-  //        * (9 * $l * $x + 3 * pow($l,2) * pow($x,2) + 1/3 * pow($l,3) * pow($x,3) + 9);
-  return (1/(4 * sqrt(2 * M_PI)))
-          * pow(M_E,((-1*pow($x,2)/2)))
-          * (3 * $l * $x - 1/3 * pow($l,3) * pow($x,3) + 4);
-}
-
-/**
- * Implements hook_block_info().
- */
-function kidneys_spe_block_info() {
-  $blocks['kidneys_spe_score_full'] = array(
-    // info: The name of the block.
-    'info' => t('Kidney Score from Profile (full)'),
-  );
-  $blocks['kidneys_spe_score_minimal'] = array(
-    // info: The name of the block.
-    'info' => t('Kidney Score from Profile (minimal)'),
-  );
-  return $blocks;
-}
-
-/**
- * Implements hook_block_view().
- */
-
-function kidneys_spe_block_view($delta = '') {
-  $block = array();
-  switch ($delta) {
-    case 'kidneys_spe_score_full':
-      //print 'switching';
-      $block['subject'] = '';
-      $block['content'] = kidneys_spe_score_content();//array('#markup' => '<div class="bg--green">asdfadf</div>');//'this is test contnet';//array('#theme' => 'kidney_spe_full_score');
-    break;
-    case 'kidneys_spe_score_minimal':
-      $block['subject'] = '';
-      $block['content'] = '';
-    break;
-  }
-  return $block;
-}
-
-/**
- * Return markup for kidney score.
- *
- * @return array Renderable array of block content.
- */
-function kidneys_spe_score_content() {
-  $submission;
-  $profiles;
-  if (arg(0) === 'personalized-health-information') {
-    // Get Profile IDs from URL.
-    $entityformid = explode('+', arg(1))[0];
-
-    $submission = entity_metadata_wrapper('entityform', $entityformid);
-    $profiles = kidneys_spe_get_profiles_from_assessment($entityformid);
-    $risk_factors = views_get_view_result('spe_knowledge_units', 'risk_factors', $entityformid);
-
-    $gfr = $submission->field_spe_egfr[0]->value();
-    $acr = $submission->field_spe_acr[0]->value();
-
-    $health = kidneys_spe_get_health_score($gfr, $acr);
-    if (!$health) {
-      // Get the risk score.
-      $risk = kidneys_spe_get_risk_score($submission);
-    }
-  }
-  $return = array(
-    'submission' => $submission,
-    'profiles' => $profiles,
-    'risk' => $risk,
-    'health' => $health,
-    'type' => ($health) ? $health : $risk,
-    'factor_count' => count($risk_factors),
-    'total_factors' => 5,
-    'color' => ($health) ? kidneys_spe_get_health_color($health['score'], 1) : kidneys_spe_get_health_color($risk['score'], 1)
-  );
-  if (!$health) {
-    return theme('kidneys_spe_risk', $return);
-  } else {
-    return theme('kidney_spe_full_score', $return);
-  }
-
-}
-
-/**
  * Return health rating from acr and gfr
  *
  * @param $gfr string
@@ -1313,36 +1222,6 @@ function kidneys_spe_get_health_score($gfr, $acr) {
   return $return;
 }
 
-/**
- * Return health rating from acr and gfr
- *
- * @param submission Objc
- *
- * @return
- */
-function kidneys_spe_get_risk_score($submission) {
-  $history = $submission->field_spe_family_history[0]->value();
-  $hyper = $submission->field_spe_htx_diagnosis[0]->value();
-  $diabetes = $submission->field_spe_diabetes_diagnosis[0]->value();
-  $score = intval($history) + intval($hyper) + intval($diabetes);
-  switch ($score) {
-    case 0:
-      $return = array('score' => 15, 'name' => 'low');
-      break;
-    case 1:
-      $return = array('score' => 40, 'name' => 'low to moderate');
-      break;
-    case 2:
-      $return = array('score' => 60, 'name' => 'moderate to high');
-      break;
-    case 3:
-      $return = array('score' => 85, 'name' => 'high');
-      break;
-  }
-  $return['type'] = 'risk';
-  $return['scale'] = array('Low Risk', 'Moderate Risk', 'High Risk');
-  return $return;
-}
 
 /**
  *
@@ -1402,35 +1281,14 @@ function kidneys_spe_get_rendered_field($entity_type, $entity, $field_name, $del
     return NULL;
   }
 }
-/**
- * Override or insert variables into the block template.
- */
-function kidneys_spe_full_score_preprocess(&$vars) {
-  //dpm($vars);
-}
-/**
- * Override or insert variables into the block template.
- */
-function kidneys_spe_risk_preprocess(&$vars) {
-  //dpm($vars);
-}
-/**
- * Override or insert variables into the block template.
- */
-function kidneys_spe_risk_page_preprocess(&$vars) {
-}
+
+
 
 /**
  * Implements hook_rate_vote_alter.
  */
 function kidneys_spe_rate_vote_alter($votes, $context) {
-  watchdog('spe_rate_votes', '<pre>'.print_r($votes,1).'</pre>');
-  watchdog('spe_rate_context', '<pre>'.print_r($context,1).'</pre>');
-  watchdog('spe_rate_rpath', '<pre>'.print_r($_SERVER['HTTP_REFERER'],1).'</pre>');
-
+  //watchdog('spe_rate_votes', '<pre>'.print_r($votes,1).'</pre>');
+  //watchdog('spe_rate_context', '<pre>'.print_r($context,1).'</pre>');
+  //watchdog('spe_rate_rpath', '<pre>'.print_r($_SERVER['HTTP_REFERER'],1).'</pre>');
 }
-
-
-/**
- *
- */
