@@ -30,18 +30,7 @@
 
 include_once 'kidneys_spe.features.inc';
 
-/**
-* Implements hook_views_api().
-*
-* Enabling using templates inside module.
-*/
-function kidneys_spe_views_api() {
-  return array(
-    'api' => 3,
-    'path' => drupal_get_path('module', 'kidneys_spe'),
-    'template path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
-  );
-}
+
 
 /**
  * Implementation of hook_preprocess_page.
