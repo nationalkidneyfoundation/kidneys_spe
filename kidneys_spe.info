@@ -14,6 +14,7 @@ dependencies[] = list
 dependencies[] = media
 dependencies[] = number
 dependencies[] = video_embed_field
+dependencies[] = views
 dependencies[] = views_content
 dependencies[] = views_data_export
 features[conditional_fields][] = entityform:personalized_health_form

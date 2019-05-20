@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_spe.features.taxonomy.inc
@@ -18,6 +19,8 @@ function kidneys_spe_taxonomy_default_vocabularies() {
       'weight' => 0,
       'language' => 'und',
       'i18n_mode' => 0,
+      'base_i18n_mode' => 0,
+      'base_language' => 'und',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

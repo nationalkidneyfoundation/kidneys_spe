@@ -781,6 +781,11 @@ function kidneys_spe_views_default_views() {
   );
   $handler->display->display_options['fields']['field_spe_course_sections']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_course_sections']['separator'] = ',';
+  /* Field: Content: Code Name */
+  $handler->display->display_options['fields']['field_spe_code_name']['id'] = 'field_spe_code_name';
+  $handler->display->display_options['fields']['field_spe_code_name']['table'] = 'field_data_field_spe_code_name';
+  $handler->display->display_options['fields']['field_spe_code_name']['field'] = 'field_spe_code_name';
+  $handler->display->display_options['fields']['field_spe_code_name']['label'] = 'code_name';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -846,6 +851,7 @@ function kidneys_spe_views_default_views() {
     t('form_subheader'),
     t('lede'),
     t('section'),
+    t('code_name'),
     t('Page'),
     t('Data export'),
   );
@@ -2368,19 +2374,19 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = 'Patient Profile (Archetypes)';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure? */
+  /* Field: Field: Family History of CKD */
   $handler->display->display_options['fields']['field_spe_family_history']['id'] = 'field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['table'] = 'field_data_field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['field'] = 'field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_family_history']['multi_type'] = 'ul';
-  /* Field: Field: Have you been told that you have high blood pressure, or do you take medicine for your blood pressure? */
+  /* Field: Field: Hypertension Diagnosis */
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['id'] = 'field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['table'] = 'field_data_field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['field'] = 'field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['multi_type'] = 'ul';
-  /* Field: Field: Have you been told you have diabetes? */
+  /* Field: Field: Diabetes Diagnosis */
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['id'] = 'field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['table'] = 'field_data_field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['field'] = 'field_spe_diabetes_diagnosis';
@@ -2391,7 +2397,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_transplant']['table'] = 'field_data_field_spe_transplant';
   $handler->display->display_options['fields']['field_spe_transplant']['field'] = 'field_spe_transplant';
   $handler->display->display_options['fields']['field_spe_transplant']['label'] = 'Have you had a transplant?';
-  /* Field: Field: Have you been told that you have chronic kidney disease (CKD)? */
+  /* Field: Field: CKD Diagnosis */
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['id'] = 'field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['table'] = 'field_data_field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['field'] = 'field_spe_ckd_diagnosis';
@@ -2408,13 +2414,13 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_bmi']['field'] = 'field_spe_bmi';
   $handler->display->display_options['fields']['field_spe_bmi']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_bmi']['multi_type'] = 'ul';
-  /* Field: Field: Do you know your estimated glomerular filtration rate (eGFR)? */
+  /* Field: Field: eGFR */
   $handler->display->display_options['fields']['field_spe_egfr']['id'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['table'] = 'field_data_field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['field'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_egfr']['multi_type'] = 'ul';
-  /* Field: Field: Do you know your albumin-creatinine ratio (ACR)? */
+  /* Field: Field: ACR */
   $handler->display->display_options['fields']['field_spe_acr']['id'] = 'field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['table'] = 'field_data_field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['field'] = 'field_spe_acr';
@@ -2459,15 +2465,15 @@ function kidneys_spe_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Patient Profile (Archetypes)'),
-    t('Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure?'),
-    t('Have you been told that you have high blood pressure, or do you take medicine for your blood pressure?'),
-    t('Have you been told you have diabetes?'),
+    t('Family History of CKD'),
+    t('Hypertension Diagnosis'),
+    t('Diabetes Diagnosis'),
     t('Have you had a transplant?'),
-    t('Have you been told that you have chronic kidney disease (CKD)?'),
+    t('CKD Diagnosis'),
     t('Are you currently on dialysis?'),
     t('BMI'),
-    t('Do you know your estimated glomerular filtration rate (eGFR)?'),
-    t('Do you know your albumin-creatinine ratio (ACR)?'),
+    t('eGFR'),
+    t('ACR'),
     t('Page'),
   );
   $export['spe_profile_admin'] = $view;
@@ -2540,7 +2546,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Field: Do you know your estimated glomerular filtration rate (eGFR)? */
+  /* Field: Field: eGFR */
   $handler->display->display_options['fields']['field_spe_egfr']['id'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['table'] = 'field_data_field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['field'] = 'field_spe_egfr';
@@ -2549,7 +2555,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_egfr']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_egfr']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_egfr']['separator'] = ',';
-  /* Field: Field: Do you know your albumin-creatinine ratio (ACR)? */
+  /* Field: Field: ACR */
   $handler->display->display_options['fields']['field_spe_acr']['id'] = 'field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['table'] = 'field_data_field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['field'] = 'field_spe_acr';
@@ -2567,7 +2573,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_bmi']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_bmi']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_bmi']['separator'] = ',';
-  /* Field: Field: Have you been told that you have chronic kidney disease (CKD)? */
+  /* Field: Field: CKD Diagnosis */
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['id'] = 'field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['table'] = 'field_data_field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['field'] = 'field_spe_ckd_diagnosis';
@@ -2576,7 +2582,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['separator'] = ',';
-  /* Field: Field: Are you currently on dialysis? */
+  /* Field: Field: Currently on dialysis */
   $handler->display->display_options['fields']['field_spe_on_dialysis']['id'] = 'field_spe_on_dialysis';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['table'] = 'field_data_field_spe_on_dialysis';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['field'] = 'field_spe_on_dialysis';
@@ -2585,7 +2591,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_on_dialysis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['separator'] = ',';
-  /* Field: Field: Have you been told you have diabetes? */
+  /* Field: Field: Diabetes Diagnosis */
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['id'] = 'field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['table'] = 'field_data_field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['field'] = 'field_spe_diabetes_diagnosis';
@@ -2594,7 +2600,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['separator'] = ',';
-  /* Field: Field: Have you been told that you have high blood pressure, or do you take medicine for your blood pressure? */
+  /* Field: Field: Hypertension Diagnosis */
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['id'] = 'field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['table'] = 'field_data_field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['field'] = 'field_spe_htx_diagnosis';
@@ -2603,7 +2609,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['separator'] = ',';
-  /* Field: Field: Have you been told that you have pre-diabetes or metabolic syndrome? */
+  /* Field: Field: Pre-diabetes or metabolic syndrome */
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['id'] = 'field_spe_prediabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['table'] = 'field_data_field_spe_prediabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['field'] = 'field_spe_prediabetes_diagnosis';
@@ -2612,7 +2618,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['separator'] = ',';
-  /* Field: Field: Have you been told you have high uric acid levels? */
+  /* Field: Field: What is your uric acid level? */
   $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['id'] = 'field_spe_gout_uric_acid_level';
   $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['table'] = 'field_data_field_spe_gout_uric_acid_level';
   $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['field'] = 'field_spe_gout_uric_acid_level';
@@ -2630,7 +2636,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_gout_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_gout_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_gout_diagnosis']['separator'] = ',';
-  /* Field: Field: Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure? */
+  /* Field: Field: Family History of CKD */
   $handler->display->display_options['fields']['field_spe_family_history']['id'] = 'field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['table'] = 'field_data_field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['field'] = 'field_spe_family_history';
@@ -2648,7 +2654,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_gout_symptoms']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_gout_symptoms']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_gout_symptoms']['separator'] = ',';
-  /* Field: Field: Have you had a kidney transplant? */
+  /* Field: Field: Had a kidney transplant */
   $handler->display->display_options['fields']['field_spe_had_transplant']['id'] = 'field_spe_had_transplant';
   $handler->display->display_options['fields']['field_spe_had_transplant']['table'] = 'field_data_field_spe_had_transplant';
   $handler->display->display_options['fields']['field_spe_had_transplant']['field'] = 'field_spe_had_transplant';
@@ -2657,7 +2663,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_had_transplant']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_had_transplant']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_had_transplant']['separator'] = ',';
-  /* Field: Field: Do you have heart disease or heart failure? */
+  /* Field: Field: Heart disease or heart failure */
   $handler->display->display_options['fields']['field_spe_heart_disease']['id'] = 'field_spe_heart_disease';
   $handler->display->display_options['fields']['field_spe_heart_disease']['table'] = 'field_data_field_spe_heart_disease';
   $handler->display->display_options['fields']['field_spe_heart_disease']['field'] = 'field_spe_heart_disease';
@@ -2712,7 +2718,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Field: Do you know your estimated glomerular filtration rate (eGFR)? */
+  /* Field: Field: eGFR */
   $handler->display->display_options['fields']['field_spe_egfr']['id'] = 'field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['table'] = 'field_data_field_spe_egfr';
   $handler->display->display_options['fields']['field_spe_egfr']['field'] = 'field_spe_egfr';
@@ -2721,7 +2727,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_egfr']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_egfr']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_egfr']['separator'] = ',';
-  /* Field: Field: Do you know your albumin-creatinine ratio (ACR)? */
+  /* Field: Field: ACR */
   $handler->display->display_options['fields']['field_spe_acr']['id'] = 'field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['table'] = 'field_data_field_spe_acr';
   $handler->display->display_options['fields']['field_spe_acr']['field'] = 'field_spe_acr';
@@ -2739,7 +2745,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_bmi']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_bmi']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_bmi']['separator'] = ',';
-  /* Field: Field: Have you been told that you have chronic kidney disease (CKD)? */
+  /* Field: Field: CKD Diagnosis */
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['id'] = 'field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['table'] = 'field_data_field_spe_ckd_diagnosis';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['field'] = 'field_spe_ckd_diagnosis';
@@ -2748,7 +2754,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_ckd_diagnosis']['separator'] = ',';
-  /* Field: Field: Are you currently on dialysis? */
+  /* Field: Field: Currently on dialysis */
   $handler->display->display_options['fields']['field_spe_on_dialysis']['id'] = 'field_spe_on_dialysis';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['table'] = 'field_data_field_spe_on_dialysis';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['field'] = 'field_spe_on_dialysis';
@@ -2757,7 +2763,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_on_dialysis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_on_dialysis']['separator'] = ',';
-  /* Field: Field: Have you been told you have diabetes? */
+  /* Field: Field: Diabetes Diagnosis */
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['id'] = 'field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['table'] = 'field_data_field_spe_diabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['field'] = 'field_spe_diabetes_diagnosis';
@@ -2766,7 +2772,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_diabetes_diagnosis']['separator'] = ',';
-  /* Field: Field: Have you been told that you have high blood pressure, or do you take medicine for your blood pressure? */
+  /* Field: Field: Hypertension Diagnosis */
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['id'] = 'field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['table'] = 'field_data_field_spe_htx_diagnosis';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['field'] = 'field_spe_htx_diagnosis';
@@ -2775,7 +2781,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_htx_diagnosis']['separator'] = ',';
-  /* Field: Field: Have you been told that you have pre-diabetes or metabolic syndrome? */
+  /* Field: Field: Pre-diabetes or metabolic syndrome */
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['id'] = 'field_spe_prediabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['table'] = 'field_data_field_spe_prediabetes_diagnosis';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['field'] = 'field_spe_prediabetes_diagnosis';
@@ -2784,7 +2790,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_prediabetes_diagnosis']['separator'] = ',';
-  /* Field: Field: Have you been told you have high uric acid levels? */
+  /* Field: Field: What is your uric acid level? */
   $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['id'] = 'field_spe_gout_uric_acid_level';
   $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['table'] = 'field_data_field_spe_gout_uric_acid_level';
   $handler->display->display_options['fields']['field_spe_gout_uric_acid_level']['field'] = 'field_spe_gout_uric_acid_level';
@@ -2802,7 +2808,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_gout_diagnosis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_gout_diagnosis']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_gout_diagnosis']['separator'] = ',';
-  /* Field: Field: Do you have a family member who had a kidney transplant, been on dialysis or been diagnosed with kidney failure? */
+  /* Field: Field: Family History of CKD */
   $handler->display->display_options['fields']['field_spe_family_history']['id'] = 'field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['table'] = 'field_data_field_spe_family_history';
   $handler->display->display_options['fields']['field_spe_family_history']['field'] = 'field_spe_family_history';
@@ -2820,7 +2826,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_gout_symptoms']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_gout_symptoms']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_gout_symptoms']['separator'] = ',';
-  /* Field: Field: Have you had a kidney transplant? */
+  /* Field: Field: Had a kidney transplant */
   $handler->display->display_options['fields']['field_spe_had_transplant']['id'] = 'field_spe_had_transplant';
   $handler->display->display_options['fields']['field_spe_had_transplant']['table'] = 'field_data_field_spe_had_transplant';
   $handler->display->display_options['fields']['field_spe_had_transplant']['field'] = 'field_spe_had_transplant';
@@ -2829,7 +2835,7 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['field_spe_had_transplant']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_spe_had_transplant']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_spe_had_transplant']['separator'] = ',';
-  /* Field: Field: Do you have heart disease or heart failure? */
+  /* Field: Field: Heart disease or heart failure */
   $handler->display->display_options['fields']['field_spe_heart_disease']['id'] = 'field_spe_heart_disease';
   $handler->display->display_options['fields']['field_spe_heart_disease']['table'] = 'field_data_field_spe_heart_disease';
   $handler->display->display_options['fields']['field_spe_heart_disease']['field'] = 'field_spe_heart_disease';
