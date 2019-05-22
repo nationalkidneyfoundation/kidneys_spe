@@ -215,7 +215,7 @@
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Gout and Uric Acid tracker</span>
-              <br> Track your serum uric acid (sUA) level (amount of uric acid in your blood), estimated glomerular filtration rate (eGFR) and albumin-to-creatine ratio using the online Gout and Uric Acid Tracker by <a class="bold" href="https://www.kidney.org/sites/default/files/trackyourlabsgout.xlsx">clicking here</a>, or by printing out the <a href="https://www.kidney.org/sites/default/files/11-10-4832_ebc_gout_checklist.pdf" target="PDF" class="bold">PDF version.</a>
+              <br> Track your serum uric acid (sUA) level (amount of uric acid in your blood), estimated glomerular filtration rate (eGFR) and albumin-to-creatine ratio using the Gout and Uric Acid Tracker by <a class="bold" href="https://www.kidney.org/sites/default/files/trackyourlabsgout.xlsx">clicking here</a>, or by printing out the <a href="https://www.kidney.org/sites/default/files/11-10-4832_ebc_gout_checklist.pdf" target="PDF" class="bold">PDF version.</a>
             </p>
           </div>
         </div>
