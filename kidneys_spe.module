@@ -1272,6 +1272,32 @@ function kidneys_spe_get_rendered_field($entity_type, $entity, $field_name, $del
 }
 
 
+/**
+ * Implements hook_flag_alter
+ */
+function kidneys_spe_flag_alter(&$flag) {
+  dpm($flag, 'hook_flag_alter');
+  // Get the submission ID from the url and store for later user.
+  $args = explode('/', current_path());
+  if (isset($args[1])) {
+    // TODO check that this is an ID of an entityform submission.
+    $flag->kidneys_spe_id = $args[1];
+  }
+}
+
+/**
+ * Implements hook_flag_flag
+ */
+function kidneys_spe_flag_flag($flag, $entity_id, $account, $flagging) {
+  dpm($flag, 'hook_flag_flag');
+  if (isset($flag->kidneys_spe_id)) {
+    // TODO set value of related submission.
+  }
+}
+
+
+
+
 
 /**
  * Implements hook_rate_vote_alter.
