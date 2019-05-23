@@ -1294,7 +1294,7 @@ function kidneys_spe_flag_flag($flag, $entity_id, $account, $flagging) {
   //dpm($flag, 'hook_flag_flag');
   watchdog('hook_flag_flag', '<pre>'.print_r($flag,1).'</pre>');
   $args = explode('/', current_path());
-  if (isset($args[0] && $args[0] === 'phi' && isset($args[1])) {
+  if (isset($args[0]) && $args[0] === 'phi' && isset($args[1])) {
     // TODO set value of related submission.
     // Loads the entity found and creates or updates a field value.
     $this_flag = entity_load_single('flagging', $flag->fid);
