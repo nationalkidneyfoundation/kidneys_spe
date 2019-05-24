@@ -805,7 +805,7 @@ function kidneys_spe_ku_accordion($kus, $tracking = false, $entityformid) {
     //$desc = drupal_render($value->field_body);
     $desc = $value->field_body[0]['rendered']['#markup'];
     if ($tracking && function_exists('nkf_misc_get_rate_widget')) {
-      $rating = nkf_misc_get_rate_widget($value->nid, $entityformid);
+      $rating = nkf_misc_get_rate_widget('ku-nid: ' . $value->nid, 'ef-nid: ' . $entityformid);
       $desc .= $rating;
     }
     // TODO: actually make this work.
