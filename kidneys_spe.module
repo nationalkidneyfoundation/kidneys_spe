@@ -628,7 +628,7 @@ function kidneys_spe_page($entityformid, $version) {
 
     // Load the KUs for the section, and theme them.
     $kus = views_get_view_result('spe_kus_by_section_and_profile', 'default', $entityformid, $section->nid);
-    $items = kidneys_spe_ku_accordion($kus);
+    $items = kidneys_spe_ku_accordion($kus, TRUE, $entityformid);
     $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
 
     // Get any Action style KUs and theme.
@@ -767,9 +767,9 @@ function kidneys_spe_section_page($entityformid, $version, $section) {
   //$return['period'] = kidneys_spe_get_rendered_field('node', $section, 'field_spe_section_period');
   $return['period'] = 'Section ' . ($section_keys[$section->nid] + 1);
   $kus = views_get_view_result('spe_kus_by_section_and_profile', 'info', $entityformid, $section->nid);
-  $items = kidneys_spe_ku_accordion($kus, TRUE);
+  $items = kidneys_spe_ku_accordion($kus, TRUE, $entityformid);
   $actions = views_get_view_result('spe_kus_by_section_and_profile', 'action_track', $entityformid, $section->nid);
-  $actions_items = kidneys_spe_ku_accordion($actions, TRUE);
+  $actions_items = kidneys_spe_ku_accordion($actions);
   $return['has_actions'] = !empty($actions_items);
   $return['knowledge_units'] = theme('kidneys_spe_list_accordion', array('items' => $items, 'classes' => 'bg--white'));
   $return['actions_track'] = theme('kidneys_spe_list_accordion', array('items' => $actions_items, 'classes' => 'bg--white'));
@@ -797,13 +797,17 @@ function kidneys_spe_get_course_sections_by_assessment($course, $entityformid) {
 /**
  * Helper function to set accordion display for KUs
  */
-function kidneys_spe_ku_accordion($kus, $tracking = false) {
+function kidneys_spe_ku_accordion($kus, $tracking = false, $entityformid) {
   $items = array();
   $iid = user_password();
   foreach($kus as $i => $value) {
     // TODO: figure out why rendering adds some broken html on certain multidevs
     //$desc = drupal_render($value->field_body);
     $desc = $value->field_body[0]['rendered']['#markup'];
+    if ($tracking && function_exists('nkf_misc_get_rate_widget')) {
+      $rating = nkf_misc_get_rate_widget($value->nid, $entityformid);
+      $desc .= $rating;
+    }
     // TODO: actually make this work.
     /*$desc .= '<div class="print--hide display--flex padding-top--md justify-content--space-between align-items--center">';
     $desc .= ($tracking) ? '<a href="#" class="button--orange">mark done</a>' : '';
@@ -1104,7 +1108,8 @@ function kidneys_spe_get_profiles_from_assessmentOLD($entityform, $version = NUL
 function kidneys_spe_field_widget_form_alter(&$element, &$form_state, $context) {
 
   // Move the help text into the label for gout symptoms.
-  if ($element['#entity_type'] == 'entityform' &&
+  if (isset($element['#entity_type']) &&
+      $element['#entity_type'] == 'entityform' &&
       $element['#bundle'] == 'personalized_health_form' &&
       $element['#field_name'] == 'field_spe_gout_symptoms') {
     $element['#title'] = '<div>' . $element['#title'] . '</div>' . $element['#description'];
