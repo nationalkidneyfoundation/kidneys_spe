@@ -652,6 +652,7 @@ function kidneys_spe_page($entityformid, $version) {
 
     // TODO: document this block.
     $sections = kidneys_spe_get_course_sections_by_assessment($course, $entityformid);
+    dpm($sections, 'secdtions');
     $items = array();
     $j = 1;
     foreach($sections as $i => $section) {
@@ -677,9 +678,10 @@ function kidneys_spe_page($entityformid, $version) {
         array('button'=>'button--outline--orange', 'url'=>'#course-desc','title'=>'About the course'),
       )
     ));
+
     $theme = 'kidneys_spe_course_sections_page';
   }
-
+  dpm($return, 'return');
   // Set the theme. TODO: place this in config section.
   if (!isset($theme)) {
     switch ($version) {
