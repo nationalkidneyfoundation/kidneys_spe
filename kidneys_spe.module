@@ -331,7 +331,7 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
      }
    }
    // Add reCAPTCHA.
-   if (FALSE && module_exists('captcha') && module_exists('recaptcha')) {
+   if (module_exists('captcha') && module_exists('recaptcha')) {
      $form['captcha'] = array(
       '#type' => 'captcha',
       '#captcha_type' => 'recaptcha/reCAPTCHA',
