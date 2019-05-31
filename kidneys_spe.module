@@ -159,6 +159,14 @@ function kidneys_spe_theme($existing, $type, $theme, $path){
         'iid' => NULL,
       ),
     ),
+    'kidneys_spe_card_pic' => array(
+      'template' => 'kidneys-spe-card-pic',
+      'path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
+      'type' => 'theme',
+      'variables' => array(
+        'title' => NULL,
+      ),
+    ),
   );
 }
 
@@ -305,14 +313,35 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
    // Get fields to show based on form "version".
    // Right now the version is stored in a get parameter.
    $fields_to_include = kidneys_spe_assessment_fields($version);
+   $captcha_group;
+   $captcha_group_index = 0;
    foreach(element_children($form) as $field) {
      // Make sure we are just looking at "field" form elements.
      if (substr($field, 0, 5) == 'field') {
        if (array_search($field, $fields_to_include) === FALSE) {
          unset($form[$field]);
+       } else {
+         // Figure out the last field group so we can inject captcha.
+         if (isset($form['#group_children'][$field])
+          && $form['#groups'][$form['#group_children'][$field]]->weight > $captcha_group_index) {
+           $captcha_group_index = $form['#groups'][$form['#group_children'][$field]]->weight;
+           $captcha_group = $form['#group_children'][$field];
+         }
        }
      }
    }
+   // Add reCAPTCHA.
+   if (FALSE && module_exists('captcha') && module_exists('recaptcha')) {
+     $form['captcha'] = array(
+      '#type' => 'captcha',
+      '#captcha_type' => 'recaptcha/reCAPTCHA',
+      '#weight' => 999,
+      //'#prefix' => '<div class="padding-top--lg padding-x--xs text-align--center">',
+      //'#suffix' => '</div>'
+     );
+     $form['#group_children']['captcha'] = $captcha_group;
+   }
+
    // Hide form actions greater than sm breakpoint to let js-based
    // form advancement take over. This is hacky and we should do somewhere else.
    $form['actions']['#prefix'] = '<div class="sm--hide padding-x--xxxl padding-y--md">';
@@ -394,6 +423,11 @@ function kidneys_spe_menu() {
  * Callback for main SPE form page.
  */
 function kidneys_spe_form($entity_id = FALSE) {
+  // Include js for cookies...yum.
+  drupal_add_library('system', 'jquery.cookie');
+  $path = drupal_get_path('module', 'kidneys_spe');
+  drupal_add_js($path . '/js/kidneys_spe.js');
+
   // Just a variable to hold theme values.
   $return = array();
 
@@ -494,6 +528,16 @@ function kidneys_spe_get_form($entity_id = FALSE) {
  *  The rendered page.
  */
 function kidneys_spe_page($entityformid, $version) {
+  // Include js for cookies...yum.
+  drupal_add_library('system', 'jquery.cookie');
+  drupal_add_js(array(
+    'kidneys_spe' => array(
+      'assessments' => array($version => $entityformid),
+    ),
+  ), 'setting');
+  $path = drupal_get_path('module', 'kidneys_spe');
+  drupal_add_js($path . '/js/kidneys_spe.js');
+
   $version = strtolower($version);
 
   // Get all course information (title, sections, etc.)
@@ -652,7 +696,6 @@ function kidneys_spe_page($entityformid, $version) {
 
     // TODO: document this block.
     $sections = kidneys_spe_get_course_sections_by_assessment($course, $entityformid);
-    dpm($sections, 'secdtions');
     $items = array();
     $j = 1;
     foreach($sections as $i => $section) {
@@ -681,7 +724,6 @@ function kidneys_spe_page($entityformid, $version) {
 
     $theme = 'kidneys_spe_course_sections_page';
   }
-  dpm($return, 'return');
   // Set the theme. TODO: place this in config section.
   if (!isset($theme)) {
     switch ($version) {
@@ -851,7 +893,7 @@ function kidneys_spe_section_card($section, $entityformid, $version, $i) {
   $teaser = '<div class="padding-bottom--md">'.$desc.'</div>';
   $section_path = url('phi/'. $entityformid . '/' . $version . '/' .$section->nid);
   $period = kidneys_spe_get_rendered_field('node', $section, 'field_spe_section_period');
-  $card = theme('card_pic', array(
+  $card = theme('kidneys_spe_card_pic', array(
     'title_prefix' => ($i) ? 'section '. $i : 'section y',
     'title'=> $section->title,
     //'teaser'=> $teaser,
