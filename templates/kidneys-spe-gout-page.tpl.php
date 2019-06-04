@@ -112,7 +112,7 @@
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
         <div class="font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
-        <div class="padding-top--lg font-size--lg">Below you'll find personalized content based on your answers that will help you take control of your gout health.</div>
+        <div class="padding-top--lg font-size--lg">Below you'll find individualized content based on your answers that will help you take control of your gout health.</div>
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
@@ -123,13 +123,13 @@
 <section class="print--show hide">
   <div class="container padding-x--md">
     <div class="text-align--center">
-      <h2 class="padding-bottom--xl">Here is personalized information that will help you take control of your gout health.</h2>
+      <h2 class="padding-bottom--xl">Here is individualized information that will help you take control of your gout health.</h2>
     </div>
   </div>
 </section>
 <section>
   <div class="container display--flex flex-wrap--wrap padding-bottom--xl padding-x--md">
-    <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Personalized Health Information</h2>
+    <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Individualized Health Information</h2>
     <div class="print--hide width--100 md--width--50 md--padding-right--xxxl text-align--center">
       <img src="/<?php print $theme_path; ?>/images/book300x300.png" alt="book with open pages">
     </div>

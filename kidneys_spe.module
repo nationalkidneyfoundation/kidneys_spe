@@ -336,6 +336,7 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
       '#type' => 'captcha',
       '#captcha_type' => 'recaptcha/reCAPTCHA',
       '#weight' => 999,
+      '#attributes' => array('data-callback' => 'testing'),
       //'#prefix' => '<div class="padding-top--lg padding-x--xs text-align--center">',
       //'#suffix' => '</div>'
      );
@@ -865,7 +866,9 @@ function kidneys_spe_ku_accordion($kus, $tracking = false, $entityformid = false
       'title'=> render($value->node_title),
       'description'=> $desc,
       'iid' => $iid . '-' . $i,
-      'first' => ($i == 0) ? TRUE : FALSE
+      'first' => ($i == 0) ? TRUE : FALSE,
+      'category' => 'ku-nid: ' . $value->nid,
+      'value' => $v,
     ));
   }
   return $items;
