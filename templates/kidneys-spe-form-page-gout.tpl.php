@@ -101,7 +101,7 @@
   </div>
 </section>
 <section>
-  <div id="spe-return-gout" class="hide container text-align--center  padding-x--md padding-y--md bg--gray-1">Looks like you have already answered these questions. <a class="bold" href="#">View your previous results</a>, or start over below.</div>
+  <div id="spe-return-gout" class="hide container text-align--center  padding-x--md padding-y--md bg--gray-1"><?php print t('Looks like you have already answered these questions. <a class="bold" href="#">View your previous results</a>, or start over below.'); ?></div>
 </section>
 <section>
   <div class="container display--flex flex-wrap--wrap padding-y--xxl padding-x--md">
