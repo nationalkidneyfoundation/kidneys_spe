@@ -1,54 +1,70 @@
 <div class="print--hide1">
-  <section class="padding-top--xxxl hero--waves-orange-tn">
-    <div class="center prose padding-x--md padding-top--xxxl margin-top--xxxl linkHighlight">
+  <section class="hero--health edge--ragged--bottom margin-bottom--xxl print--hide">
+    <div class="container">
+      <div class="center prose padding-y--xxl padding-x--md color--white">
+        <?php if($scenario == 1): ?>
+          <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+        <?php endif;?>
+        <?php if($scenario == 2): ?>
+          <h1 class="font-size--xxxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
+
+        <?php endif;?>
+        <?php if($scenario == 3): ?>
+          <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+        <?php endif;?>
+        <?php if($scenario == 4): ?>
+          <h1 class="font-size--xxxl margin-top--lg">You have Chronic Kidney Disease</h1>
+        <?php endif;?>
+        <?php if($scenario == 5): ?>
+          <h1 class="font-size--xxl margin-top--lg">You have no reported risk factors for Chronic Kidney Disease</h1>
+        <?php endif;?>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="prose center padding-x--md">
       <?php if($scenario == 1): ?>
-        <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
           The information you entered shows you have <?php print $factor_count;?> common risk factors for chronic kidney disease (CKD). This means you have an increased chance of developing CKD. Because CKD has no early symptoms, people at risk for CKD should be tested regularly to find out about their kidney health.
         </p>
         <p class="linkHighlight">
-          The information below explains <span class="bold">your risk factors</span>. <a href="#" class="js--print-link">Print</a> a copy to discuss with your healthcare professional and ask them if CKD testing is right for you.
+          The information below explains <span class="bold">your risk factors</span>. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional and ask them if CKD testing is right for you.
         </p>
       <?php endif;?>
       <?php if($scenario == 2): ?>
-        <h1 class="font-size--xxxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
           The information you entered shows you have <?php print $factor_count;?> common risk factors for diabetes. Diabetes is a major risk factor for kidney disease. Diabetes can be treated and can improved with healthy lifestyle choices.
         </p>
         <p class="linkHighlight">
-          <a href="#" class="js--print-link">Print</a> a copy of this information to discuss with your healthcare professional and ask them if CKD testing is right for you.
+          <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy of this information to discuss with your healthcare professional and ask them if CKD testing is right for you.
         </p>
       <?php endif;?>
       <?php if($scenario == 3): ?>
-        <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
-
         <p class="padding-top--md linkHighlight">
           The information you entered suggests that it is likely you have chronic kidney disease.  Because many factors can cause the laboratory tests that diagnose CKD to fluctuate, it is important for you to speak with your doctor to confirm CKD through additional testing.
         </p>
         <p class="linkHighlight">
-          Please <a href="#" class="js--print-link">print</a> the results of this survey, bring it to your doctor and ask for the two simple tests that will confirm if you have chronic kidney disease (To learn more about CKD testing).
+          Please <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> the results of this survey, bring it to your doctor and ask for the two simple tests that will confirm if you have chronic kidney disease (To learn more about CKD testing).
         </p>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
           The information you entered shows you have <?php print $factor_count;?> of common risk factors for chronic kidney disease (CKD). Because CKD has no early symptoms, people at risk for CKD should be tested regularly to determine their kidney health.
         </p>
-        <p>The information below explains <span class="bold">your risk factors</span>. <a href="#" class="js--print-link">Print</a> a copy to discuss with your healthcare professional.
+        <p>The information below explains <span class="bold">your risk factors</span>. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional.
         </p>
       <?php endif;?>
       <?php if($scenario == 4): ?>
-        <h1 class="font-size--xxxl margin-top--lg">You have Chronic Kidney Disease</h1>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
           The information you entered shows you have <?php print $factor_count;?> common risk factors for chronic kidney disease (CKD) progression. The information below explains <span class="bold">your risk factors</span>.
         </p>
         <p class="linkHighlight">
-          <a href="#" class="js--print-link">Print</a> a copy to discuss with your healthcare professional and ask them for regular CKD testing to monitor your kidney health.
+          <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional and ask them for regular CKD testing to monitor your kidney health.
         </p>
       <?php endif;?>
       <?php if($scenario == 5): ?>
-        <h1 class="font-size--xxl margin-top--lg">You have no reported risk factors for Chronic Kidney Disease</h1>
         <p class="linkHighlight">
           The information you entered shows you have none of the common risk factors for chronic kidney disease (CKD).
         </p>
@@ -66,23 +82,25 @@
           <a href="https://www.kidney.org/atoz/content/sixstepshealthprimer">
             https://www.kidney.org/atoz/content/sixstepshealthprimer
           </a>
-
         </p>
       <?php endif;?>
-     </div>
+    </div>
   </section>
+
   <?php if($scenario != 5): ?>
     <section class="padding-y--xl bg--white">
       <div class="prose center padding-x--md">
         <h3 class="padding--none display--none">Your risk factors</h3>
-        <div class="">
-          <?php print $risk_factors;?>
-        </div>
-        <p class="linkHighlight display--none">Please <a href="#" class="js--print-link">print</a> the results of this survey, bring it to your doctor and ask for the two simple tests <a href="#tests">(eGFR and ACR)</a> that will tell you if you have chronic kidney disease.
+          <?php foreach($risk_factors as $risk_factor):?>
+            <div class="padding-y--xl width--100">
+              <?php print $risk_factor;?>
+            </div>
+          <?php endforeach;?>
+        <p class="linkHighlight display--none">Please <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> the results of this survey, bring it to your doctor and ask for the two simple tests <a href="#tests">(eGFR and ACR)</a> that will tell you if you have chronic kidney disease.
         </p>
         <p class="text-align--center margin-top--xxxl ">
-          <a href="#" class="js--print-link button--orange margin-right--sm margin-top--sm">print your results</a>
-          <a href="<?php print $email;?>" class="button--outline--gray-4 margin-top--sm">email your results</a>
+          <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="button--orange margin-right--sm margin-top--sm caps font-size--sm">print your results</a>
+          <a href="<?php print $email;?>" class="button--gray-1 margin-top--sm caps font-size--sm">email your results</a>
          </p>
       </div>
     </section>

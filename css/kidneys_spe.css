@@ -1,0 +1,116 @@
+.form-required {
+  display: none;
+}
+.form {
+  background-color: #fff9f2;
+  /*border: 3px solid #fe971e;
+  border-radius: 7px;*/
+}
+.pill {
+  border-radius: 1000px;
+}
+/*fff9f2 fe971e*/
+.hero--gout,
+.hero--health {
+  background-color: #3f3f3f;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+}
+.hero--health {
+    background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/kidneyhealth_hero.png);
+}
+.hero--gout {
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/bg_crystals_v3.png);
+}
+.brush--orange {
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/brush.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media (min-width: 52em) {
+  .hero--gout {
+    background-size: 55% 100%;
+    background-position: left;
+  }
+  .hero--health {
+    background-size: contain;
+  }
+}
+.hero--gout::after{
+  content: '';
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/edge_bottom_brush.png);
+  position: absolute;
+  bottom: 0;
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 16px;
+}
+.bg--crystals--v2 {
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/bg_crystals_v2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.edge--ragged--top,
+.edge--ragged--bottom {
+  position: relative;
+}
+.edge--ragged--top::before {
+  content: '';
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/ragged_top.png);
+  position: absolute;
+  top: 0;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 16px;
+}
+.edge--ragged--bottom::after {
+  content: '';
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/ragged_bottom.png);
+  position: absolute;
+  bottom: 0;
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 16px;
+}
+@media print{
+  * {
+    color: #3b444f !important;
+    background-color: white !important;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .embedded-video {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    line-height: 0pt !important;
+    white-space: nowrap;
+  }
+
+  .hero--gout,
+  .bg--crystals--v1,
+  .bg--crystals--v2,
+  .bg--crystals--v3 {
+    background: inherit;
+  }
+  .container,
+  .prose {
+    max-width: 650px;
+  }
+  .print--padding--none {
+    padding: 0;
+  }
+}
