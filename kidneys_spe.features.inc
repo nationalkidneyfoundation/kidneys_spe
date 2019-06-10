@@ -24,16 +24,10 @@ function kidneys_spe_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
-* Implements hook_views_api().
-*
-* Enabling using templates inside module.
-*/
+ * Implements hook_views_api().
+ */
 function kidneys_spe_views_api($module = NULL, $api = NULL) {
-  return array(
-    'api' => 3,
-    'path' => drupal_get_path('module', 'kidneys_spe'),
-    'template path' => drupal_get_path('module', 'kidneys_spe') . '/templates',
-  );
+  return array("api" => "3.0");
 }
 
 /**
