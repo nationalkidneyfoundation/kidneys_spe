@@ -846,7 +846,7 @@ function kidneys_spe_section_page($entityformid, $version, $section) {
         $options['attributes']['class'][] = 'truncate brush--orange';
     }
 
-    $t = '<span class="font-size--lg bold">' . $j . '</span> <span class="font-size--md">'. $s->title . '</span>';
+    $t = '<span class="font-size--md font-weight--400">'. $s->title . '</span>';
     $return['section_links'][] = l(t($t), 'phi/'. $entityformid . '/' . $version . '/' . $s->nid, $options);
     $j++;
   }

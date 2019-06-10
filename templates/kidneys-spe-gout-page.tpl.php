@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" style="max-width:280px" src="/<?php print $theme_path; ?>/images/legs_header.gif">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/legs_header.gif">
     </div>
   </div>
 </section>
@@ -30,7 +30,7 @@
   <div class="container display--flex flex-wrap--wrap padding-bottom--xl padding-x--md">
     <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Individualized Health Information</h2>
     <div class="print--hide width--100 md--width--50 md--padding-right--xxxl text-align--center">
-      <img src="/<?php print $theme_path; ?>/images/book300x300.png" alt="book with open pages">
+      <img src="/<?php print $module_path; ?>/images/book300x300.png" alt="book with open pages">
     </div>
     <div class="print--width--100 width--100 md--width--50 md--padding-left--lg print--padding--none">
       <p class="print--hide text-align--center md--text-align--left ">Explore these topics to better understand your gout health</p>
@@ -44,7 +44,7 @@
     <div class="display--flex flex-wrap--wrap flex-direction--row-rev ">
         <div class="width--100 md--width--50 print--hide">
           <div class="text-align--center padding-bottom--md">
-            <img src="/<?php print $theme_path; ?>/images/doctor300x300.png" alt="an outline drawing of a doctor with a stethoscope">
+            <img src="/<?php print $module_path; ?>/images/doctor300x300.png" alt="an outline drawing of a doctor with a stethoscope">
           </div>
         </div>
         <div class="print--width--100 width--100 md--width--50">
@@ -69,14 +69,14 @@
     <div class=" print--hide display--flex sm--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
-          <img src="/<?php print $theme_path; ?>/images/foot300x300.png" />
+          <img src="/<?php print $module_path; ?>/images/foot300x300.png" />
         </div>
       </div>
       <div class="sm--show font-size--xxxxl padding--md">&rarr;</div>
       <div class="sm--hide width--100 font-size--xxxl  padding--md">&darr;</div>
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
-          <img src="/<?php print $theme_path; ?>/images/list300x300.png" />
+          <img src="/<?php print $module_path; ?>/images/list300x300.png" />
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
     <div class="center prose">
       <div class="display--flex align-items--flex-start margin-bottom--sm">
         <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-          <img src="/<?php print $theme_path; ?>/images/inphographic75x75.png" alt="infographic icon">
+          <img src="/<?php print $module_path; ?>/images/inphographic75x75.png" alt="infographic icon">
         </div>
         <div class="margin-left--md" style="flex: 1;">
           <p><span class="bold">Gout and Kidney Disease</span>
@@ -100,7 +100,7 @@
       </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
           <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-              <img src="/<?php print $theme_path; ?>/images/factsheet75x75.png" alt="factsheet icon">
+              <img src="/<?php print $module_path; ?>/images/factsheet75x75.png" alt="factsheet icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Gout Fact sheet</span>
@@ -110,7 +110,7 @@
         </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
           <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-            <img src="/<?php print $theme_path; ?>/images/checklist75x75.png" alt="checklist icon">
+            <img src="/<?php print $module_path; ?>/images/checklist75x75.png" alt="checklist icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Gout and Uric Acid tracker</span>
@@ -120,7 +120,7 @@
         </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
           <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-            <img src="/<?php print $theme_path; ?>/images/video75x75.png" alt="video icon">
+            <img src="/<?php print $module_path; ?>/images/video75x75.png" alt="video icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Video</span>

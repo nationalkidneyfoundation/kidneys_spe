@@ -34,21 +34,21 @@
     <h2 class="width--100 text-align--center">Kidney disease</h2>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
-        <img src="/<?php print $module_path; ?>/images/1in3american200x200.png"/>
+        <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_3in1.svg"/>
         <p class="padding--none"><strong>1 in 3 American adults</strong>
         <br>is at risk for kidney disease.</p>
       </div>
     </div>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
-        <img src="/<?php print $module_path; ?>/images/kidney200x200.png"/>
+        <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_kidney.svg"/>
         <p class="padding--none"><strong>30 million American adults have kidney disease,</strong>
         <br>and most don’t know it.</p>
       </div>
     </div>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
-        <img src="/<?php print $module_path; ?>/images/kh_transplant.png"/>
+        <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_transplant.svg"/>
         <p class="padding--none"><strong>100,000 people</strong> are on the kidney transplant list.</p>
       </div>
     </div>

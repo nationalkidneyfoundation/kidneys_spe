@@ -35,7 +35,7 @@
             style="background-color:<?php print $color;?>;">
               <?php print $type['name'];?>
           </div>
-          <div class="arrow center" style="width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent; border-top:20px solid <?php print $color;?>">
+          <div class="arrow center" style="width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent; border-top:10px solid <?php print $color;?>">
 
           </div>
         </div>
@@ -93,7 +93,7 @@
   </div>
 </section>
 
-<section class="print--hide bg--gray-1">
+<section class="print--hide bg--gray-1 edge--ragged--bottom edge--ragged--top">
   <div class="container padding-y--xxl padding-x--md">
     <div class="print--hide text-align--center">
       <a data-track="event" data-category="cta" data-action="print" data-label="spe-health-results" href="#" class="hide sm--display--inline font-size--sm caps button--white js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
@@ -105,14 +105,14 @@
 
 
 <section>
-  <div class="hide bg--gray-2 padding-top--xl padding-x--md">
+  <div class="hide padding-top--xl padding-x--md">
     <div class="container prose text-align--center">
       <h2 class="width--100 text-align--center">Thank You</h2>
       <p>We appreciate you taking the time to answer our questions and for reviewing these topics. Gout can be a chronic, or long term disease, so it’s important to stay with any treatment plan recommended by a clinician and report any sudden changes in symptoms.</p>
       <p>If you have questions, you can speak with your healthcare team or <a href="https://www.kidney.org/about/contact">contact</a> the National Kidney Foundation.</p>
     </div>
   </div>
-  <div class="bg--gray-2 padding-y--xl padding-x--md">
+  <div class="padding-y--xl padding-x--md">
     <div class="container prose text-align--center">
       <div  class="print--hide">
         <h3 class="width--100 text-align--center">We want to know what you think.</h3>

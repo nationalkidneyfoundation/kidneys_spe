@@ -13,14 +13,14 @@
 </section>
 <div class="padding-x--md container">
   <div class="display--flex flex-wrap--wrap">
-    <section class="md--width--10 width--100 margin-bottom--sm md--padding-right--md">
+    <section class="max-width--md center md--width--10 width--100 margin-bottom--sm md--padding-right--md">
       <?php print $icon;?>
     </section>
     <section class="md--width--60 width--100 margin-bottom--xl ">
 
       <div class="prose margin-bottom--xl ">
-        <div class="font-size--lg">
-          <span class="caps"><?php print $period;?></span>
+        <div class="font-size--md caps bold color--gray-3">
+          <?php print $period;?>
         </div>
         <h1 class="font-size--xl padding-top--xxs"><?php print $title;?></h1>
         <?php if(!empty($description)): ?>
@@ -58,9 +58,11 @@
     <nav class="md--width--30 width--100 margin-top--xxl  md--padding-left--xl">
       <div class="margin-x--md">
         <h3 class="padding-top--none padding-x--xxs">Sections</h3>
-        <?php foreach($section_links as $i => $link): ?>
-          <?php print $link;?>
-        <?php endforeach;?>
+        <ol class="bold">
+          <?php foreach($section_links as $i => $link): ?>
+            <li><?php print $link;?></li>
+          <?php endforeach;?>
+        </ol>
       </div>
     </nav>
   </div>

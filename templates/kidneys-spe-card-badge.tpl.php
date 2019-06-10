@@ -8,7 +8,7 @@
   <a href="<?php print $path ?>" class="card-animate display--block zoom-image">
   <?php endif;?>
     <?php if(isset($badge)): ?>
-      <div class="position--relative margin-top--xxxl- margin-left--xl display--flex align-items--center z-index--400 ">
+      <div style="width:75px" class="position--relative margin-top--xxxl- margin-left--xl display--flex align-items--center z-index--400 ">
         <?php print $badge; ?>
       </div>
     <?php endif;?>
@@ -22,7 +22,7 @@
       <?php endif; ?>
       <div class="color--gray-4 width-100 ">
         <?php if (!empty($title_prefix)): ?>
-          <div class="font-size--sm caps margin-bottom--xxs">
+          <div class="font-size--sm caps margin-bottom--xxs bold color--gray-3">
             <?php print $title_prefix ?>
           </div>
         <?php endif;?>
