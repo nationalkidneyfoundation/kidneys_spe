@@ -3,18 +3,15 @@
   *
   */
 ?>
-<div class="card max-width--lg border-radius--md overflow--hidden bg--white border border-width--sm border-color--gray-4
-            margin-right--md margin-bottom--md position--relative padding-bottom--xxl"
-     >
+<div class="card max-width--lg border-radius--md overflow--hidden bg--gray-1
+            margin-right--md margin-bottom--md position--relative padding-bottom--xxl">
   <?php if (isset($path)):?>
   <a href="<?php print $path ?>" class="card-animate display--block zoom-image">
   <?php endif;?>
     <?php if(isset($image)):?>
     <div class="padding-bottom--lg">
       <div class="width--100 overflow--hidden">
-
           <?php print nkf_base_style_image($image, 'resize', 400, 250, 'width--100 height--auto display--block');?>
-
       </div>
     </div>
     <?php endif; ?>

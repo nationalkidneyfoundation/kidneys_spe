@@ -1,29 +1,26 @@
 
 
-<section class="hero--gout margin-bottom--xxl">
+<section class="hero--health margin-bottom--xxl">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 print--width--100 md--width--50 padding-top--none padding-bottom--xl md--padding-right--lg">
       <h1 class="display--inline-block center caps color--white">
-        <div class="font-size--xxxxxl">Gout</div>
+        <div class="font-size--xxxxxl">Kidneys</div>
         <div class="font-size--xl font-weight--400">and your health</div>
       </h1>
-    </div>
-    <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/legs_header.gif">
     </div>
   </div>
 </section>
 <section>
-  <div id="spe-return-gout" class="hide container text-align--center  padding-x--md padding-y--md bg--gray-1"><?php print t('Looks like you have already answered these questions. <a class="bold" href="#">View your previous results</a>, or start over below.'); ?></div>
+  <div id="spe-return-health" class="hide container text-align--center  padding-x--md padding-y--md bg--gray-1"><?php print t('Looks like you have already answered these questions. <a class="bold" href="#">View your previous results</a>, or start over below.'); ?></div>
 </section>
 <section>
   <div class="container display--flex flex-wrap--wrap padding-y--xxl padding-x--md">
     <div class="width--100 print--width--100 md--width--50 md--padding-right--xxxl margin-bottom--xl">
-      <h2>What is Gout?</h2>
-      <p class="prose">Gout is a condition where uric acid in your body turns into crystals that settle in joints. This can lead to pain and swelling that limits how you move.</p>
+      <h2>Heart your kidneys</h2>
+      <p class="prose">Most people don't think twice about their kidneys. But when kidneys stop working, dialysis or transplant is needed to survive. So Heart Your Kidneys and give them the attention they deserve.</p>
       <div class="width--md margin-y--xl padding-top--xxs bg--orange"></div>
-      <h3>Take control of your gout health.</h3>
-      <p  class="prose">Answer a few questions and we’ll provide you with personalized information about gout and your health.</p>
+      <h3>Take control of your kidney health.</h3>
+      <p  class="prose">Answer a few questions and we’ll provide you with personalized information about kidneys and your health.</p>
     </div>
     <div class="width--100 print--width--100 md--width--50 margin-y--xl md--padding-left--lg">
       <div class="padding-x--xxl padding-top--md form border border-color--gray-4 border-width--sm rounded">
@@ -34,7 +31,7 @@
 </section>
 <section class="bg--gray-1 bg--crystals--v2 border-bottom edge--ragged--top">
   <div class="container display--flex flex-wrap--wrap padding-y--xxxl padding-x--md">
-    <h2 class="width--100 text-align--center">Gout and Kidney disease</h2>
+    <h2 class="width--100 text-align--center">Kidney disease</h2>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
         <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_3in1.svg"/>
@@ -51,8 +48,8 @@
     </div>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
-        <img class="max-width--md" src="/<?php print $module_path; ?>/images/gout3.svg"/>
-        <p class="padding--none"><strong>8.3 million American adults have gout.</strong></p>
+        <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_transplant.svg"/>
+        <p class="padding--none"><strong>100,000 people</strong> are on the kidney transplant list.</p>
       </div>
     </div>
   </div>

@@ -1,105 +1,4 @@
-<!--css hack-->
-<style>
 
-  .form-required {
-    display: none;
-  }
-  .form {
-    background-color: #fff9f2;
-    /*border: 3px solid #fe971e;
-    border-radius: 7px;*/
-  }
-  /*fff9f2 fe971e*/
-  .hero--gout {
-    background-color: #3f3f3f;
-    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals_v3.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    background-position: center;
-  }
-  @media (min-width: 52em) {
-    .hero--gout {
-      background-size: 55% 100%;
-      background-position: left;
-    }
-  }
-  .hero--gout::after {
-    content: '';
-    background-image: url(/<?php print $theme_path; ?>/images/edge_bottom_brush.png);
-    position: absolute;
-    bottom: 0;
-    background-position: bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 16px;
-  }
-  .bg--crystals--v2 {
-    background-image: url(/<?php print $theme_path; ?>/images/bg_crystals_v2.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .edge--ragged--top,
-  .edge--ragged--bottom {
-    position: relative;
-  }
-  .edge--ragged--top::before {
-    content: '';
-    background-image: url(/<?php print $theme_path; ?>/images/ragged_top.png);
-    position: absolute;
-    top: 0;
-    background-position: top;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 16px;
-  }
-  .edge--ragged--bottom::after {
-    content: '';
-    background-image: url(/<?php print $theme_path; ?>/images/ragged_bottom.png);
-    position: absolute;
-    bottom: 0;
-    background-position: bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 16px;
-  }
-  @media print{
-    * {
-      color: #3b444f !important;
-      background-color: white !important;
-    }
-    a[href]:after {
-      content: " (" attr(href) ")";
-    }
-
-    .embedded-video {
-      display: none;
-      width: 0 !important;
-      height: 0 !important;
-      overflow: hidden !important;
-      line-height: 0pt !important;
-      white-space: nowrap;
-    }
-
-    .hero--gout,
-    .bg--crystals--v1,
-    .bg--crystals--v2,
-    .bg--crystals--v3 {
-      background: inherit;
-    }
-    .container,
-    .prose {
-      max-width: 650px;
-    }
-    .print--padding--none {
-      padding: 0;
-    }
-  }
-</style>
 
 <?php if($is_admin): ?>
   <section class="container padding-y--lg">
@@ -116,7 +15,7 @@
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" style="max-width:280px" src="/<?php print $theme_path; ?>/images/legs_header.gif">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/legs_header.gif">
     </div>
   </div>
 </section>
@@ -131,7 +30,7 @@
   <div class="container display--flex flex-wrap--wrap padding-bottom--xl padding-x--md">
     <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Individualized Health Information</h2>
     <div class="print--hide width--100 md--width--50 md--padding-right--xxxl text-align--center">
-      <img src="/<?php print $theme_path; ?>/images/book300x300.png" alt="book with open pages">
+      <img src="/<?php print $module_path; ?>/images/book300x300.png" alt="book with open pages">
     </div>
     <div class="print--width--100 width--100 md--width--50 md--padding-left--lg print--padding--none">
       <p class="print--hide text-align--center md--text-align--left ">Explore these topics to better understand your gout health</p>
@@ -145,7 +44,7 @@
     <div class="display--flex flex-wrap--wrap flex-direction--row-rev ">
         <div class="width--100 md--width--50 print--hide">
           <div class="text-align--center padding-bottom--md">
-            <img src="/<?php print $theme_path; ?>/images/doctor300x300.png" alt="an outline drawing of a doctor with a stethoscope">
+            <img src="/<?php print $module_path; ?>/images/doctor300x300.png" alt="an outline drawing of a doctor with a stethoscope">
           </div>
         </div>
         <div class="print--width--100 width--100 md--width--50">
@@ -170,14 +69,14 @@
     <div class=" print--hide display--flex sm--flex-wrap--no-wrap flex-wrap--wrap padding-y--md  align-items--center ">
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
-          <img src="/<?php print $theme_path; ?>/images/foot300x300.png" />
+          <img src="/<?php print $module_path; ?>/images/foot300x300.png" />
         </div>
       </div>
       <div class="sm--show font-size--xxxxl padding--md">&rarr;</div>
       <div class="sm--hide width--100 font-size--xxxl  padding--md">&darr;</div>
       <div class="padding--xs center">
         <div class="circle square--lg padding--lg bg--white border border-color--gray-4 border-width--sm">
-          <img src="/<?php print $theme_path; ?>/images/list300x300.png" />
+          <img src="/<?php print $module_path; ?>/images/list300x300.png" />
         </div>
       </div>
     </div>
@@ -191,7 +90,7 @@
     <div class="center prose">
       <div class="display--flex align-items--flex-start margin-bottom--sm">
         <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-          <img src="/<?php print $theme_path; ?>/images/inphographic75x75.png" alt="infographic icon">
+          <img src="/<?php print $module_path; ?>/images/inphographic75x75.png" alt="infographic icon">
         </div>
         <div class="margin-left--md" style="flex: 1;">
           <p><span class="bold">Gout and Kidney Disease</span>
@@ -201,7 +100,7 @@
       </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
           <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-              <img src="/<?php print $theme_path; ?>/images/factsheet75x75.png" alt="factsheet icon">
+              <img src="/<?php print $module_path; ?>/images/factsheet75x75.png" alt="factsheet icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Gout Fact sheet</span>
@@ -211,7 +110,7 @@
         </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
           <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-            <img src="/<?php print $theme_path; ?>/images/checklist75x75.png" alt="checklist icon">
+            <img src="/<?php print $module_path; ?>/images/checklist75x75.png" alt="checklist icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Gout and Uric Acid tracker</span>
@@ -221,7 +120,7 @@
         </div>
         <div class="display--flex align-items--flex-start margin-bottom--sm">
           <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
-            <img src="/<?php print $theme_path; ?>/images/video75x75.png" alt="video icon">
+            <img src="/<?php print $module_path; ?>/images/video75x75.png" alt="video icon">
           </div>
           <div class="margin-left--md" style="flex: 1;">
             <p><span class="bold">Video</span>
