@@ -29,7 +29,7 @@
     </div>
   </div>
 </section>
-<section class="bg--gray-1 bg--crystals--v2 border-bottom edge--ragged--top">
+<section class="bg--gray-1 border-bottom edge--ragged--top">
   <div class="container display--flex flex-wrap--wrap padding-y--xxxl padding-x--md">
     <h2 class="width--100 text-align--center">Kidney disease</h2>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
@@ -42,7 +42,7 @@
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
         <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_kidney.svg"/>
-        <p class="padding--none"><strong>30 million American adults have kidney disease,</strong>
+        <p class="padding--none"><strong>37 million American adults have kidney disease,</strong>
         <br>and most don’t know it.</p>
       </div>
     </div>

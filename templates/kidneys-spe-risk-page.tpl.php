@@ -12,7 +12,7 @@
         <?php if($scenario == 3): ?>
           <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
         <?php endif;?>
-        <?php if($scenario == 4): ?>
+        <?php if($scenario == 4 || $scenario == 6): ?>
           <h1 class="font-size--xxxl margin-top--lg">You have Chronic Kidney Disease</h1>
         <?php endif;?>
         <?php if($scenario == 5): ?>
@@ -55,7 +55,7 @@
         <p>The information below explains <span class="bold">your risk factors</span>. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional.
         </p>
       <?php endif;?>
-      <?php if($scenario == 4): ?>
+      <?php if($scenario == 4 || $scenario == 6): ?>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
           The information you entered shows you have <?php print $factor_count;?> common risk factors for chronic kidney disease (CKD) progression. The information below explains <span class="bold">your risk factors</span>.
