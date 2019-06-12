@@ -93,12 +93,12 @@
   </div>
 </section>
 
-<section class="print--hide bg--gray-1 edge--ragged--bottom edge--ragged--top">
+<section class="print--hide border-bottom">
   <div class="container padding-y--xxl padding-x--md">
     <div class="print--hide text-align--center">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-health-results" href="#" class="hide sm--display--inline font-size--sm caps button--white js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-health-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--white margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
-      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-health-results" href="#" class="font-size--sm caps button--white js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
+      <a data-track="event" data-category="cta" data-action="print" data-label="spe-health-results" href="#" class="hide sm--display--inline font-size--sm caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-health-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-1 margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-health-results" href="#" class="font-size--sm caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>

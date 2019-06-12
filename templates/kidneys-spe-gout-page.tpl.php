@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/legs_header.gif">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/gout_foot.gif">
     </div>
   </div>
 </section>
@@ -28,7 +28,7 @@
 </section>
 <section>
   <div class="container display--flex flex-wrap--wrap padding-bottom--xl padding-x--md">
-    <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Individualized Health Information</h2>
+    <h2 class="print--hide width--100 padding-bottom--xl text-align--center">Your Health Information</h2>
     <div class="print--hide width--100 md--width--50 md--padding-right--xxxl text-align--center">
       <img src="/<?php print $module_path; ?>/images/book300x300.png" alt="book with open pages">
     </div>
