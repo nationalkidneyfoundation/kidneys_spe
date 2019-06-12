@@ -797,7 +797,6 @@ function kidneys_spe_page($entityformid, $version) {
     }
   }
   $return['version'] = $version;
-  dpm($return);
   return theme($theme, $return);
 }
 
