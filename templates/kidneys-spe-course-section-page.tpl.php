@@ -72,7 +72,7 @@
 
 </div>
 <section class="margin-top--xxl">
-  <div class="bg--gray-2 padding-y--xl padding-x--md">
+  <div class="border-top padding-y--xl padding-x--md">
     <div class="container prose text-align--center">
       <div  class="print--hide">
         <h3 class="width--100 text-align--center">We want to know what you think.</h3>
