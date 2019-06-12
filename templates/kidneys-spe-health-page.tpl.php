@@ -8,11 +8,14 @@
 <?php endif; ?>
 <section class="hero--health edge--ragged--bottom margin-bottom--xxl print--hide">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
-    <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
+    <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
-        <div class="font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
-        <div class="padding-top--lg font-size--lg">Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
+        <div class="hide font-size--xl line-height--120">Thanks for taking time to answer our questions.</div>
+        <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Thanks!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
       </div>
+    </div>
+    <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/KH_hero.png">
     </div>
   </div>
 </section>
@@ -27,11 +30,11 @@
   <div class="container display--flex flex-wrap--wrap margin-bottom--xxl padding-x--md">
     <h2 class="prose center text-align--center margin-bottom--lg">Based on your lab results the health of your kidneys is:</h2>
 
-    <div class="md--padding-x--xl width--100 prose center">
+    <div class="color--black md--padding-x--xl width--100 prose center">
       <div class="position--relative">
         <div class="position--relative display--inline-block text-align--center padding-x--lg "
           style="left:<?php print $type['score'];?>%;transform:translateX(-50%);">
-          <div class="padding-y--sm width--md color--gray-4 white-space--nowrap pill caps bold font-size--sm"
+          <div class="padding-y--sm width--md white-space--nowrap pill caps bold font-size--sm"
             style="background-color:<?php print $color;?>;">
               <?php print $type['name'];?>
           </div>
@@ -42,7 +45,7 @@
       </div>
       <div class="pill border border-color--gray-4 border-width--sm padding--xxs margin-bottom--sm">
         <div class="display--flex padding-x--xl padding-y--md pill align-items--center caps bold font-size--sm"
-             style="background: linear-gradient(to right, #d51217, #FEDC00, #018241)">
+             style="background: linear-gradient(to right, #D21F17, #FCD006, #A4C02D)">
           <div class="width--33 vertical-align--middle text-align--left">
             <?php print $type['scale'][2];?></div>
           <div class="width--33 vertical-align--middle text-align--center">

@@ -628,7 +628,7 @@ function kidneys_spe_page($entityformid, $version) {
   $return['acr'] = $acr;
   // Use the 'risk' version of the tool because it was set by the 'version'
   // or we don't have gfr or acr.
-  if ($version == 'risk' || ($version == 'health' && ($grf == 'unk' || $acr == 'unk'))) {
+  if ($version == 'risk' || ($version == 'health' && ($gfr == 'unk' || $acr == 'unk'))) {
     // Set version to risk because we don't know enough about the person.
     $version = 'risk';
 
@@ -799,6 +799,7 @@ function kidneys_spe_page($entityformid, $version) {
     }
   }
   $return['version'] = $version;
+
   return theme($theme, $return);
 }
 
@@ -863,6 +864,8 @@ function kidneys_spe_section_page($entityformid, $version, $section) {
     $return['section_links'][] = l(t($t), 'phi/'. $entityformid . '/' . $version . '/' . $s->nid, $options);
     $j++;
   }
+  $return['sid'] = $entityformid;
+  $return['module_path'] = drupal_get_path('module', 'kidneys_spe');
   $return['next_section'] = $next_section;
   $return['sections'] = $sections;
 
@@ -914,7 +917,7 @@ function kidneys_spe_ku_accordion($kus, $tracking = false, $entityformid = false
     if ($tracking && function_exists('nkf_misc_get_rate_widget')) {
       $v = ($entityformid) ? $entityformid : NULL;
       $rating = nkf_misc_get_rate_widget('ku-nid: ' . $value->nid, $v, 'rate');
-      $desc .= $rating;
+      $desc .= '<div class="margin-top--md">'.$rating.'</div>';
     }
     // TODO: actually make this work.
     /*$desc .= '<div class="print--hide display--flex padding-top--md justify-content--space-between align-items--center">';
@@ -1089,7 +1092,7 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
             $profile_values = array();
             // If the profile has values for submission field
             // we need to evaluate if they match.
-            if (count($profile->{$field_name}) > 0) {
+            if (!empty($profile->{$field_name}) && count($profile->{$field_name}) > 0) {
               // Gather up all the values to check.
               foreach ($profile->{$field_name}[LANGUAGE_NONE] as $value) {
                 $profile_values[$value['value']] = $value['value'];
@@ -1341,22 +1344,30 @@ function kidneys_spe_get_health_score($gfr, $acr) {
  function kidneys_spe_get_health_color($p, $reverse = FALSE) {
    if ($reverse) {
      if ($p > 50) {
-       $rgb_end = array(213,18,23);
-       $rgb_beginning = array(254,220,0);
+       //red
+       $rgb_end = array(210, 31, 23);
+       // yellow
+       $rgb_beginning = array(252, 208, 6);
        $p = ($p - 50) / 50;
      } else {
-       $rgb_end = array(254,220,0);
-       $rgb_beginning = array(1, 130, 65);
+       // yellow
+       $rgb_end = array(252, 208, 6);
+       // green
+       $rgb_beginning = array(164, 192, 45);
        $p = $p / 50;
      }
    } else {
      if ($p <= 50) {
-       $rgb_beginning = array(213,18,23);
-       $rgb_end = array(254,220,0);
+       //red
+       $rgb_beginning = array(210, 31, 23);
+       // yellow
+       $rgb_end = array(252, 208, 6);
        $p = $p / 50;
      } else {
-       $rgb_beginning = array(254,220,0);
-       $rgb_end = array(1, 130, 65);
+       // yellow
+       $rgb_beginning = array(252, 208, 6);
+       // green
+       $rgb_end = array(164, 192, 45);
        $p = ($p - 50) / 50;
      }
    }
