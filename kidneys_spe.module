@@ -687,6 +687,8 @@ function kidneys_spe_page($entityformid, $version) {
     // scenario 6: risk factors don't matter, no labs, affirmative diagnosis
     $return['scenario'];
     // First, check for scenario 4 and 6.
+    $score = kidneys_spe_get_health_score($gfr, $acr);
+    $score = $score['name'];
     if ($submission->field_spe_ckd_diagnosis[0]->value() == 'yes') {
       if ($gfr == 'unk' && $acr == 'unk' ) {
         $return['scenario'] = 6;
@@ -694,7 +696,7 @@ function kidneys_spe_page($entityformid, $version) {
         $return['scenario'] = 4;
       }
       // Check scenario 3.
-    } elseif($gfr !== 'unk' && $acr !== 'unk' && kidneys_spe_get_health_score($gfr, $acr) !== 'good') {
+    } elseif($gfr !== 'unk' && $acr !== 'unk' && $score !== 'good') {
       $return['scenario'] = 3;
       // Check scenario 5.
     } elseif($return['common_factors_count'] == 0 && $return['additional_factors_count'] == 0) {
