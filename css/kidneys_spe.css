@@ -18,8 +18,8 @@
   position: relative;
   background-position: center;
 }
-.hero--health {
-    background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/kidneyhealth_hero.png);
+.hero--healthOLD {
+  background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/KH_hero.png);
 }
 .hero--gout {
   background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/bg_crystals_v3.png);
@@ -28,7 +28,7 @@
   background-image: url(/profiles/kidneys_distro/modules/custom/kidneys_spe/images/brush.png);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: left;
 }
 @media (min-width: 52em) {
   .hero--gout {

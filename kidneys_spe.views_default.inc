@@ -2235,12 +2235,6 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_section_knowledge_units_node']['field'] = 'reverse_field_section_knowledge_units_node';
   $handler->display->display_options['relationships']['reverse_field_section_knowledge_units_node']['label'] = 'Section';
   $handler->display->display_options['relationships']['reverse_field_section_knowledge_units_node']['required'] = TRUE;
-  /* Relationship: Flags: done */
-  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
-  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
-  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'done';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -2255,14 +2249,6 @@ function kidneys_spe_views_default_views() {
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['relationship'] = 'reverse_field_section_knowledge_units_node';
-  /* Field: Flags: Flag link */
-  $handler->display->display_options['fields']['ops']['id'] = 'ops';
-  $handler->display->display_options['fields']['ops']['table'] = 'flagging';
-  $handler->display->display_options['fields']['ops']['field'] = 'ops';
-  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
-  $handler->display->display_options['fields']['ops']['label'] = '';
-  $handler->display->display_options['fields']['ops']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -2360,7 +2346,6 @@ function kidneys_spe_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Section'),
-    t('flag'),
     t('Nid'),
     t('[body]<div>[ops]</div>'),
     t('All'),

@@ -8,6 +8,9 @@
         <div class="font-size--xl font-weight--400">and your health</div>
       </h1>
     </div>
+    <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/KH_hero.png">
+    </div>
   </div>
 </section>
 <section>
