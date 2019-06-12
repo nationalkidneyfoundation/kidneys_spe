@@ -1,28 +1,38 @@
 <div class="print--hide1">
   <section class="hero--health edge--ragged--bottom margin-bottom--xxl print--hide">
-    <div class="container">
-      <div class="center prose padding-y--xxl padding-x--md color--white">
-        <?php if($scenario == 1): ?>
-          <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
-        <?php endif;?>
-        <?php if($scenario == 2): ?>
-          <h1 class="font-size--xxxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
-
-        <?php endif;?>
-        <?php if($scenario == 3): ?>
-          <h1 class="font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
-        <?php endif;?>
-        <?php if($scenario == 4 || $scenario == 6): ?>
-          <h1 class="font-size--xxxl margin-top--lg">You have Chronic Kidney Disease</h1>
-        <?php endif;?>
-        <?php if($scenario == 5): ?>
-          <h1 class="font-size--xxl margin-top--lg">You have no reported risk factors for Chronic Kidney Disease</h1>
-        <?php endif;?>
+    <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
+      <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
+        <div class="display--inline-block center color--white">
+          <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Thanks!</div> Below you'll find individualized content based on your answers that will help you understand your risk for kidney disease.</div>
+        </div>
+      </div>
+      <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
+        <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/KH_hero.png">
       </div>
     </div>
   </section>
   <section>
     <div class="prose center padding-x--md">
+      <div class="container">
+        <div class="">
+          <?php if($scenario == 1): ?>
+            <h1 class="font-size--xxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+          <?php endif;?>
+          <?php if($scenario == 2): ?>
+            <h1 class="font-size--xxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
+
+          <?php endif;?>
+          <?php if($scenario == 3): ?>
+            <h1 class="font-size--xxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+          <?php endif;?>
+          <?php if($scenario == 4 || $scenario == 6): ?>
+            <h1 class="font-size--xxl margin-top--lg">You have Chronic Kidney Disease</h1>
+          <?php endif;?>
+          <?php if($scenario == 5): ?>
+            <h1 class="font-size--xl margin-top--lg">You have no reported risk factors for Chronic Kidney Disease</h1>
+          <?php endif;?>
+        </div>
+      </div>
       <?php if($scenario == 1): ?>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">

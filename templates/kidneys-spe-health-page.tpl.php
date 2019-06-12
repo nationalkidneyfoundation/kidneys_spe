@@ -10,7 +10,7 @@
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
-        <div class="hide font-size--xl line-height--120">Thanks for taking time to answer our questions.</div>
+
         <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Thanks!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
       </div>
     </div>

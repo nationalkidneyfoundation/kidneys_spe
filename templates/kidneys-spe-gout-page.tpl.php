@@ -6,7 +6,7 @@
     <?php print $profile_names;?>
   </section>
 <?php endif; ?>
-<section class="hero--gout margin-bottom--xxl print--hide">
+<section class="hero--gout margin-bottom--xxl print--hide edge--ragged--bottom">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">

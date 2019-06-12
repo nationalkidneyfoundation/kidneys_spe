@@ -1,6 +1,6 @@
 
 
-<section class="hero--health margin-bottom--xxl">
+<section class="hero--health margin-bottom--xxl edge--ragged--bottom">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 print--width--100 md--width--50 padding-top--none padding-bottom--xl md--padding-right--lg">
       <h1 class="display--inline-block center caps color--white">
@@ -44,7 +44,7 @@
     </div>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
-        <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_kidney.svg"/>
+        <img class="" style="max-width:125px" src="/<?php print $module_path; ?>/images/kh_kidney.svg"/>
         <p class="padding--none"><strong>37 million American adults have kidney disease,</strong>
         <br>and most don’t know it.</p>
       </div>

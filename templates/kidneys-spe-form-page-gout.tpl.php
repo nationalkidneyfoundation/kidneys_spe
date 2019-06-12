@@ -44,7 +44,7 @@
     </div>
     <div class="width--100 md--width--33 padding--md lg--padding--xl">
       <div class="height--100 padding--md bg--white border border-color--gray-4 border-radius--xl border-width--sm text-align--center">
-        <img class="max-width--md" src="/<?php print $module_path; ?>/images/kh_kidney.svg"/>
+        <img class="" style="max-width:125px" src="/<?php print $module_path; ?>/images/kh_kidney.svg"/>
         <p class="padding--none"><strong>37 million American adults have kidney disease,</strong>
         <br>and most don’t know it.</p>
       </div>

@@ -27,12 +27,15 @@
     </div>
   </div>
 </section>
+<section class="print--show">
+  <h1 class="prose center font-size--xl padding-top--xxs color--white"><?php print $title;?></h1>
+</section>
 <div class="padding-x--md container">
   <div class="display--flex flex-wrap--wrap">
 
-    <section class="md--width--60 width--100 margin-bottom--xl ">
+    <section class="print--width--100 md--width--60 width--100 margin-bottom--xl ">
       <div class="">
-        <div class="prose">
+        <div class="prose center">
             <h3>Topics</h3>
             <?php print $knowledge_units;?>
           <?php if($has_actions): ?>
@@ -58,8 +61,8 @@
 
 
     </section>
-    <nav class="md--width--30 width--100 margin-top--xxl  md--padding-left--xl">
-      <div class="margin-x--md">
+    <nav class="print--width--100 md--width--30 width--100 margin-top--xxl  md--padding-left--xl">
+      <div class="padding-x--md prose center">
         <h3 class="padding-top--none padding-x--xxs">Sections</h3>
         <ol class="bold">
           <?php foreach($section_links as $i => $link): ?>
