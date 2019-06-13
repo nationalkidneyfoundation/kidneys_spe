@@ -267,6 +267,7 @@ function kidneys_spe_form_alter(&$form, &$form_state, $form_id) {
  if ($form_id == 'personalized_health_form_entityform_edit_form') {
    // Get the form version from the url.
    // There is probably a better way to do this.
+
    $get = drupal_get_query_parameters();
    $version = isset($get['version']) ? $get['version'] : 'health';
 
@@ -453,7 +454,8 @@ function kidneys_spe_menu() {
 /**
  * Callback for main SPE form page.
  */
-function kidneys_spe_form($entity_id = FALSE) {
+function kidneys_spe_form() {
+
   // Include js for cookies...yum.
   drupal_add_library('system', 'jquery.cookie');
   $path = drupal_get_path('module', 'kidneys_spe');
@@ -473,7 +475,10 @@ function kidneys_spe_form($entity_id = FALSE) {
 
   // The entityform already knows what verson based on hook_form_alter
   // but we will use this below.
-  $version = isset($get['version']) ? strtolower($get['version']) : 'health';
+  if(empty($version)) {
+    $version = isset($get['version']) ? strtolower($get['version']) : 'health';
+  }
+
 
   // The course node is connected with a version, so lets get it.
   $course = kidneys_spe_get_course_by_code($version);
@@ -513,7 +518,7 @@ function kidneys_spe_form($entity_id = FALSE) {
       $theme = 'kidneys_spe_hyperk_page';
       break;
     default:
-      $theme = 'kidneys_spe_form_page';
+      $theme = 'kidneys_spe_form_page_health';
       break;
   }
   kidneys_spe_add_metatags($version);
@@ -1045,6 +1050,7 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
       }
 
       // Remove height and weight field values but add in BMI.
+      $fields['field_spe_bmi'] = NULL;
       if (isset($fields['field_spe_weight'])
           && isset($fields['field_spe_height_feet'])
           && isset($fields['field_spe_height_inches'])) {
@@ -1057,7 +1063,6 @@ function kidneys_spe_get_profiles_from_assessment($entityform) {
       unset($fields['field_spe_weight']);
       unset($fields['field_spe_height_feet']);
       unset($fields['field_spe_height_inches']);
-
       // Get all Patient Profile nodes.
       // This could get troublesome with many nodes.
       // TODO: set so we are only pulling profiles
@@ -1406,42 +1411,45 @@ function kidneys_spe_get_rendered_field($entity_type, $entity, $field_name, $del
  * Helper function to add Open Graph info.
  */
 function kidneys_spe_add_metatags($version = 'health') {
-  $path = drupal_get_path('module', 'kidneys_spe');
+  $base = $GLOBALS['base_url'];
+  $path = $base . '/' . drupal_get_path('module', 'kidneys_spe');
   switch ($version) {
 
     case 'gout':
       $description = 'Take control of your gout health. Answer a few questions and we’ll provide you with personalized information about gout and your health.';
       $image = $path . '/images/gout_og_image.png';
-      $url = 'https://kidney.org/phi/form?version=gout';
-    return;
+      $url = $base . '/gout-health-assessment';
+      break;
     case 'health':
     default:
       $description = 'Take control of your kidney health. Answer a few questions and we’ll provide you with personalized information about kidneys and your health.';
       $image = $path . '/images/KH_hero.png';
-      $url = 'https://kidney.org/phi/form?version=health';
-    return;
+      $url = $base . '/kidney-health-assessment';
+      break;
   }
-  // Add description
+
+
+
   $element = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
     '#attributes' => array(
-      'name' => 'og:description',
-      'content' => $description,
-    )
-  );
-  drupal_add_html_head($element, 'description');
-  // Add og:image
-  $element = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      "property" => "og:image",
-      "content" => $image,
+      "property" => "shortlink",
+      "content" => $url,
     ),
   );
+  drupal_add_html_head($element,'shortlink_url');
 
-  drupal_add_html_head($element,'image');
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "canonical",
+      "content" => $url,
+    ),
+  );
+  drupal_add_html_head($element,'canonical_url');
+
   $element = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
@@ -1450,8 +1458,80 @@ function kidneys_spe_add_metatags($version = 'health') {
       "content" => $url,
     ),
   );
-
   drupal_add_html_head($element,'og_url');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:url",
+      "content" => $url,
+    ),
+  );
+  drupal_add_html_head($element,'twitter_url');
+
+  // Add description
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'description',
+      'content' => $description,
+    )
+  );
+  drupal_add_html_head($element, 'description');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:description",
+      "content" => $description
+    ),
+  );
+  drupal_add_html_head($element,'og_description');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:description",
+      "content" => $description
+    ),
+  );
+  drupal_add_html_head($element,'twitter_description');
+
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:image",
+      "content" => $image,
+    ),
+  );
+  drupal_add_html_head($element,'og_image');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:image",
+      "content" => $image,
+    ),
+  );
+  drupal_add_html_head($element,'twitter_image');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:card",
+      "content" => 'summary_large_image',
+    ),
+  );
+  drupal_add_html_head($element,'twitter_card');
+
 }
 
 /**
@@ -1490,7 +1570,20 @@ function kidneys_spe_flag_flag($flag, $entity_id, $account, $flagging) {
 }
 */
 
-
+function kidneys_spe_html_head_alter(&$head_elements) {
+  //dpm($head_elements);
+  // Kill some metatags
+  unset($head_elements['metatag_canonical']);
+  unset($head_elements['metatag_shortlink']);
+  // Kill some OG/Twitter stuff.
+  foreach($head_elements as $element) {
+    if (!empty($element['#name'])) {
+      if (in_array($element['#name'], array('og:url', 'twitter:url'))) {
+        unset($head_elements[$element]);
+      }
+    }
+  }
+}
 
 
 /**

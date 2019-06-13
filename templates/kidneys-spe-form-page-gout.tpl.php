@@ -11,7 +11,7 @@
       </h1>
     </div>
     <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/gout_foot.gif">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/goutheader3.png">
     </div>
   </div>
 </section>

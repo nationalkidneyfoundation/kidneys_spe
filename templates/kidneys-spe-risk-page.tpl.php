@@ -18,7 +18,7 @@
   <section>
     <div class="prose center padding-x--md">
       <div class="container">
-        <div class="" style="color:#">
+        <div class="" style="color:#D74908">
           <?php if($scenario == 1): ?>
             <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You are at risk</span> for Chronic Kidney Disease</h1>
           <?php endif;?>
