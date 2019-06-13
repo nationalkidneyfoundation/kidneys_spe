@@ -15,22 +15,23 @@
   </section>
   */
   ?>
+
   <section>
     <div class="prose center padding-x--md">
       <div class="container">
         <div class="" style="color:#D74908">
           <?php if($scenario == 1): ?>
-            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You are at risk</span> for Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl margin-top--lg">You are at risk</span> for Chronic Kidney Disease</h1>
           <?php endif;?>
           <?php if($scenario == 2): ?>
-            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
 
           <?php endif;?>
           <?php if($scenario == 3): ?>
-            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
           <?php endif;?>
           <?php if($scenario == 4 || $scenario == 6): ?>
-            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You have Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl margin-top--lg">You have Chronic Kidney Disease</h1>
           <?php endif;?>
           <?php if($scenario == 5): ?>
             <h1 class="font-size--xl margin-top--lg">You have no reported risk factors for Chronic Kidney Disease</h1>
@@ -40,10 +41,10 @@
       <?php if($scenario == 1): ?>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
-          The information you entered shows you have <?php print $factor_count;?> common risk factors for chronic kidney disease (CKD). This means you have an increased chance of developing CKD. Because CKD has no early symptoms, people at risk for CKD should be tested regularly to find out about their kidney health.
+          The information you entered shows <strong>you have <?php print $factor_count;?> common risk factors</strong> for chronic kidney disease (CKD). This means you have an increased chance of developing CKD. Because CKD has no early symptoms, people at risk for CKD should be tested regularly to find out about their kidney health.
         </p>
         <p class="linkHighlight">
-          The information below explains <span class="bold">your risk factors</span>. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional and ask them if CKD testing is right for you.
+          The information below explains your risk factors. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional and ask them if CKD testing is right for you.
         </p>
       <?php endif;?>
       <?php if($scenario == 2): ?>

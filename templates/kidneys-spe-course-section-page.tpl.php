@@ -27,8 +27,8 @@
     </div>
   </div>
 </section>
-<section class="print--show">
-  <h1 class="prose center font-size--xl padding-top--xxs color--white"><?php print $title;?></h1>
+<section class="print--show hide">
+  <h1 class="prose center font-size--xl padding-top--xxs"><?php print $title;?></h1>
 </section>
 <div class="padding-x--md container">
   <div class="display--flex flex-wrap--wrap">
@@ -61,7 +61,7 @@
 
 
     </section>
-    <nav class="print--hide md--width--30 width--100 margin-top--xxl  md--padding-left--xl">
+    <nav class="print--width--100 md--width--30 width--100 margin-top--xxl  md--padding-left--xl">
       <div class="padding-x--md prose center">
         <h3 class="padding-top--none padding-x--xxs">Sections</h3>
         <ol class="bold">
@@ -74,17 +74,8 @@
   </div>
 
 </div>
-<section class="print--hide border-bottom">
-  <div class="container padding-y--xxl padding-x--md">
-    <div class="print--hide text-align--center">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-health-results" href="#" class="hide sm--display--inline font-size--sm caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-health-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-1 margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
-      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-health-results" href="#" class="font-size--sm caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
-    </div>
-  </div>
-</section>
-<section class="">
-  <div class="padding-y--xl padding-x--md">
+<section class="margin-top--xxl">
+  <div class="border-top padding-y--xl padding-x--md">
     <div class="container prose text-align--center">
       <div  class="print--hide">
         <h3 class="width--100 text-align--center">We want to know what you think.</h3>

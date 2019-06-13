@@ -9,12 +9,12 @@
 <section class="hero--gout margin-bottom--xxl print--hide">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
-      <div class="display--inline-block center color--white">
-        <div class="font-size--xl line-height--120 caps">Thanks for taking time to answer our questions.</div>
-        <div class="padding-top--lg font-size--lg">Below you'll find individualized content based on your answers that will help you take control of your gout health.</div>
+      <div class=" order--0 md--order--2 display--inline-block center color--white">
+        <div class="font-size--xl bold">Thanks!</div>
+        <div class="font-size--lg">Below you'll find individualized content based on your answers that will help you take control of your gout health.</div>
       </div>
     </div>
-    <div class="width--100 md--width--50 md--padding-left--lg ">
+    <div class=" order--1 width--100 md--width--50 md--padding-left--lg ">
       <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/goutheader3.png">
     </div>
   </div>
@@ -57,9 +57,9 @@
 <section class="print--hide">
   <div class="container padding-y--xxl padding-x--md">
     <div class="print--hide md--width--50 text-align--center md--text-align--left margin-bottom--md">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="hide sm--display--inline font-size--sm caps button--gray-3 js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
-      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-3 margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
-      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-3 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
+      <a data-track="event" data-category="cta" data-action="print" data-label="spe-gout-results" href="#" class="hide sm--display--inline font-size--sm caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
+      <a data-track="event" data-category="cta" data-action="email" data-label="spe-gout-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-1 margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
+      <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-gout-results" href="#" class="font-size--sm caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
     </div>
   </div>
 </section>
@@ -133,14 +133,14 @@
   </div>
 </section>
 <section>
-  <div class="bg--gray-2 padding-top--xl padding-x--md">
+  <div class="border-top padding-top--xl padding-x--md">
     <div class="container prose text-align--center">
       <h2 class="width--100 text-align--center">Thank You</h2>
       <p>We appreciate you taking the time to answer our questions and for reviewing these topics. Gout can be a chronic, or long term disease, so it’s important to stay with any treatment plan recommended by a clinician and report any sudden changes in symptoms.</p>
     <p>If you have questions, you can speak with your healthcare team or <a href="https://www.kidney.org/about/contact">contact</a> the National Kidney Foundation.</p>
     </div>
   </div>
-  <div class="bg--gray-2 padding-bottom--xl padding-x--md">
+  <div class="padding-bottom--xl padding-x--md">
     <div class="container prose text-align--center">
       <div  class="print--hide">
         <h3 class="width--100 text-align--center">We want to know what you think.</h3>

@@ -8,13 +8,13 @@
 <?php endif; ?>
 <section class="hero--health edge--ragged--bottom margin-bottom--xxl print--hide">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
-    <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
+    <div class=" order--0 md--order--2 width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
 
         <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Welcome to your Kidney Pathways!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
       </div>
     </div>
-    <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
+    <div class="print--hide  order--1 width--100 md--width--50 md--padding-left--lg ">
       <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/KH_hero.png">
     </div>
   </div>
@@ -27,8 +27,8 @@
   </div>
 </section>
 <section>
-  <div class="container display--flex flex-wrap--wrap margin-bottom--xxl padding-x--md">
-    <h2 class="prose center text-align--center margin-bottom--lg">Based on your lab results your kidney health is:</h2>
+  <div class="container margin-bottom--xxl padding-x--md">
+    <h2 class="prose center text-align--center margin-bottom--lg ">Based on your lab results<br class="md--show"> your kidney health is:</h2>
 
     <div class="color--black md--padding-x--xl width--100 prose center">
       <div class="position--relative">
