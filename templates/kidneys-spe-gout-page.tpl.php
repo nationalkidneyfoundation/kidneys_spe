@@ -9,12 +9,12 @@
 <section class="hero--gout margin-bottom--xxl print--hide">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
-      <div class=" order--0 md--order--2 display--inline-block center color--white">
+      <div class="display--inline-block center color--white">
         <div class="font-size--xl bold">Thanks!</div>
         <div class="font-size--lg">Below you'll find individualized content based on your answers that will help you take control of your gout health.</div>
       </div>
     </div>
-    <div class=" order--1 width--100 md--width--50 md--padding-left--lg ">
+    <div class=" width--100 md--width--50 md--padding-left--lg ">
       <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/goutheader3.png">
     </div>
   </div>

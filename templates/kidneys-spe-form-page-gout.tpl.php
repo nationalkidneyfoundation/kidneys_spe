@@ -5,12 +5,12 @@
 <section class="hero--gout margin-bottom--xxl">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="display--flex width--100 print--width--100 md--width--50 padding-top--none padding-bottom--xl md--padding-right--lg">
-      <h1 class="display--inline-block  order--1 caps color--white">
+      <h1 class="display--inline-block  caps color--white">
         <div class="font-size--xxxxxl">Gout</div>
         <div class="font-size--xl font-weight--400">and your health</div>
       </h1>
     </div>
-    <div class="print--hide  order--0 md--order--2 width--100 md--width--50 md--padding-left--lg ">
+    <div class="print--hide  width--100 md--width--50 md--padding-left--lg ">
       <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/goutheader3.png">
     </div>
   </div>
