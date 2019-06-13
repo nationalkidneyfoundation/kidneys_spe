@@ -516,6 +516,7 @@ function kidneys_spe_form($entity_id = FALSE) {
       $theme = 'kidneys_spe_form_page';
       break;
   }
+  kidneys_spe_add_metatags($version);
 
   return theme($theme, $return);
 }
@@ -1401,7 +1402,45 @@ function kidneys_spe_get_rendered_field($entity_type, $entity, $field_name, $del
     return NULL;
   }
 }
+/**
+ * Helper function to add Open Graph info.
+ */
+function kidneys_spe_add_metatags($version = 'health') {
+  $path = drupal_get_path('module', 'kidneys_spe');
+  switch ($version) {
 
+    case 'gout':
+      $description = 'Take control of your gout health. Answer a few questions and we’ll provide you with personalized information about gout and your health.';
+      $image = $path . '/images/gout_og_image.png';
+    return;
+    case 'health':
+    default:
+      $description = 'Take control of your kidney health. Answer a few questions and we’ll provide you with personalized information about kidneys and your health.';
+      $image = $path . '/images/KH_hero.png';
+    return;
+  }
+  // Add description
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'og:description',
+      'content' => $description,
+    )
+  );
+  drupal_add_html_head($element, 'description');
+  // Add og:image
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:image",
+      "content" => $image,
+    ),
+  );
+
+  drupal_add_html_head($element,'image');
+}
 
 /**
  * Implements hook_flag_alter

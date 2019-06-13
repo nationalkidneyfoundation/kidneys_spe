@@ -11,7 +11,7 @@
     <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
 
-        <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Thanks!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
+        <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Welcome to your Kidney Pathways!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
       </div>
     </div>
     <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
@@ -28,7 +28,7 @@
 </section>
 <section>
   <div class="container display--flex flex-wrap--wrap margin-bottom--xxl padding-x--md">
-    <h2 class="prose center text-align--center margin-bottom--lg">Based on your lab results the health of your kidneys is:</h2>
+    <h2 class="prose center text-align--center margin-bottom--lg">Based on your lab results your kidney health is:</h2>
 
     <div class="color--black md--padding-x--xl width--100 prose center">
       <div class="position--relative">
@@ -54,7 +54,7 @@
             <?php print $type['scale'][0];?></div>
         </div>
       </div>
-      <p class="text-align--center"><a href="#">Learn more</a> about this result.</p>
+      <p class="hide text-align--center"><a href="#">Learn more</a> about this result.</p>
     </div>
 
   </div>

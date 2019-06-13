@@ -1,4 +1,6 @@
-<div class="print--hide1">
+<div class="border-top">
+  <?php
+  /*
   <section class="hero--health edge--ragged--bottom margin-bottom--xxl print--hide">
     <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
       <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
@@ -11,22 +13,24 @@
       </div>
     </div>
   </section>
+  */
+  ?>
   <section>
     <div class="prose center padding-x--md">
       <div class="container">
-        <div class="">
+        <div class="" style="color:#">
           <?php if($scenario == 1): ?>
-            <h1 class="font-size--xxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You are at risk</span> for Chronic Kidney Disease</h1>
           <?php endif;?>
           <?php if($scenario == 2): ?>
-            <h1 class="font-size--xxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You may be at risk for Chronic Kidney Disease</h1>
 
           <?php endif;?>
           <?php if($scenario == 3): ?>
-            <h1 class="font-size--xxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You are at risk for Chronic Kidney Disease</h1>
           <?php endif;?>
           <?php if($scenario == 4 || $scenario == 6): ?>
-            <h1 class="font-size--xxl margin-top--lg">You have Chronic Kidney Disease</h1>
+            <h1 class="font-size--xxl md--font-size--xxxl margin-top--lg">You have Chronic Kidney Disease</h1>
           <?php endif;?>
           <?php if($scenario == 5): ?>
             <h1 class="font-size--xl margin-top--lg">You have no reported risk factors for Chronic Kidney Disease</h1>
@@ -45,7 +49,7 @@
       <?php if($scenario == 2): ?>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
-          The information you entered shows you have <?php print $factor_count;?> common risk factors for diabetes. Diabetes is a major risk factor for kidney disease. Diabetes can be treated and can improved with healthy lifestyle choices.
+          The information you entered shows <strong>you have <?php print $factor_count;?> common risk factors</strong> for diabetes. Diabetes is a major risk factor for kidney disease. Diabetes can be treated and can improved with healthy lifestyle choices.
         </p>
         <p class="linkHighlight">
           <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy of this information to discuss with your healthcare professional and ask them if CKD testing is right for you.
@@ -60,15 +64,15 @@
         </p>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
-          The information you entered shows you have <?php print $factor_count;?> of common risk factors for chronic kidney disease (CKD). Because CKD has no early symptoms, people at risk for CKD should be tested regularly to determine their kidney health.
+          The information you entered shows <strong>you have <?php print $factor_count;?> of common risk factors</strong> for chronic kidney disease (CKD). Because CKD has no early symptoms, people at risk for CKD should be tested regularly to determine their kidney health.
         </p>
-        <p>The information below explains <span class="bold">your risk factors</span>. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional.
+        <p>The information below explains your risk factors. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional.
         </p>
       <?php endif;?>
       <?php if($scenario == 4 || $scenario == 6): ?>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
-          The information you entered shows you have <?php print $factor_count;?> common risk factors for chronic kidney disease (CKD) progression. The information below explains <span class="bold">your risk factors</span>.
+          The information you entered shows <strong>you have <?php print $factor_count;?> common risk factors</strong> for chronic kidney disease (CKD) progression. The information below explains your risk factors.
         </p>
         <p class="linkHighlight">
           <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional and ask them for regular CKD testing to monitor your kidney health.
@@ -76,7 +80,7 @@
       <?php endif;?>
       <?php if($scenario == 5): ?>
         <p class="linkHighlight">
-          The information you entered shows you have none of the common risk factors for chronic kidney disease (CKD).
+          The information you entered shows <strong>you have none of the common risk factors</strong> for chronic kidney disease (CKD).
         </p>
         <p class="linkHighlight">
           Keep doing what you are doing to stay healthy: <span class="font-style--italic">maintain a healthy weight, exercise regularly, don’t smoke</span>. These activities will help keep your kidneys healthy.
@@ -126,9 +130,8 @@
           </h2>
 
           <!-- LEFT CONTENT -->
-          <div class="sm--float--left sm--max-width--lg
-                      md--margin-left--xxl- padding-bottom--lg sm--padding-right--xxl">
-              <blockquote class="bg--gray-1 padding-x--lg padding-y--sm font-style--italic border-left border-width--md border-color--orange">
+          <div class="sm--float--left sm--max-width--lg bottom--lg sm--padding-right--xxl padding-bottom--md">
+              <blockquote class="padding-x--lg padding-y--sm border-style--solid border-width--none border-left-width--md border-color--orange margin--none font-size--lg">
                   Ask your doctor for the estimated Glomerular Filtration Rate (eGFR) & Albumin-creatinine ratio, urine (ACR) tests.
               </blockquote>
           </div>
@@ -188,9 +191,8 @@
         General information about the kidneys</h2>
 
       <div class="linkHighlight">
-        <div class="sm--float--right sm--max-width--lg
-                      md--margin-right--xxl- padding-bottom--lg sm--padding-left--xxl">
-              <blockquote class="bg--gray-1 padding-x--lg padding-y--sm font-style--italic border-left border-width--md border-color--orange">
+        <div class="sm--float--right sm--max-width--lg bottom--lg sm--padding-left--xxl padding-bottom--md">
+              <blockquote class="padding-x--lg padding-y--sm border-style--solid border-width--none border-right-width--md border-color--orange margin--none font-size--lg">
                   30 million American adults have CKD and millions of others are at increased risk. </blockquote>
           </div>
           <p>
@@ -211,44 +213,4 @@
 
     </div>
   </section>
-</div>
-<div class="display--none  print--show">
-  <section class="padding-top--xxl ">
-    <div class="container padding-x--md">
-      <p class="text-align--left font-size--xxl">
-        You have
-        <span class="bold"><?php print $factor_count; ?>
-        out of <?php print $total_factors; ?></span>
-        risk factors for kidney disease.
-      </p>
-    </div>
-  </section>
-
-  <?php if($factor_count > 0): ?>
-    <section class="padding-bottom--xxl">
-      <div class="container padding-x--md">
-        <div class="font-size--lg">
-          <p class="">
-            The information you provided in the assessment suggests that <span class="bold">you are at risk for developing chronic kidney disease</span>.
-          </p>
-          <p>
-            Speak with your doctor about ??? tests.
-          </p>
-        </div>
-        <?php //print $risk_factors;?>
-        <h2>Your risk factors</h2>
-        <div class="display--flex flex-wrap--nowrap flex-direction--column align-items--center">
-          <?php foreach($risk_factors as $risk_factor): ?>
-            <div class="padding-bottom--lg">
-              <div class="bold font-size--lg padding-bottom--xxs">
-                <?php print render($risk_factor->node_title); ?>
-              </div>
-              <?php print render($risk_factor->field_body); ?>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    </section>
-  <?php endif; ?>
-
 </div>
