@@ -51,7 +51,7 @@
         <p class="linkHighlight">
           The information you entered shows <strong>you have <?php print $factor_count;?> common risk factors</strong> for diabetes. Diabetes is a major risk factor for kidney disease. Diabetes can be treated and can improved with healthy lifestyle choices.
         </p>
-        <p class="linkHighlight">
+        <p class="linkHighlight print--hide">
           <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy of this information to discuss with your healthcare professional and ask them if CKD testing is right for you.
         </p>
       <?php endif;?>
@@ -59,14 +59,14 @@
         <p class="padding-top--md linkHighlight">
           The information you entered suggests that it is likely you have chronic kidney disease.  Because many factors can cause the laboratory tests that diagnose CKD to fluctuate, it is important for you to speak with your doctor to confirm CKD through additional testing.
         </p>
-        <p class="linkHighlight">
+        <p class="linkHighlight print--hide">
           Please <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> the results of this survey, bring it to your doctor and ask for the two simple tests that will confirm if you have chronic kidney disease (To learn more about CKD testing).
         </p>
         <h3>Understanding your results</h3>
         <p class="linkHighlight">
           The information you entered shows <strong>you have <?php print $factor_count;?> of common risk factors</strong> for chronic kidney disease (CKD). Because CKD has no early symptoms, people at risk for CKD should be tested regularly to determine their kidney health.
         </p>
-        <p>The information below explains your risk factors. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional.
+        <p class="print--hide">The information below explains your risk factors. <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional.
         </p>
       <?php endif;?>
       <?php if($scenario == 4 || $scenario == 6): ?>
@@ -74,7 +74,7 @@
         <p class="linkHighlight">
           The information you entered shows <strong>you have <?php print $factor_count;?> common risk factors</strong> for chronic kidney disease (CKD) progression. The information below explains your risk factors.
         </p>
-        <p class="linkHighlight">
+        <p class="linkHighlight print--hide">
           <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> a copy to discuss with your healthcare professional and ask them for regular CKD testing to monitor your kidney health.
         </p>
       <?php endif;?>
@@ -102,7 +102,7 @@
   </section>
 
   <?php if($scenario != 5): ?>
-    <section class="padding-y--xl bg--white">
+    <section class="print--padding--none padding-y--xl bg--white">
       <div class="prose center padding-x--md">
         <h3 class="padding--none display--none">Your risk factors</h3>
           <?php foreach($risk_factors as $risk_factor):?>
@@ -112,7 +112,7 @@
           <?php endforeach;?>
         <p class="linkHighlight display--none">Please <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="">Print</a> the results of this survey, bring it to your doctor and ask for the two simple tests <a href="#tests">(eGFR and ACR)</a> that will tell you if you have chronic kidney disease.
         </p>
-        <p class="text-align--center margin-top--xxxl ">
+        <p class="text-align--center margin-top--xxxl print--hide">
           <a href="/<?php print $module_path?>/images/kidney_risk_takeaway.pdf" class="button--orange margin-right--sm margin-top--sm caps font-size--sm">print your results</a>
           <a href="<?php print $email;?>" class="button--gray-1 margin-top--sm caps font-size--sm">email your results</a>
          </p>
@@ -120,7 +120,7 @@
     </section>
   <?php endif; ?>
   <?php if($scenario != 5): ?>
-    <section class="padding-y--xxl">
+    <section class="print--padding--none padding-y--xxl">
       <div class="prose center padding-x--md">
 
         <div class="">
@@ -157,7 +157,7 @@
                 Estimated Glomerular Filtration Rate (eGFR)
               </div>
             </a>
-            <div class="desc hide sm--margin-left--md padding-top--xxs sm--padding-left--sm">
+            <div class="desc print--show sm--margin-left--md padding-top--xxs sm--padding-left--sm">
               <p>
                 This test is the best measure of how well the kidneys are removing wastes and excess fluid from the blood. Your healthcare professional can estimate GFR (eGFR) from the blood creatinine level using your age, weight, gender, race and body size. Normal eGFR can vary according to age (as you get older it goes down).
               </p>
@@ -176,7 +176,7 @@
                 Albumin-Creatinine Ratio (ACR)
               </div>
             </a>
-            <div class="desc hide sm--margin-left--md padding-top--xxs sm--padding-left--sm">
+            <div class="desc hide print--show sm--margin-left--md padding-top--xxs sm--padding-left--sm">
               <p>
                 The urine albumin test or albumin-creatinine ratio (ACR) is a test that measures the amount of protein called albumin in the urine. Albumin is found in high amounts in the blood, but almost no albumin is in the urine when the kidneys work well. However, kidney disease may cause albumin to spill (leak) into the urine, even early in the disease. An ACR more than 30  means that albumin has spilled into your urine because the kidneys are not working well.
               </p>
@@ -185,7 +185,7 @@
         </div>
     </section>
   <?php endif; ?>
-  <section class="padding-y--xxxl">
+  <section class="print--padding--none padding-y--xxxl">
     <div class="prose center padding-x--md">
       <h2 class="font-size--xxl font-weight--400 padding-bottom--sm border-width--none border-top-width--sm border-color--gray-4 border-style--solid">
         General information about the kidneys</h2>
@@ -210,7 +210,6 @@
             <a href="https://www.kidney.org/atoz">https://www.kidney.org/atoz</a>
           </p>
       </div>
-
     </div>
   </section>
 </div>
