@@ -8,13 +8,13 @@
 <?php endif; ?>
 <section class="hero--health edge--ragged--bottom margin-bottom--xxl print--hide">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
-    <div class="width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
+    <div class=" width--100 md--width--50 padding-x--md padding-y--xl md--padding-right--lg">
       <div class="display--inline-block center color--white">
-        <div class="hide font-size--xl line-height--120">Thanks for taking time to answer our questions.</div>
-        <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Thanks!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
+
+        <div class="padding-y--lg font-size--lg"><div class="bold font-size--xl">Welcome to your Kidney Pathways!</div> Below you'll find individualized content based on your answers that will help you take control of your kidney health.</div>
       </div>
     </div>
-    <div class="print--hide width--100 md--width--50 md--padding-left--lg ">
+    <div class="print--hide  width--100 md--width--50 md--padding-left--lg ">
       <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/KH_hero.png">
     </div>
   </div>
@@ -27,8 +27,8 @@
   </div>
 </section>
 <section>
-  <div class="container display--flex flex-wrap--wrap margin-bottom--xxl padding-x--md">
-    <h2 class="prose center text-align--center margin-bottom--lg">Based on your lab results the health of your kidneys is:</h2>
+  <div class="container margin-bottom--xxl padding-x--md">
+    <h2 class="prose center text-align--center margin-bottom--lg ">Based on your lab results<br class="md--show"> your kidney health is:</h2>
 
     <div class="color--black md--padding-x--xl width--100 prose center">
       <div class="position--relative">
@@ -54,7 +54,7 @@
             <?php print $type['scale'][0];?></div>
         </div>
       </div>
-      <p class="text-align--center"><a href="#">Learn more</a> about this result.</p>
+      <p class="hide text-align--center"><a href="#">Learn more</a> about this result.</p>
     </div>
 
   </div>
@@ -99,7 +99,6 @@
 <section class="print--hide border-bottom">
   <div class="container padding-y--xxl padding-x--md">
     <div class="print--hide text-align--center">
-      <a data-track="event" data-category="cta" data-action="print" data-label="spe-health-results" href="#" class="hide sm--display--inline font-size--sm caps button--gray-1 js--print-link margin--xxs"><i class="icon-print"></i> <span class="sm--display--inline">Print</span></a>
       <a data-track="event" data-category="cta" data-action="email" data-label="spe-health-results" href="mailto:?subject=Shared%20from%20National%20Kidney%20Foundation&amp;body=<?php print rawurldecode("Here is content from the National Kidney Foundation you might be interested in: $path");?>" class="font-size--sm caps button--gray-1 margin--xxs"><i class="icon-mail-alt"></i> <span class=" sm--display--inline">Email</span></a>
       <a data-track="event" data-category="cta" data-action="bookmark" data-label="spe-health-results" href="#" class="font-size--sm caps button--gray-1 js--bookmark-link margin--xxs"><i class="icon-bookmark"></i> <span class="sm--display--inline">Bookmark</span></a>
     </div>
