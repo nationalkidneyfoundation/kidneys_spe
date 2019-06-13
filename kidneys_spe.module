@@ -1412,11 +1412,13 @@ function kidneys_spe_add_metatags($version = 'health') {
     case 'gout':
       $description = 'Take control of your gout health. Answer a few questions and we’ll provide you with personalized information about gout and your health.';
       $image = $path . '/images/gout_og_image.png';
+      $url = 'https://kidney.org/phi/form?version=gout';
     return;
     case 'health':
     default:
       $description = 'Take control of your kidney health. Answer a few questions and we’ll provide you with personalized information about kidneys and your health.';
       $image = $path . '/images/KH_hero.png';
+      $url = 'https://kidney.org/phi/form?version=health';
     return;
   }
   // Add description
@@ -1440,6 +1442,16 @@ function kidneys_spe_add_metatags($version = 'health') {
   );
 
   drupal_add_html_head($element,'image');
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:url",
+      "content" => $url,
+    ),
+  );
+
+  drupal_add_html_head($element,'og_url');
 }
 
 /**
