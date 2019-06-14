@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class=" width--100 md--width--50 md--padding-left--lg ">
-      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/goutheader3.png">
+      <img class="display--block center" style="max-width:280px" src="/<?php print $module_path; ?>/images/gout_legs.png">
     </div>
   </div>
 </section>

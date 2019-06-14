@@ -5,8 +5,8 @@
 <section class="hero--health margin-bottom--xxl edge--ragged--bottom">
   <div class="container display--flex flex-wrap--wrap align-items--center padding-y--xl padding-x--md">
     <div class="width--100 print--width--100 md--width--50 padding-top--none padding-bottom--xl md--padding-right--lg">
-      <h1 class="display--inline-block caps color--white">
-        <div class="font-size--xxxxxl">Kidneys</div>
+      <h1 class="text-align--center md--text-align--left width--100  caps color--white">
+        <div class="md--font-size--xxxxxl font-size--xxxxl">Kidneys</div>
         <div class="font-size--xl font-weight--400">and your health</div>
       </h1>
     </div>
