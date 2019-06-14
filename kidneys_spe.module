@@ -1435,7 +1435,7 @@ function kidneys_spe_add_metatags($version = 'health') {
     case 'health':
     default:
       $description = 'Take control of your kidney health. Answer a few questions and we’ll provide you with personalized information about kidneys and your health.';
-      $image = $path . '/images/KH_hero.png';
+      $image = $path . '/images/kidney_pathways_og_image.png';
       $url = $base . '/kidney-health-assessment';
       break;
   }
