@@ -80,7 +80,20 @@
         </div>
       </div>
     </div>
-    <p>Speak with your healthcare professional about getting your <strong>Kidney Score</strong> - 2 simple tests: a blood test for kidney function called GFR; and a urine test for kidney damage called ACR.</p>
+
+    <?php if($field_spe_ckd_diagnosis == 'yes' ||
+             $field_spe_gout_symptoms = 'yes' ||
+             $field_spe_gout_uric_acid_level = 'yes' ||
+             $field_spe_gout_diagnosis = 'yes'):?>
+      <p class="font-size--lg margin-bottom--md">Answer a few additional questions to get more individualized content about your kidney health.</p>
+      <p>
+        <a class="button--orange caps  padding-y--md padding-x--lg" href="/phi/form?version=health&id=<?php print $submission_id;?>">
+          <span class="color--white">Learn more about your kidney health</span>
+        </a>
+      </p>
+    <?php else: ?>
+      <p>Speak with your healthcare professional about getting information about your kidney health. All it takes is 2 simple tests: a blood test for kidney function called GFR; and a urine test for kidney damage called ACR.</p>
+    <?php endif;?>
 
   </div>
 </section>
@@ -147,7 +160,7 @@
         <p>Help us continue to improve this content by answering a short survey.</p>
         <div class="margin-bottom--md">
 
-          <a class="button--orange caps padding-y--md padding-x--xl color--white" href="https://www.surveymonkey.com/r/D88G2TM?ckd=<?php print $submission->field_spe_ckd_diagnosis[0]->value();?>&gt=<?php print $submission->field_spe_gout_diagnosis[0]->value();?>" target="_blank">Take survey</a>
+          <a class="button--gray-4 caps padding-y--md padding-x--xl color--white" href="https://www.surveymonkey.com/r/D88G2TM?ckd=<?php print $field_spe_ckd_diagnosis;?>&gt=<?php print $field_spe_gout_diagnosis;?>" target="_blank">Take survey</a>
         </div>
       </div>
     </div>
