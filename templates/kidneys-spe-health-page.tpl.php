@@ -121,7 +121,7 @@
         <p>Help us continue to improve this content by answering a short survey.</p>
         <div class="margin-bottom--md">
 
-          <a class="button--orange caps padding-y--md padding-x--xl color--white" href="https://www.surveymonkey.com/r/D88G2TM?ckd=<?php print $submission->field_spe_ckd_diagnosis[0]->value();?>&gt=<?php print $submission->field_spe_gout_diagnosis[0]->value();?>" target="_blank">Take survey</a>
+          <a class="button--orange caps padding-y--md padding-x--xl color--white" href="https://www.surveymonkey.com/r/CZ5YBTX?section=home&sid=<?php print $submission_id;?>" target="_blank">Take survey</a>
         </div>
       </div>
     </div>
