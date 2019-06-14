@@ -625,6 +625,18 @@ function kidneys_spe_page($entityformid, $version) {
    'module_path' => drupal_get_path('module', 'kidneys_spe'),
    'path' => $base_url . request_uri()
   );
+  
+  // Gather up all submission values for easy access in template.
+  foreach ($submission->getPropertyInfo() as $key => $value) {
+    if (strpos($key, 'field_') !== FALSE) {
+      if (!empty($submission->{$key}->value())) {
+        $return[$key] = reset($submission->{$key}->value());
+      } else {
+        $return[$key] = NULL;
+      }
+    }
+  }
+
 
   // These are the two important labs, they are special for determining which version
   // of the tool the user gets.
