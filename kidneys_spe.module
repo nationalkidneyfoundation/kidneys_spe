@@ -625,7 +625,7 @@ function kidneys_spe_page($entityformid, $version) {
    'module_path' => drupal_get_path('module', 'kidneys_spe'),
    'path' => $base_url . request_uri()
   );
-  
+
   // Gather up all submission values for easy access in template.
   foreach ($submission->getPropertyInfo() as $key => $value) {
     if (strpos($key, 'field_') !== FALSE) {
@@ -1538,8 +1538,8 @@ function kidneys_spe_add_metatags($version = 'health') {
     '#type' => 'html_tag',
     '#tag' => 'meta',
     '#attributes' => array(
-      "property" => "twitter:card",
-      "content" => 'summary_large_image',
+      "name" => "twitter:card",
+      "content" => 'photo',
     ),
   );
   drupal_add_html_head($element,'twitter_card');
@@ -1588,10 +1588,10 @@ function kidneys_spe_html_head_alter(&$head_elements) {
   unset($head_elements['metatag_canonical']);
   unset($head_elements['metatag_shortlink']);
   // Kill some OG/Twitter stuff.
-  foreach($head_elements as $element) {
+  foreach($head_elements as $key => $element) {
     if (!empty($element['#name'])) {
-      if (in_array($element['#name'], array('og:url', 'twitter:url'))) {
-        unset($head_elements[$element]);
+      if (in_array($element['#name'], array('og:url', 'twitter:url', 'twitter:card'))) {
+        unset($head_elements[$key]);
       }
     }
   }
