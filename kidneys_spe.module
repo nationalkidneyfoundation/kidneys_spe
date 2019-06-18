@@ -1543,7 +1543,12 @@ function kidneys_spe_add_metatags($version = 'health') {
     ),
   );
   drupal_add_html_head($element,'twitter_card');
-
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#name' => 'spe'
+  );
+  drupal_add_html_head($element,'spe');
 }
 
 /**
@@ -1583,15 +1588,16 @@ function kidneys_spe_flag_flag($flag, $entity_id, $account, $flagging) {
 */
 
 function kidneys_spe_html_head_alter(&$head_elements) {
-  //dpm($head_elements);
-  // Kill some metatags
-  unset($head_elements['metatag_canonical']);
-  unset($head_elements['metatag_shortlink']);
-  // Kill some OG/Twitter stuff.
-  foreach($head_elements as $key => $element) {
-    if (!empty($element['#name'])) {
-      if (in_array($element['#name'], array('og:url', 'twitter:url', 'twitter:card'))) {
-        unset($head_elements[$key]);
+  if (!empty($head_elements['spe'])) {
+    // Kill some metatags
+    unset($head_elements['metatag_canonical']);
+    unset($head_elements['metatag_shortlink']);
+    // Kill some OG/Twitter stuff.
+    foreach($head_elements as $key => $element) {
+      if (!empty($element['#name'])) {
+        if (in_array($element['#name'], array('og:url', 'twitter:url', 'twitter:card'))) {
+          unset($head_elements[$key]);
+        }
       }
     }
   }
