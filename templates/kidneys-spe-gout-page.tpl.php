@@ -142,6 +142,17 @@
             </p>
           </div>
         </div>
+        <div class="display--flex align-items--flex-start margin-bottom--sm">
+          <div class="print--hide margin-right--md" style="flex: 0 0 75px;">
+            <img src="/<?php print $module_path; ?>/images/app_gout.png" alt="video icon">
+          </div>
+          <div class="margin-left--md" style="flex: 1;">
+            <p><span class="bold">Gout Central</span>
+              <br>
+              <a href="https://www.kidney.org/apps/patients/gout-central" class="bold">The “Gout Central" app</a>  empowers patients with the most essential tools and information for controlling gout and protecting their kidneys. Guidance is provided on the optimal use of nutrition, lifestyle, and medication for the prevention and treatment of gout flares.
+            </p>
+          </div>
+        </div>
     </div>
   </div>
 </section>
